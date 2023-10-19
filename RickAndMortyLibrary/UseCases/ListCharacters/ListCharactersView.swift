@@ -21,8 +21,8 @@ struct ListCharactersView: View {
                 ForEach(viewModel.characters, id: \.id) { character in
                     NavigationView {
                         NavigationLink(destination: Text("Destination")) {
-                            if let poster = character.image {
-                                AppImage(url: poster)
+                            if let image = character.image {
+                                AppImage(url: image)
                             }
                         }
                     }
