@@ -12,26 +12,22 @@ struct ListCharactersView: View {
     //MARK: - ViewModel
     @EnvironmentObject var viewModel: ListCharactersViewModel
     
-    //MARK: - Grid
-    let columns: [GridItem] = [GridItem(.flexible()), GridItem(.flexible())]
-    
     var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, content: {
-                ForEach(viewModel.characters, id: \.id) { character in
-                    NavigationView {
-                        NavigationLink(destination: Text("Destination")) {
-                            if let image = character.image {
-                                AppImage(url: image)
-                            }
-                        }
+        NavigationView {
+            VStack {
+                List(viewModel.characters, id: \.id) { character in
+                    NavigationLink(destination: Text("hola")) {
+                        CharacterRowView(type: character)
                     }
                 }
-            })
-           
-        }
-        .onAppear {
-            viewModel.loadUI()
+                .listStyle(.grouped)
+                .navigationTitle("Characters")
+                
+            }
+            
+            .onAppear {
+                  viewModel.loadUI()
+            }
         }
     }
 }
