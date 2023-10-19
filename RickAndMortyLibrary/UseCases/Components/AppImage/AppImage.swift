@@ -11,6 +11,7 @@ struct AppImage: View {
     let url: URL
     @State var image: UIImage? = nil
     
+    //MARK: - Descarga de imagenes para versiones por debajo de iOS 15
     var body: some View {
         VStack {
             if let image = image {
