@@ -51,6 +51,11 @@
 		9F0DEA142AE13CC5009376F1 /* RickAndMortyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				9F0DEA272AE1440E009376F1 /* Model */,
+				9F0DEA262AE143FD009376F1 /* UseCases */,
+				9F0DEA252AE143F3009376F1 /* Provider */,
+				9F0DEA242AE143E1009376F1 /* Utils */,
+				9F0DEA232AE142CB009376F1 /* SupportingFiles */,
 				9F0DEA152AE13CC5009376F1 /* RickAndMortyLibraryApp.swift */,
 				9F0DEA172AE13CC5009376F1 /* ContentView.swift */,
 				9F0DEA192AE13CC6009376F1 /* Assets.xcassets */,
@@ -65,6 +70,41 @@
 				9F0DEA1C2AE13CC6009376F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9F0DEA232AE142CB009376F1 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		9F0DEA242AE143E1009376F1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9F0DEA252AE143F3009376F1 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		9F0DEA262AE143FD009376F1 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		9F0DEA272AE1440E009376F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
