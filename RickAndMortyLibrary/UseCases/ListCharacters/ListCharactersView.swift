@@ -16,7 +16,7 @@ struct ListCharactersView: View {
         NavigationView {
             VStack {
                 List(viewModel.characters, id: \.id) { character in
-                    NavigationLink(destination: Text("hola")) {
+                    NavigationLink(destination: DetailCharacterView(character: character)) {
                         CharacterRowView(type: character)
                     }
                 }
