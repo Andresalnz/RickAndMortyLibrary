@@ -24,4 +24,18 @@ final class RickAndMortyServices {
             return []
         }
     }
+    
+    
+    func getSingleEpisode(url: URL?) async throws -> EpisodeModelBO {
+        guard let url = url else {  throw fatalError() }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let singleEpisodeModel = try JSONDecoder().decode(EpisodeModelDTO.self, from: data)
+            let singleEpisode = singleEpisodeModel.toBo()
+            return singleEpisode
+        } catch let err {
+            print(err)
+            throw fatalError()
+        }
+    }
 }

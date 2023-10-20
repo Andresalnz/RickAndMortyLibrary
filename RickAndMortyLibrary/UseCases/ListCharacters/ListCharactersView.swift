@@ -16,15 +16,15 @@ struct ListCharactersView: View {
         NavigationView {
             VStack {
                 List(viewModel.characters, id: \.id) { character in
-                    NavigationLink(destination: DetailCharacterView(character: character)) {
-                        CharacterRowView(type: character)
+                    if let episode = character.episode {
+                        NavigationLink(destination: DetailCharacterView(character: character, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episode))) {
+                            CharacterRowView(type: character)
+                        }
                     }
                 }
                 .listStyle(.grouped)
                 .navigationTitle("Characters")
-                
             }
-            
             .onAppear {
                   viewModel.loadUI()
             }

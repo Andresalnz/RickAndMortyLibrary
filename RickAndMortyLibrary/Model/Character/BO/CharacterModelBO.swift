@@ -34,7 +34,7 @@ struct CharactersInfoBO: Codable {
     let gender: Gender?
     let origin, location: LocationOriginBO?
     let image: URL?
-    let episode: [String]?
+    let episode: [URL]?
     let url: URL?
     let created: Date?
 }
