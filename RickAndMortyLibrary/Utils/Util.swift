@@ -16,7 +16,7 @@ final class Util {
         func shapeURL() -> URL? {
             switch self {
                 case .characters:
-                    return URL(string: "https://rickandmortyapi.com/api/character")
+                    return URL(string: Constants.URLAllCharacters)
             }
         }
     }

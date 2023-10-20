@@ -23,7 +23,7 @@ struct ListCharactersView: View {
                     }
                 }
                 .listStyle(.grouped)
-                .navigationTitle("Characters")
+                .navigationTitle(Constants.titleCharacters)
             }
             .onAppear {
                   viewModel.loadUI()
@@ -31,7 +31,7 @@ struct ListCharactersView: View {
             .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
                 //
             } message: {
-                Text("Error en la App, intentelo mas tarde")
+                Text(Constants.messageAlertError)
                     .font(.body)
             }
 

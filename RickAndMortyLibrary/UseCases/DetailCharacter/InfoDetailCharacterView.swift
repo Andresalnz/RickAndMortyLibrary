@@ -16,20 +16,20 @@ struct InfoDetailCharacterView: View {
             HStack {
                 Label("Estatus", systemImage: "circle.fill").foregroundColor(character.status == .alive ? .green : .black)
                 Spacer()
-                Text(character.status?.rawValue ?? "N/A")
+                Text(character.status?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
             HStack {
                 Label("Especie", systemImage: "figure.arms.open")
                 Spacer()
-                Text(character.species?.rawValue ?? "N/A")
+                Text(character.species?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
             if character.type != "" {
                 HStack {
                     Label("Type", systemImage: "figure.arms.open")
                     Spacer()
-                    Text(character.type ?? "N/A")
+                    Text(character.type ?? Constants.noText)
                 }
                 .padding(.bottom)
             }
@@ -37,26 +37,26 @@ struct InfoDetailCharacterView: View {
             HStack {
                 Label("Genero", systemImage: "person.fill")
                 Spacer()
-                Text(character.gender?.rawValue ?? "N/A")
+                Text(character.gender?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
             HStack {
                 Label("Origen", systemImage: "globe.asia.australia.fill")
                 Spacer()
-                Text(character.origin?.name ?? "N/A")
+                Text(character.origin?.name ?? Constants.noText)
             }
             .padding(.bottom)
             HStack {
                 Label("Localización", systemImage: "location.fill")
                 Spacer()
-                Text(character.location?.name ?? "N/A")
+                Text(character.location?.name ?? Constants.noText)
             }
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 15)
         .frame(width: 340)
         .background(.gray)
-        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+        .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.sizeCornerRadius, height: Constants.sizeCornerRadius)))
     }
 }
 

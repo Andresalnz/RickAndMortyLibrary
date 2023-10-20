@@ -23,8 +23,9 @@ struct CharacterRowView: View {
                 Image(systemName: "person.fill")
             }
             VStack(alignment: .leading) {
-                Text(type.name ?? "N/A").font(.body)
-                Label(type.status?.rawValue ?? "N/A", systemImage: "circle.fill")
+                Text(type.name ?? Constants.noText)
+                    .font(.body)
+                Label(type.status?.rawValue ?? Constants.noText, systemImage: "circle.fill")
                     .foregroundColor(type.status == .alive ? .green : .black)
                     .padding(.top, 10)
             }

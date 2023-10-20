@@ -16,16 +16,16 @@ struct DetailCharacterView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text(character.name ?? "N/A")
+                Text(character.name ?? Constants.noText)
                     .bold()
                     .font(.title)
-                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
                   
                 if let image = character.image {
                     AsyncImage(url: image) { image in
                         image.resizable()
                             .frame(width: 340, height: 380)
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.sizeCornerRadius, height: Constants.sizeCornerRadius)))
                             .shadow(radius: 8)
                     } placeholder: {
                         ProgressView()
@@ -36,20 +36,20 @@ struct DetailCharacterView: View {
                 Text("INFO")
                     .bold()
                     .font(.title)
-                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
                 InfoDetailCharacterView(character: character)
                 
                 Text("Episodes")
                     .bold()
                     .font(.title)
-                    .frame(maxWidth: 350, alignment: .leading)
+                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
         
                     ForEach(viewModel.allEpisodes, id: \.id) { episode in
-                        Text(episode.name ?? "N/A")
+                        Text(episode.name ?? Constants.noText)
                             .foregroundStyle(.red)
                             .font(.body)
                             .padding(.top)
-                            .frame(maxWidth: 350, alignment: .leading)
+                            .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
                     }
             }
             .onAppear {
