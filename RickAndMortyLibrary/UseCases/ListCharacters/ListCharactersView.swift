@@ -26,7 +26,7 @@ struct ListCharactersView: View {
                 .navigationTitle(Constants.titleCharacters)
             }
             .onAppear {
-                  viewModel.loadUI()
+                viewModel.loadUI()
             }
             .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
                 //
@@ -34,7 +34,6 @@ struct ListCharactersView: View {
                 Text(Constants.messageAlertError)
                     .font(.body)
             }
-
         }
     }
 }

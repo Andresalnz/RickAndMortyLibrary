@@ -16,11 +16,12 @@ struct DetailCharacterView: View {
     var body: some View {
         ScrollView {
             VStack {
+                //MARK: - Imagen y Nombre
                 Text(character.name ?? Constants.noText)
                     .bold()
                     .font(.title)
                     .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                  
+                
                 if let image = character.image {
                     AsyncImage(url: image) { image in
                         image.resizable()
@@ -33,24 +34,29 @@ struct DetailCharacterView: View {
                 } else {
                     Image(systemName: "person.fill")
                 }
-                Text("INFO")
+                
+                //MARK: - INFO
+                Text("info")
                     .bold()
+                    .textCase(.uppercase)
                     .font(.title)
                     .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
                 InfoDetailCharacterView(character: character)
                 
-                Text("Episodes")
+                //MARK: - Episodios
+                Text("episodes")
                     .bold()
+                    .textCase(.uppercase)
                     .font(.title)
                     .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-        
-                    ForEach(viewModel.allEpisodes, id: \.id) { episode in
-                        Text(episode.name ?? Constants.noText)
-                            .foregroundStyle(.red)
-                            .font(.body)
-                            .padding(.top)
-                            .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                    }
+                
+                ForEach(viewModel.allEpisodes, id: \.id) { episode in
+                    Text(episode.name ?? Constants.noText)
+                        .foregroundStyle(.red)
+                        .font(.body)
+                        .padding(.top)
+                        .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
+                }
             }
             .onAppear {
                 viewModel.loadUI()

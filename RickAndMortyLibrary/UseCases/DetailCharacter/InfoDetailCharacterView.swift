@@ -13,18 +13,23 @@ struct InfoDetailCharacterView: View {
     
     var body: some View {
         VStack {
+            //MARK: - Status
             HStack {
-                Label("Estatus", systemImage: "circle.fill").foregroundColor(character.status == .alive ? .green : .black)
+                Label("Status", systemImage: "circle.fill").foregroundColor(character.status == .alive ? .green : .black)
                 Spacer()
                 Text(character.status?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
+            
+            //MARK: - Specie
             HStack {
-                Label("Especie", systemImage: "figure.arms.open")
+                Label("Specie", systemImage: "figure.arms.open")
                 Spacer()
                 Text(character.species?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
+            
+            //MARK: - Type
             if character.type != "" {
                 HStack {
                     Label("Type", systemImage: "figure.arms.open")
@@ -33,21 +38,26 @@ struct InfoDetailCharacterView: View {
                 }
                 .padding(.bottom)
             }
-          
+            
+            //MARK: - Gender
             HStack {
-                Label("Genero", systemImage: "person.fill")
+                Label("Gender", systemImage: "person.fill")
                 Spacer()
                 Text(character.gender?.rawValue ?? Constants.noText)
             }
             .padding(.bottom)
+            
+            //MARK: - Origin
             HStack {
-                Label("Origen", systemImage: "globe.asia.australia.fill")
+                Label("Origin", systemImage: "globe.asia.australia.fill")
                 Spacer()
                 Text(character.origin?.name ?? Constants.noText)
             }
             .padding(.bottom)
+            
+            //MARK: - Location
             HStack {
-                Label("Localización", systemImage: "location.fill")
+                Label("Location", systemImage: "location.fill")
                 Spacer()
                 Text(character.location?.name ?? Constants.noText)
             }
