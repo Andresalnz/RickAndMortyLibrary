@@ -30,13 +30,13 @@ final class DetailCharacterViewModel: ObservableObject {
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
     func loadUI() {
         Task {
-            await loadData()
+            try await loadData()
         }
     }
     
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     @MainActor
-    func loadData() async {
+    func loadData() async throws {
         do {
             for urlEpisode in allEpisodeCharacter {
                 episode = try await service.getSingleEpisode(url: urlEpisode)
@@ -44,8 +44,8 @@ final class DetailCharacterViewModel: ObservableObject {
                     allEpisodes.append(episode)
                 }
             }
-        } catch let err {
-            print(err)
+        } catch {
+            throw ErrorHandler.requestEpisodeInvalid
         }
     }
 }

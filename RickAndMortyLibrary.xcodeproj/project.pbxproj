@@ -26,6 +26,7 @@
 		9F8814882AE26F4700448501 /* EpisodeModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8814872AE26F4700448501 /* EpisodeModelDTO.swift */; };
 		9F88148A2AE26F5300448501 /* EpisodeModelBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8814892AE26F5300448501 /* EpisodeModelBO.swift */; };
 		9F88148C2AE26F6100448501 /* EpisodeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148B2AE26F6100448501 /* EpisodeMapper.swift */; };
+		9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148D2AE2975B00448501 /* ErrorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9F8814872AE26F4700448501 /* EpisodeModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModelDTO.swift; sourceTree = "<group>"; };
 		9F8814892AE26F5300448501 /* EpisodeModelBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModelBO.swift; sourceTree = "<group>"; };
 		9F88148B2AE26F6100448501 /* EpisodeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeMapper.swift; sourceTree = "<group>"; };
+		9F88148D2AE2975B00448501 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				9F0DEA3B2AE17AF6009376F1 /* Util.swift */,
+				9F88148D2AE2975B00448501 /* ErrorHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				9F0DEA182AE13CC5009376F1 /* ContentView.swift in Sources */,
 				9F0DEA162AE13CC5009376F1 /* RickAndMortyLibraryApp.swift in Sources */,
 				9F8814882AE26F4700448501 /* EpisodeModelDTO.swift in Sources */,
+				9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */,
 				9F0DEA402AE18559009376F1 /* AppImage.swift in Sources */,
 				9F0DEA552AE1F28C009376F1 /* InfoDetailCharacterView.swift in Sources */,
 			);

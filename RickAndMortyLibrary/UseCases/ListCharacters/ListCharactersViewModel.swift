@@ -17,22 +17,28 @@ final class ListCharactersViewModel: ObservableObject {
     //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
     let service: RickAndMortyServices = RickAndMortyServices()
     
+    //MARK: - Variables para manejo de errores
+    @Published var errorValue = false
+    @Published var messageError: String = ""
     
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
     func loadUI() {
         Task {
-            await loadData()
+            try await loadData()
         }
     }
     
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     @MainActor
-    func loadData() async {
+    func loadData() async throws {
         do {
             characters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL())
-        } catch let err {
-            print(err)
+        } catch {
+            errorValue = true
+            if let message = ErrorHandler.requestCharactersInvalid.errorDescription {
+                messageError = message
+            }
+            throw ErrorHandler.requestCharactersInvalid
         }
     }
-    
 }

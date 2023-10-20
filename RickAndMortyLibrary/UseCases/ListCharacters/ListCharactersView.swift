@@ -28,6 +28,13 @@ struct ListCharactersView: View {
             .onAppear {
                   viewModel.loadUI()
             }
+            .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
+                //
+            } message: {
+                Text("Error en la App, intentelo mas tarde")
+                    .font(.body)
+            }
+
         }
     }
 }
