@@ -11,7 +11,7 @@ import SwiftUI
 struct RickAndMortyLibraryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListCharactersView().environmentObject(ListCharactersViewModel())
         }
     }
 }

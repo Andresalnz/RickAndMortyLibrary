@@ -9,6 +9,14 @@ import Foundation
 
 extension CharactersInfoDTO {
     func toBo() -> CharactersInfoBO {
+        
+        var urlEpisodes: [URL] = []
+        episode?.forEach({ episode in
+            if let episode = URL(string: episode) {
+                urlEpisodes.append(episode)
+            }
+        })
+            
         return CharactersInfoBO(id: id,
                                 name: name,
                                 status: status,
@@ -18,7 +26,7 @@ extension CharactersInfoDTO {
                                 origin: origin?.toBo(),
                                 location: location?.toBo(),
                                 image: URL(string: image ?? ""),
-                                episode: episode,
+                                episode: urlEpisodes,
                                 url: URL(string: url ?? ""),
                                 created: Date())
     }

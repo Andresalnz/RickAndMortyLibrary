@@ -23,17 +23,17 @@ struct CharacterRowView: View {
                 Image(systemName: "person.fill")
             }
             VStack(alignment: .leading) {
-                Text(type.name ?? "N/A").font(.body)
-                Label(type.status?.rawValue ?? "N/A", systemImage: "circle.fill")
+                Text(type.name ?? Constants.noText)
+                    .font(.body)
+                Label(type.status?.rawValue ?? Constants.noText, systemImage: "circle.fill")
                     .foregroundColor(type.status == .alive ? .green : .black)
                     .padding(.top, 10)
             }
             .padding(.horizontal, 10)
-            
         }
     }
 }
 
 #Preview {
-    CharacterRowView(type: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .unknown, species: .human, type: "", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [""], url: URL(string: ""), created: Date()))
+    CharacterRowView(type: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .unknown, species: .human, type: "", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [URL(string: "https://rickandmortyapi.com/api/episode/28")!], url: URL(string: ""), created: Date()))
 }
