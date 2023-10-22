@@ -20,6 +20,11 @@ struct ListCharactersView: View {
                         NavigationLink(destination: DetailCharacterView(character: character, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episode))) {
                             CharacterRowView(type: character)
                         }
+                        .onAppear {
+                            Task {
+                                try await viewModel.loadMoreIfNeeded(characterInfo: character)
+                            }
+                        }
                     }
                 }
                 .listStyle(.grouped)
