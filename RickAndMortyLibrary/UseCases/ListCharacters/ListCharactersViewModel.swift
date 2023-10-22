@@ -14,13 +14,30 @@ final class ListCharactersViewModel: ObservableObject {
     //Array que almacena los personajes
     @Published var characters: [CharactersInfoBO] = []
     
-    //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
-    let service: RickAndMortyServices = RickAndMortyServices()
-    
-    //MARK: - Variables para manejo de errores
+    //Manejo de errores
     @Published var errorValue = false
     @Published var messageError: String = ""
     
+    //Almacena la actual pagina
+    var currentPage: Int = 1
+    
+    //Booleano para cuando se esta en el detalle y se vuelva atras no haga ninguna petición
+    var negativeRequest: Bool = false
+
+    //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
+    let service: RickAndMortyServices = RickAndMortyServices()
+    
+    //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar mas personajes al llegar al final de la lista
+    @MainActor
+    func loadMoreIfNeeded(characterInfo: CharactersInfoBO) async throws {
+        if characters.last == characterInfo {
+            currentPage += 1
+            var moreCharacters: [CharactersInfoBO] = []
+            moreCharacters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+            characters.append(contentsOf: moreCharacters)
+        }
+    }
+
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
     func loadUI() {
         Task {
@@ -32,7 +49,10 @@ final class ListCharactersViewModel: ObservableObject {
     @MainActor
     func loadData() async throws {
         do {
-            characters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL())
+            if !negativeRequest {
+                characters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+            }
+            negativeRequest = true
         } catch {
             errorValue = true
             if let message = ErrorHandler.requestCharactersInvalid.errorDescription {
