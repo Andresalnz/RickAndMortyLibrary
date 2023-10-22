@@ -17,7 +17,7 @@ Aplicación que muestra un listado de personajes de Rick and Morty y su detalle,
 
 <h2 id="conociendo_el_proyecto">Conociendo el proyecto</h2>
 
-Al ejecutar la aplicación podemos ver una lista de personajes de Rick and Morty, en la cual se puede observar:
+Al ejecutar la aplicación, se realiza una petición que devuelve algunos personajes, la respuesta se almacenan en un array, el cual, se usa en la vista para ver una lista completa de personajes de Rick and Morty, en la cual se puede observar:
 
 - La imagen 
 - El nombre
@@ -27,7 +27,12 @@ Si se hace scroll para observar mas personajes, cuando llega al final de la list
 
 Si se pulsa sobre algún personaje, se redirige a la vista de detalle, en la cual se sirve de la información de la anterior pantalla para mostrar la imagen, la información del personaje y el nombre de los episodios en los que aparece. 
 
-Para poder mostrar los episodios, se instancia el viewModel de detalle y se envía a la vista de este mismo, con las URLs de los episodios. Este vieWModel, se inicializa con un array que almacena todas las URLs de los episodios en los que aparece el personaje pulsado. Este array, se va recorriendo y se va realizando peticiones al endpoint que devuelve un solo episodio, la información recibida se almacena en una propiedad, la cual se almacena en un nuevo array que es utilizado en la vista.
+Para poder mostrar los episodios, se instancia el viewModel de detalle y se envía a su vista, con las URLs de los episodios. Este viewModel, se inicializa con un array que almacena todas las URLs de los episodios en los que aparece el personaje pulsado. Este array, se va recorriendo y se va realizando peticiones al endpoint que devuelve la información de un solo episodio, la información recibida se almacena en una propiedad, la cual, se almacena en un nuevo array que es utilizado en la vista.
+
+Esta aplicación esta construida usando:
+
+- Arquitectura MVVM
+- Async/Await
 
 <h2 id="stack_tecnologico">Stack Tecnologico</h2>
 
