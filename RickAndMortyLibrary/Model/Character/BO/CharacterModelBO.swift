@@ -25,22 +25,37 @@ struct InfoBO: Codable {
     
 }
 
-struct CharactersInfoBO: Codable {
-    let id: Int?
-    let name: String?
-    let status: Status?
-    let species: Species?
-    let type: String?
-    let gender: Gender?
-    let origin, location: LocationOriginBO?
-    let image: URL?
-    let episode: [URL]?
-    let url: URL?
-    let created: Date?
+struct CharactersInfoBO: Codable, Equatable {
+    static func == (lhs: CharactersInfoBO, rhs: CharactersInfoBO) -> Bool {
+          return  lhs.id == rhs.id &&
+            lhs.name == rhs.name &&
+            lhs.status == rhs.status &&
+            lhs.species == rhs.species &&
+            lhs.type == rhs.type &&
+            lhs.gender == rhs.gender &&
+            lhs.origin == rhs.origin &&
+            lhs.location == rhs.location &&
+            lhs.image == rhs.image &&
+            lhs.episode == rhs.episode &&
+            lhs.url == rhs.url &&
+            lhs.created == rhs.created
+        }
+    
+    var id: Int?
+    var name: String?
+    var status: Status?
+    var species: Species?
+    var type: String?
+    var gender: Gender?
+    var origin, location: LocationOriginBO?
+    var image: URL?
+    var episode: [URL]?
+    var url: URL?
+    var created: Date?
 }
 
 
-struct LocationOriginBO: Codable {
+struct LocationOriginBO: Codable, Equatable {
     let name: String?
     let url: URL?
 }
