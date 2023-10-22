@@ -45,7 +45,7 @@ final class ListCharactersViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
+    //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar los primeros personajes
     @MainActor
     func loadData() async throws {
         do {
