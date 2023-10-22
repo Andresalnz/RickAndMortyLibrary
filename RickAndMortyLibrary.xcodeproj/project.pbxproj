@@ -27,6 +27,7 @@
 		9F88148C2AE26F6100448501 /* EpisodeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148B2AE26F6100448501 /* EpisodeMapper.swift */; };
 		9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148D2AE2975B00448501 /* ErrorHandler.swift */; };
 		9F8814902AE2A96A00448501 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148F2AE2A96A00448501 /* Constants.swift */; };
+		9F8814922AE2BBBE00448501 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9F8814912AE2BBBE00448501 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		9F88148B2AE26F6100448501 /* EpisodeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeMapper.swift; sourceTree = "<group>"; };
 		9F88148D2AE2975B00448501 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		9F88148F2AE2A96A00448501 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F8814912AE2BBBE00448501 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		9F0DEA092AE13CC5009376F1 = {
 			isa = PBXGroup;
 			children = (
+				9F8814912AE2BBBE00448501 /* README.md */,
 				9F0DEA142AE13CC5009376F1 /* RickAndMortyLibrary */,
 				9F0DEA132AE13CC5009376F1 /* Products */,
 			);
@@ -333,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F8814922AE2BBBE00448501 /* README.md in Resources */,
 				9F0DEA1D2AE13CC6009376F1 /* Preview Assets.xcassets in Resources */,
 				9F0DEA1A2AE13CC6009376F1 /* Assets.xcassets in Resources */,
 			);
