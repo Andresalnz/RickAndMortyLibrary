@@ -13,10 +13,10 @@ final class Util {
     enum Services {
         case characters
         
-        func shapeURL() -> URL? {
+        func shapeURL(_ page: Int) -> URL? {
             switch self {
                 case .characters:
-                    return URL(string: Constants.URLAllCharacters)
+                    return URL(string: "\(Constants.URLAllCharacters)\(Constants.page)\(page)")
             }
         }
     }
