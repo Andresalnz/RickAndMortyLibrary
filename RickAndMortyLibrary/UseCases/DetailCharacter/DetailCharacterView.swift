@@ -23,14 +23,10 @@ struct DetailCharacterView: View {
                     .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
                 
                 if let image = character.image {
-                    AsyncImage(url: image) { image in
-                        image.resizable()
-                            .frame(width: 340, height: 380)
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.sizeCornerRadius, height: Constants.sizeCornerRadius)))
-                            .shadow(radius: 8)
-                    } placeholder: {
-                        ProgressView()
-                    }
+                   AsyncImageView(urlImage: image)
+                        .frame(width: 340, height: 380)
+                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.sizeCornerRadius, height: Constants.sizeCornerRadius)))
+                        .shadow(radius: 8)
                 } else {
                     Image(systemName: "person.fill")
                 }
