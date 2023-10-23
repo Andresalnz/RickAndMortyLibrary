@@ -13,12 +13,8 @@ struct CharacterRowView: View {
     var body: some View {
         HStack {
             if let image = type.image {
-                AsyncImage(url: image) { image in
-                    image.resizable()
-                        .frame(width: 170, height: 170)
-                } placeholder: {
-                    ProgressView()
-                }
+                AsyncImageView(urlImage: image)
+                    .frame(width: 170, height: 170)
             } else {
                 Image(systemName: "person.fill")
             }
