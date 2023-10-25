@@ -42,7 +42,7 @@ Esta aplicación esta construida usando:
 
 <h2 id="requisitos">Requisitos</h2>
 
-- iOS 14.0 o superior
+- iOS 15.0 o superior
 - Xcode 12.0 o superior
 
 <h2 id="Instalacion">Instalación</h2>
