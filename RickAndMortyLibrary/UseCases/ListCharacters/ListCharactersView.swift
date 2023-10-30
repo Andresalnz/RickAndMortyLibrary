@@ -27,7 +27,6 @@ struct ListCharactersView: View {
                         }
                     }
                 }
-                .listStyle(.grouped)
                 .navigationTitle(Constants.titleCharacters)
             }
             .onAppear {

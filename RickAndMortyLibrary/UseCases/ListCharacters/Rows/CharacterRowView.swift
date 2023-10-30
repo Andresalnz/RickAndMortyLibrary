@@ -14,18 +14,18 @@ struct CharacterRowView: View {
         HStack {
             if let image = type.image {
                 AsyncImageView(urlImage: image)
-                    .frame(width: 170, height: 170)
+                    .scaledToFit()
+                    .frame(width: 50, height: 50, alignment: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: 20.0), style: FillStyle())
             } else {
                 Image(systemName: "person.fill")
             }
             VStack(alignment: .leading) {
                 Text(type.name ?? Constants.noText)
-                    .font(.body)
-                Label(type.status?.rawValue ?? Constants.noText, systemImage: "circle.fill")
-                    .foregroundColor(type.status == .alive ? .green : .black)
-                    .padding(.top, 10)
+                    .font(.title3)
+                Text(type.species?.rawValue ?? Constants.noText)
             }
-            .padding(.horizontal, 10)
+            
         }
     }
 }
