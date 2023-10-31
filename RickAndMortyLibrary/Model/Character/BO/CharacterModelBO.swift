@@ -66,6 +66,7 @@ enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
+    case Genderless = "Genderless"
 }
 
 enum Species: String, Codable {
@@ -78,6 +79,7 @@ enum Species: String, Codable {
     case Animal = "Animal"
     case Robot = "Robot"
     case Cronenberg = "Cronenberg"
+    case Disease = "Disease"
 }
 
 enum Status: String, Codable {
