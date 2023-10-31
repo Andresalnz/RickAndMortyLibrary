@@ -48,26 +48,22 @@ struct DetailCharacterView: View {
                     VStack {
                         Text(episode.name ?? Constants.noText)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .foregroundStyle(.white)
                         HStack {
-                            Text("September 10, 2017")
-                                .foregroundStyle(.white)
+                            Text(episode.airDate ?? "")
                             Spacer()
                             Text(episode.episode ?? "")
-                                .foregroundStyle(.white)
                         }
-                        .padding(.top)
+                        .padding(.top, 5)
                     }
                 }
                 .listRowSeparator(.hidden)
                 .listRowBackground(RoundedRectangle(cornerRadius: 8)
                     .background(.clear)
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.secondary)
                     .opacity(0.8)
                     .padding(.bottom, 5)
                 )
             }
-            
         }
         .navigationTitle(character.name ?? "")
         .onAppear {
