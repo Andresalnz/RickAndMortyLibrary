@@ -14,8 +14,6 @@ struct DetailCharacterView: View {
     @StateObject var viewModel: DetailCharacterViewModel
     
     var body: some View {
-        Text("Character Detail")
-            .font(.title)
         List {
             //MARK: - Seccion de la imagen
             Section("Image") {
@@ -69,13 +67,13 @@ struct DetailCharacterView: View {
                     .padding(.bottom, 5)
                 )
             }
+            
         }
+        .navigationTitle(character.name ?? "")
         .onAppear {
             viewModel.loadUI()
         }
         .listStyle(.insetGrouped)
-        .navigationBarBackButtonHidden(false)
-        .navigationBarHidden(true)
     }
 }
 
