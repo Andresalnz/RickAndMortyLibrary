@@ -23,10 +23,20 @@ final class ListCharactersViewModel: ObservableObject {
     
     //Booleano para cuando se esta en el detalle y se vuelva atras no haga ninguna petición
     var negativeRequest: Bool = false
+    
+    //Propiedad que almacena el texto que se esta buscando
+    @Published var searchText: String = ""
 
     //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
     let service: RickAndMortyServices = RickAndMortyServices()
     
+    //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
+    var filterCharactersbyName: [CharactersInfoBO] {
+        guard !searchText.isEmpty else { return characters }
+        return characters.filter { character in
+            character.name!.lowercased().contains(searchText.lowercased())
+        }
+    }
     //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar mas personajes al llegar al final de la lista
     @MainActor
     func loadMoreIfNeeded(characterInfo: CharactersInfoBO) async throws {

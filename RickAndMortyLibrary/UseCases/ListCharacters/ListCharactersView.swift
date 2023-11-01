@@ -15,7 +15,7 @@ struct ListCharactersView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List(viewModel.characters, id: \.id) { character in
+                List(viewModel.filterCharactersbyName, id: \.id) { character in
                     if let episode = character.episode {
                         NavigationLink(destination: DetailCharacterView(character: character, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episode))) {
                             CharacterRowView(type: character)
@@ -27,6 +27,7 @@ struct ListCharactersView: View {
                         }
                     }
                 }
+                .searchable(text: $viewModel.searchText)
                 .navigationTitle(Constants.titleCharacters)
             }
             .onAppear {
