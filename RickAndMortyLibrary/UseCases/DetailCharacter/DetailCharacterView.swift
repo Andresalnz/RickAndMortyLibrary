@@ -16,54 +16,11 @@ struct DetailCharacterView: View {
     var body: some View {
         List {
             //MARK: - Seccion de la imagen
-            Section("Image") {
-                if let image = character.image {
-                    AsyncImageView(urlImage: image)
-                        .scaledToFill()
-                        .listRowBackground(RoundedRectangle(cornerRadius: 8)
-                            .background(.clear)
-                            .foregroundColor(.clear)
-                            .padding(.vertical)
-                        )
-                        .shadow(radius: 8)
-                } else {
-                    Image(systemName: "person.fill")
-                }
-                
-            }
+            SectionImageView(character: character)
             //MARK: - Seccion de la informacion
-            Section("Information") {
-                InfoDetailCharacterRowView(icon: "circle.fill", label: Text("Status"), value: Text(character.status?.rawValue ?? "").foregroundColor(character.status == .alive ? .green : .black))
-                InfoDetailCharacterRowView(icon: "figure.arms.open", label: Text("Specie"), value: Text(character.species?.rawValue ?? Constants.noText))
-                if character.type != "" {
-                    InfoDetailCharacterRowView(icon: "figure.arms.open", label: Text("Type"), value: Text(character.type ?? Constants.noText))
-                }
-                InfoDetailCharacterRowView(icon: "person.fill", label: Text("Gender"), value: Text(character.gender?.rawValue ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "globe.asia.australia.fill", label: Text("Origin"), value: Text(character.origin?.name ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "location.fill", label: Text("Location"), value: Text(character.location?.name ?? Constants.noText))
-            }
+            SectionInformationView(character: character)
             //MARK: - Seccion de los episodios
-            Section("Episodes") {
-                ForEach(viewModel.allEpisodes, id: \.id) { episode in
-                    VStack {
-                        Text(episode.name ?? Constants.noText)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        HStack {
-                            Text(episode.airDate ?? "")
-                            Spacer()
-                            Text(episode.episode ?? "")
-                        }
-                        .padding(.top, 5)
-                    }
-                }
-                .listRowSeparator(.hidden)
-                .listRowBackground(RoundedRectangle(cornerRadius: 8)
-                    .background(.clear)
-                    .foregroundStyle(.secondary)
-                    .opacity(0.8)
-                    .padding(.bottom, 5)
-                )
-            }
+            SectionEpisodesView(viewModel: viewModel)
         }
         .navigationTitle(character.name ?? "")
         .onAppear {
