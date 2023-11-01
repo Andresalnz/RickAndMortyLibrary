@@ -16,12 +16,12 @@ struct SectionImageView: View {
             if let image = character.image {
                 AsyncImageView(urlImage: image)
                     .scaledToFill()
-                    .listRowBackground(RoundedRectangle(cornerRadius: 8)
+                    .listRowBackground(RoundedRectangle(cornerRadius: Constants.sizeCornerRadius)
                         .background(.clear)
                         .foregroundColor(.clear)
                         .padding(.vertical)
                     )
-                    .shadow(radius: 8)
+                    .shadow(radius: Constants.sizeCornerRadius)
             } else {
                 Image(systemName: "person.fill")
             }

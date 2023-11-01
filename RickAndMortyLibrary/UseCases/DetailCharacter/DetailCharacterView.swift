@@ -22,7 +22,7 @@ struct DetailCharacterView: View {
             //MARK: - Seccion de los episodios
             SectionEpisodesView(viewModel: viewModel)
         }
-        .navigationTitle(character.name ?? "")
+        .navigationTitle(character.name ?? Constants.noText)
         .onAppear {
             viewModel.loadUI()
         }
