@@ -3,19 +3,19 @@
 Aplicación que muestra un listado de personajes de Rick and Morty y su detalle, que da una información completa del personaje elegido. Esta construida usando [The Rick and Morty API](https://rickandmortyapi.com/).
  
 1. [Capturas](#capturas)
-2. [Conociendo el proyecto](#conociendo_el_proyecto)
-3. [Stack tecnológico](#stack_tecnologico)
+2. [Conociendo el proyecto](#conociendo)
+3. [Stack tecnológico](#stack)
 4. [Requisitos](#requisitos)
-5. [Instalación](#Instalacion)
+5. [Instalación](#instalacion)
 6. [Autor](#autor)
 
 <h2 id="capturas">Capturas</h2>
 
-| Lista de personajes | Lista de personajes | Detalle del personaje | Detalle del personaje |
+| Lista de personajes | Buscador | Detalle del personaje | Detalle del personaje |
 | ----------- | ------------ | ------------ | ------------
-| ![List Characters](ScreenShots/ListCharacters.png) | ![List Characters](ScreenShots/ListCharacters(1).png) | ![Detail Characters](ScreenShots/DetailImageAndInfo.png) | ![Detail Characters](ScreenShots/DetailInfoAndEpisodes.png) |
+| ![List Characters](ScreenShots/ListCharacters.png) | ![List Characters](ScreenShots/Search.png) | ![Detail Characters](ScreenShots/DetailImageAndInfo.png) | ![Detail Characters](ScreenShots/DetailInfoAndEpisodes.png) |
 
-<h2 id="conociendo_el_proyecto">Conociendo el proyecto</h2>
+<h2 id="conociendo">Conociendo el proyecto</h2>
 
 Al ejecutar la aplicación, se realiza una petición que devuelve algunos personajes, la respuesta se almacenan en un array, el cual, se usa en la vista para ver una lista completa de personajes de Rick and Morty, en la cual se puede observar:
 
@@ -34,7 +34,7 @@ Esta aplicación esta construida usando:
 - Arquitectura MVVM
 - Async/Await
 
-<h2 id="stack_tecnologico">Stack Tecnologico</h2>
+<h2 id="stack">Stack Tecnologico</h2>
 
 - Swift 5.9
 - Xcode 15.0.1
@@ -45,7 +45,7 @@ Esta aplicación esta construida usando:
 - iOS 15.0 o superior
 - Xcode 12.0 o superior
 
-<h2 id="Instalacion">Instalación</h2>
+<h2 id="instalacion">Instalación</h2>
 
 1. Clona el repositorio
 2. Abra el proyecto

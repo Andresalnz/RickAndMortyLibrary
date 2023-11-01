@@ -14,50 +14,19 @@ struct DetailCharacterView: View {
     @StateObject var viewModel: DetailCharacterViewModel
     
     var body: some View {
-        ScrollView {
-            VStack {
-                //MARK: - Imagen y Nombre
-                Text(character.name ?? Constants.noText)
-                    .bold()
-                    .font(.title)
-                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                
-                if let image = character.image {
-                   AsyncImageView(urlImage: image)
-                        .frame(width: 340, height: 380)
-                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: Constants.sizeCornerRadius, height: Constants.sizeCornerRadius)))
-                        .shadow(radius: 8)
-                } else {
-                    Image(systemName: "person.fill")
-                }
-                
-                //MARK: - INFO
-                Text("info")
-                    .bold()
-                    .textCase(.uppercase)
-                    .font(.title)
-                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                InfoDetailCharacterView(character: character)
-                
-                //MARK: - Episodios
-                Text("episodes")
-                    .bold()
-                    .textCase(.uppercase)
-                    .font(.title)
-                    .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                
-                ForEach(viewModel.allEpisodes, id: \.id) { episode in
-                    Text(episode.name ?? Constants.noText)
-                        .foregroundStyle(.red)
-                        .font(.body)
-                        .padding(.top)
-                        .frame(maxWidth: Constants.maxWidthTitlesDetail, alignment: .leading)
-                }
-            }
-            .onAppear {
-                viewModel.loadUI()
-            }
+        List {
+            //MARK: - Seccion de la imagen
+            SectionImageView(character: character)
+            //MARK: - Seccion de la informacion
+            SectionInformationView(character: character)
+            //MARK: - Seccion de los episodios
+            SectionEpisodesView(viewModel: viewModel)
         }
+        .navigationTitle(character.name ?? Constants.noText)
+        .onAppear {
+            viewModel.loadUI()
+        }
+        .listStyle(.insetGrouped)
     }
 }
 

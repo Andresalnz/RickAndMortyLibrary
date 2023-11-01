@@ -19,6 +19,5 @@ struct Constants {
     static let messageAlertError: String = "Error en la App, intentelo mas tarde"
     
     //Constants UI
-    static let maxWidthTitlesDetail: CGFloat = 350
-    static let sizeCornerRadius: CGFloat = 10
+    static let sizeCornerRadius: CGFloat = 8
 }
