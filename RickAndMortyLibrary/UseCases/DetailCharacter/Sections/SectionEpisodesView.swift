@@ -22,15 +22,15 @@ struct SectionEpisodesView: View {
                         Spacer()
                         Text(episode.episode ?? "")
                     }
-                    .padding(.top, 5)
                 }
+                .padding(.bottom, 30)
             }
             .listRowSeparator(.hidden)
             .listRowBackground(RoundedRectangle(cornerRadius: 8)
                 .background(.clear)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.white)
                 .opacity(0.8)
-                .padding(.bottom, 5)
+                .padding(.bottom, 30)
             )
         }
     }
