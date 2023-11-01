@@ -20,7 +20,6 @@ struct InfoDetailCharacterRowView: View {
             Spacer()
             value
         }
-        .padding(.horizontal)
     }
 }
 
