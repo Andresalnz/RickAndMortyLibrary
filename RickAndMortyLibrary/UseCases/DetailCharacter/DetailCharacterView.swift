@@ -16,11 +16,11 @@ struct DetailCharacterView: View {
     var body: some View {
         List {
             //MARK: - Seccion de la imagen
-            SectionImageView(character: character)
+            SectionDetailView(content: SectionImageView(character: character), titleSection: "Image")
             //MARK: - Seccion de la informacion
-            SectionInformationView(character: character)
+            SectionDetailView(content: SectionInformationView(character: character), titleSection: "Information")
             //MARK: - Seccion de los episodios
-            SectionEpisodesView(viewModel: viewModel)
+            SectionDetailView(content: SectionEpisodesView(viewModel: viewModel), titleSection: "Episodes")
         }
         .navigationTitle(character.name ?? Constants.noText)
         .onAppear {

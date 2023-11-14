@@ -12,7 +12,6 @@ struct SectionImageView: View {
     let character: CharactersInfoBO
     
     var body: some View {
-        Section("Image") {
             if let image = character.image {
                 AsyncImageView(urlImage: image)
                     .scaledToFill()
@@ -25,7 +24,6 @@ struct SectionImageView: View {
             } else {
                 Image(systemName: "person.fill")
             }
-        }
     }
 }
 

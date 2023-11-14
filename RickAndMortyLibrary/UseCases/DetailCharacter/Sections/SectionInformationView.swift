@@ -12,7 +12,6 @@ struct SectionInformationView: View {
     let character: CharactersInfoBO
     
     var body: some View {
-        Section("Information") {
             InfoDetailCharacterRowView(icon: "circle.fill", label: Text("Status"), value: Text(character.status?.rawValue ?? "").foregroundColor(character.status == .alive ? .green : .black))
             InfoDetailCharacterRowView(icon: "person.circle", label: Text("Specie"), value: Text(character.species?.rawValue ?? Constants.noText))
             if character.type != "" {
@@ -21,7 +20,6 @@ struct SectionInformationView: View {
             InfoDetailCharacterRowView(icon: "person.fill", label: Text("Gender"), value: Text(character.gender?.rawValue ?? Constants.noText))
             InfoDetailCharacterRowView(icon: "globe.asia.australia.fill", label: Text("Origin"), value: Text(character.origin?.name ?? Constants.noText))
             InfoDetailCharacterRowView(icon: "location.fill", label: Text("Location"), value: Text(character.location?.name ?? Constants.noText))
-        }
     }
 }
 

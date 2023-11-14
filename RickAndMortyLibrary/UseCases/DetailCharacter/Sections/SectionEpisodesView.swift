@@ -12,7 +12,6 @@ struct SectionEpisodesView: View {
     @StateObject var viewModel: DetailCharacterViewModel
     
     var body: some View {
-        Section("Episodes") {
             ForEach(viewModel.allEpisodes, id: \.id) { episode in
                 VStack {
                     Text(episode.name ?? Constants.noText)
@@ -32,7 +31,6 @@ struct SectionEpisodesView: View {
                 .opacity(0.8)
                 .padding(.bottom, 10)
             )
-        }
     }
 }
 
