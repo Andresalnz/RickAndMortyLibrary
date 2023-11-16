@@ -11,12 +11,14 @@ final class Util {
     
     //MARK: - metodo para crear la URL
     enum Services {
-        case characters
+        case allCharacters
+//        case locations
+//        case episodes
         
         func shapeURL(_ page: Int) -> URL? {
             switch self {
-                case .characters:
-                    return URL(string: "\(Constants.URLAllCharacters)\(Constants.page)\(page)")
+                case .allCharacters:
+                    return URL(string: "\(Constants.uri + Constants.characters + Constants.page)\(page)")
             }
         }
     }
