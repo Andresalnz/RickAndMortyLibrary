@@ -44,9 +44,13 @@ struct ListCharactersView: View {
         switch type {
             case .characters:
                 ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
-                    NavigationLink(destination: DetailCharacterView(model: character.rowListAndDetail)) {
-                        CharacterRowView(type: character.rowListAndDetail)
+                    //TODO: Sacar fuera if let
+                    if let episodes = character.episode {
+                        NavigationLink(destination: DetailCharacterView(model: character.detail, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episodes))) {
+                            CharacterRowView(type: character.rowListAndDetail)
+                        }
                     }
+                   
                 }
             case .locations:
                 HStack {

@@ -7,22 +7,34 @@
 
 import SwiftUI
 
-struct DetailCharacterView: View {
+protocol DetailView {
+    var image: URL? { get }
+    var name: String? { get }
+    var species: Species? { get }
+    var status: Status? { get }
+    var gender: Gender? { get }
+    var origin: LocationOriginBO? { get }
+    var location: LocationOriginBO? { get }
+    var episodes: [URL]? { get }
+}
+
+struct DetailCharacterView<T>: View  where T: DetailView {
     
-    let character: CharactersInfoBO
+    let model: T
     
     @StateObject var viewModel: DetailCharacterViewModel
     
     var body: some View {
         List {
+          
             //MARK: - Seccion de la imagen
-            SectionDetailView(content: SectionImageView(character: character), titleSection: "Image")
+            SectionDetailView(content: SectionImageView(model: model), titleSection: "Image")
             //MARK: - Seccion de la informacion
-            SectionDetailView(content: SectionInformationView(character: character), titleSection: "Information")
+            SectionDetailView(content: SectionInformationView(model: model), titleSection: "Information")
             //MARK: - Seccion de los episodios
             SectionDetailView(content: SectionEpisodesView(viewModel: viewModel), titleSection: "Episodes")
         }
-        .navigationTitle(character.name ?? Constants.noText)
+        .navigationTitle(model.name ?? Constants.noText)
         .onAppear {
             viewModel.loadUI()
         }
@@ -31,5 +43,5 @@ struct DetailCharacterView: View {
 }
 
 #Preview {
-    DetailCharacterView(character: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "Human with antens", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [URL(string: "https://rickandmortyapi.com/api/episode/28")!], url: URL(string: ""), created: Date()), viewModel: DetailCharacterViewModel(allEpisodeCharacter: [URL(string: "https://rickandmortyapi.com/api/episode/28")!]))
+    DetailCharacterView(model: Detail(status: .alive, gender: .Genderless, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), episodes: [], image: URL(string: ""), name: "Rick", species: .Animal), viewModel: DetailCharacterViewModel(allEpisodeCharacter: []))
 }
