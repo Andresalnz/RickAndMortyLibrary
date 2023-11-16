@@ -17,7 +17,7 @@ extension CharactersInfoDTO {
             }
         })
             
-        return CharactersInfoBO(id: id,
+        return CharactersInfoBO(rowListAndDetail: RowListAndDetail(), id: id,
                                 name: name,
                                 status: status,
                                 species: species,

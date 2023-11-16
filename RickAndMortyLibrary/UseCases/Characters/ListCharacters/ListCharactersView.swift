@@ -7,42 +7,59 @@
 
 import SwiftUI
 
+enum TypeViewList {
+    case characters
+    case locations
+    case episodes
+}
+
 struct ListCharactersView: View {
     
     //MARK: - ViewModel
     @EnvironmentObject var viewModel: ListCharactersViewModel
     
+    var type: TypeViewList
+    
     var body: some View {
         NavigationView {
-            VStack {
-                List(viewModel.filterCharactersbyName, id: \.id) { character in
-                    if let episode = character.episode {
-                        NavigationLink(destination: DetailCharacterView(character: character, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episode))) {
-                            CharacterRowView(type: character)
-                        }
-                        .onAppear {
-                            Task {
-                                try await viewModel.loadMoreIfNeeded(characterInfo: character)
-                            }
-                        }
+            List {
+                contentList
+            }
+            .navigationTitle(Constants.titleCharacters)
+        }
+        .searchable(text: $viewModel.searchText)
+        .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
+            //
+        } message: {
+            Text(Constants.messageAlertError)
+                .font(.body)
+        }
+        .onAppear {
+            viewModel.loadUI()
+        }
+    }
+    
+    @ViewBuilder
+    private var contentList: some View {
+        switch type {
+            case .characters:
+                ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
+                    NavigationLink(destination: DetailCharacterView(model: character.rowListAndDetail)) {
+                        CharacterRowView(type: character.rowListAndDetail)
                     }
                 }
-                .searchable(text: $viewModel.searchText)
-                .navigationTitle(Constants.titleCharacters)
-            }
-            .onAppear {
-                viewModel.loadUI()
-            }
-            .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
-                //
-            } message: {
-                Text(Constants.messageAlertError)
-                    .font(.body)
-            }
+            case .locations:
+                HStack {
+                    
+                }
+            case .episodes:
+                HStack {
+                    
+                }
         }
     }
 }
 
 #Preview {
-    ListCharactersView().environmentObject(ListCharactersViewModel())
+    ListCharactersView(type: .characters).environmentObject(ListCharactersViewModel())
 }

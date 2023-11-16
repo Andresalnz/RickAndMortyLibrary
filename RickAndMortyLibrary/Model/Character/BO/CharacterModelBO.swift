@@ -25,6 +25,12 @@ struct InfoBO: Codable {
     
 }
 
+struct RowListAndDetail: Codable, RowList {
+    var image: URL?
+    var name: String?
+    var species: Species?
+}
+
 struct CharactersInfoBO: Codable, Equatable {
     static func == (lhs: CharactersInfoBO, rhs: CharactersInfoBO) -> Bool {
           return  lhs.id == rhs.id &&
@@ -41,6 +47,7 @@ struct CharactersInfoBO: Codable, Equatable {
             lhs.created == rhs.created
         }
     
+    var rowListAndDetail: RowListAndDetail
     var id: Int?
     var name: String?
     var status: Status?
@@ -52,8 +59,23 @@ struct CharactersInfoBO: Codable, Equatable {
     var episode: [URL]?
     var url: URL?
     var created: Date?
+    
+    init(rowListAndDetail: RowListAndDetail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
+        self.rowListAndDetail = RowListAndDetail(image: image, name: name, species: species)
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
 }
-
 
 struct LocationOriginBO: Codable, Equatable {
     let name: String?
