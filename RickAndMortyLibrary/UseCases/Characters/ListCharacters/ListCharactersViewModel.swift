@@ -11,6 +11,8 @@ final class ListCharactersViewModel: ObservableObject {
     
     //MARK: - Variables
     
+    private let charactersInteractor: InteractorCharacter = InteractorCharacter()
+    
     //Array que almacena los personajes
     @Published var characters: [CharactersInfoBO] = []
     
@@ -43,7 +45,7 @@ final class ListCharactersViewModel: ObservableObject {
         if characters.last == characterInfo {
             currentPage += 1
             var moreCharacters: [CharactersInfoBO] = []
-            moreCharacters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+            moreCharacters = try await charactersInteractor.allCharacters(currentPage)
             characters.append(contentsOf: moreCharacters)
         }
     }
@@ -60,7 +62,7 @@ final class ListCharactersViewModel: ObservableObject {
     func loadData() async throws {
         do {
             if !negativeRequest {
-                characters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+                characters = try await charactersInteractor.allCharacters(currentPage)
             }
             negativeRequest = true
         } catch {
