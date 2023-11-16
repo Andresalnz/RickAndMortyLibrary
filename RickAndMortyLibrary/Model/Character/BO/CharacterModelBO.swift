@@ -31,6 +31,17 @@ struct RowListAndDetail: Codable, RowList {
     var species: Species?
 }
 
+struct Detail: Codable, DetailView {
+    var status: Status?
+    var gender: Gender?
+    var origin: LocationOriginBO?
+    var location: LocationOriginBO?
+    var episodes: [URL]?
+    var image: URL?
+    var name: String?
+    var species: Species?
+}
+
 struct CharactersInfoBO: Codable, Equatable {
     static func == (lhs: CharactersInfoBO, rhs: CharactersInfoBO) -> Bool {
           return  lhs.id == rhs.id &&
@@ -48,6 +59,7 @@ struct CharactersInfoBO: Codable, Equatable {
         }
     
     var rowListAndDetail: RowListAndDetail
+    var detail: Detail
     var id: Int?
     var name: String?
     var status: Status?
@@ -62,6 +74,7 @@ struct CharactersInfoBO: Codable, Equatable {
     
     init(rowListAndDetail: RowListAndDetail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
         self.rowListAndDetail = RowListAndDetail(image: image, name: name, species: species)
+        self.detail = Detail(status: status, gender: gender, origin: origin, location: location, episodes: episode, image: image, name: name, species: species)
         self.id = id
         self.name = name
         self.status = status
