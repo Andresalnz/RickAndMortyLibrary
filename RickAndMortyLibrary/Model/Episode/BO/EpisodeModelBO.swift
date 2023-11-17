@@ -9,6 +9,18 @@ import Foundation
 
 
 struct EpisodeModelBO: Codable {
+    let info: InfoEpisodeBO?
+    let episodes: [EpisodeInfoBO]
+}
+
+struct InfoEpisodeBO: Codable {
+    let count: Int?
+    let pages: Int?
+    let next: String?
+    let prev: String?
+}
+
+struct EpisodeInfoBO: Codable {
     let id: Int?
     let name: String?
     let airDate: String?

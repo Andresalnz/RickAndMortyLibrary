@@ -9,6 +9,18 @@ import Foundation
 
 
 struct EpisodeModelDTO: Codable {
+    let info: InfoEpisodeDTO?
+    let episodes: [EpisodeInfoDTO]
+}
+
+struct InfoEpisodeDTO: Codable {
+    let count: Int?
+    let pages: Int?
+    let next: String?
+    let prev: String?
+}
+
+struct EpisodeInfoDTO: Codable {
     let id: Int?
     let name: String?
     let airDate: String?
@@ -31,16 +43,27 @@ struct EpisodeModelDTO: Codable {
 
 /*
  {
-   "id": 28,
-   "name": "The Ricklantis Mixup",
-   "air_date": "September 10, 2017",
-   "episode": "S03E07",
-   "characters": [
-     "https://rickandmortyapi.com/api/character/1",
-     "https://rickandmortyapi.com/api/character/2",
+   "info": {
+     "count": 51,
+     "pages": 3,
+     "next": "https://rickandmortyapi.com/api/episode?page=2",
+     "prev": null
+   },
+   "results": [
+     {
+       "id": 1,
+       "name": "Pilot",
+       "air_date": "December 2, 2013",
+       "episode": "S01E01",
+       "characters": [
+         "https://rickandmortyapi.com/api/character/1",
+         "https://rickandmortyapi.com/api/character/2",
+         //...
+       ],
+       "url": "https://rickandmortyapi.com/api/episode/1",
+       "created": "2017-11-10T12:56:33.798Z"
+     },
      // ...
-   ],
-   "url": "https://rickandmortyapi.com/api/episode/28",
-   "created": "2017-11-10T12:56:36.618Z"
+   ]
  }
  */
