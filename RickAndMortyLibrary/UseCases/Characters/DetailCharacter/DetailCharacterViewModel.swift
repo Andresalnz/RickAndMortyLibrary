@@ -10,17 +10,17 @@ import Foundation
 final class DetailCharacterViewModel: ObservableObject {
     
     //MARK: - Variables
+    
+    private let episodeInteractor: InteractorRickAndMorty = InteractorRickAndMorty()
+    
     //Propiedad que almacena las URL de los episodios del personaje elegido
     let allEpisodeCharacter: [URL]
     
     //Propidedad que almacena todos los episodios
-    @Published var allEpisodes: [EpisodeModelBO] = []
+    @Published var allEpisodes: [EpisodeInfoBO] = []
     
     //Propiedad que almacena un solo episodio
-    var episode: EpisodeModelBO?
-    
-    //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
-    let service: RickAndMortyServices = RickAndMortyServices()
+    var episode: EpisodeInfoBO?
     
     //MARK: - Init
     init(allEpisodeCharacter: [URL]) {
@@ -39,7 +39,7 @@ final class DetailCharacterViewModel: ObservableObject {
     func loadData() async throws {
         do {
             for urlEpisode in allEpisodeCharacter {
-                episode = try await service.getSingleEpisode(url: urlEpisode)
+                episode = try await episodeInteractor.singleEpisode(url: urlEpisode)
                 if let episode = episode {
                     allEpisodes.append(episode)
                 }

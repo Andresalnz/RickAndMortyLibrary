@@ -11,7 +11,7 @@ final class ListCharactersViewModel: ObservableObject {
     
     //MARK: - Variables
     
-    private let charactersInteractor: InteractorCharacter = InteractorCharacter()
+    private let charactersInteractor: InteractorRickAndMorty = InteractorRickAndMorty()
     
     //Array que almacena los personajes
     @Published var characters: [CharactersInfoBO] = []
@@ -28,9 +28,6 @@ final class ListCharactersViewModel: ObservableObject {
     
     //Propiedad que almacena el texto que se esta buscando
     @Published var searchText: String = ""
-
-    //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
-    let service: RickAndMortyServices = RickAndMortyServices()
     
     //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
     var filterCharactersbyName: [CharactersInfoBO] {
