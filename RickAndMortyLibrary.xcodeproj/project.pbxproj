@@ -170,10 +170,10 @@
 		9F0DEA272AE1440E009376F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F0DEA282AE1497E009376F1 /* Character */,
 				9FAAFBB92B0B83AA00D65E6F /* VO */,
 				9FAAFBBC2B0B87D000D65E6F /* Locations */,
 				9F8814832AE26EE100448501 /* Episode */,
-				9F0DEA282AE1497E009376F1 /* Character */,
 			);
 			path = Model;
 			sourceTree = "<group>";
