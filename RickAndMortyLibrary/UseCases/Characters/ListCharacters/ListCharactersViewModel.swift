@@ -16,6 +16,7 @@ final class ListCharactersViewModel: ObservableObject {
     //Array que almacena los personajes
     @Published var characters: [CharactersInfoBO] = []
     @Published var episodes: [EpisodeInfoBO] = []
+    @Published var locations: [LocationsResultsBO] = []
     
     //Manejo de errores
     @Published var errorValue = false
@@ -62,7 +63,7 @@ final class ListCharactersViewModel: ObservableObject {
             if !negativeRequest {
                 characters = try await interactorRickAndMorty.allCharacters(currentPage)
                 episodes = try await interactorRickAndMorty.allEpisodes()
-           
+                locations = try await interactorRickAndMorty.allLocations()
             }
             negativeRequest = true
         } catch {

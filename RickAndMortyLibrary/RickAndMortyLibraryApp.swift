@@ -22,7 +22,7 @@ struct RickAndMortyLibraryApp: App {
                         Image(systemName: "person.fill")
                         Text("Episodes")
                     }
-                Text("Locations")
+                ListCharactersView(type: .locations).environmentObject(ListCharactersViewModel())
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Characters")

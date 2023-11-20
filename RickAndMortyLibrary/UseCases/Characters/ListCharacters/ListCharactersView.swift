@@ -57,8 +57,8 @@ struct ListCharactersView: View {
                         TitleRowView(type: episode.rowListAndDetail)
                     }
             case .locations:
-                HStack {
-                    
+                ForEach(viewModel.locations, id: \.id) { location in
+                    TitleRowView(type: location.home)
                 }
         }
     }
