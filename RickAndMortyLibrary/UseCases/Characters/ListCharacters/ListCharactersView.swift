@@ -29,7 +29,7 @@ struct ListCharactersView: View {
         }
         .searchable(text: $viewModel.searchText)
         .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
-            //
+            //Salir de la app
         } message: {
             Text(Constants.messageAlertError)
                 .font(.body)
@@ -52,11 +52,11 @@ struct ListCharactersView: View {
                     }
                    
                 }
-            case .locations:
-                HStack {
-                    
-                }
             case .episodes:
+                    ForEach(viewModel.episodes, id: \.id) { episode in
+                        TitleRowView(type: episode.rowListAndDetail)
+                    }
+            case .locations:
                 HStack {
                     
                 }
