@@ -16,7 +16,8 @@ extension EpisodeInfoDTO {
             }
             
         })
-        return EpisodeInfoBO(id: id,
+        return EpisodeInfoBO(rowListAndDetail: RowListAndDetail(),
+                             id: id,
                              name: name,
                              airDate: airDate,
                              episode: episode,

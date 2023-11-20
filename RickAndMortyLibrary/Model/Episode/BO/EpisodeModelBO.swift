@@ -21,6 +21,7 @@ struct InfoEpisodeBO: Codable {
 }
 
 struct EpisodeInfoBO: Codable {
+    var rowListAndDetail: RowListAndDetail
     let id: Int?
     let name: String?
     let airDate: String?
@@ -29,7 +30,19 @@ struct EpisodeInfoBO: Codable {
     let url: URL?
     let created: Date?
     
+    init(rowListAndDetail: RowListAndDetail, id: Int?, name: String?, airDate: String?, episode: String?, characters: [URL]?, url: URL?, created: Date?) {
+        self.rowListAndDetail = RowListAndDetail(name: name)
+        self.id = id
+        self.name = name
+        self.airDate = airDate
+        self.episode = episode
+        self.characters = characters
+        self.url = url
+        self.created = created
+    }
+    
     enum CodingKeys: String, CodingKey {
+        case rowListAndDetail
         case id
         case name
         case airDate = "air_date"
