@@ -8,8 +8,8 @@
 import Foundation
 
 struct LocationModelDTO: Codable {
-    let info: [InfoLocationDTO]
-    let locations: [LocationsResultsDTO]
+    let info: InfoLocationDTO?
+    let locations: [LocationsResultsDTO]?
     
     enum CodingKeys: String, CodingKey {
         case info

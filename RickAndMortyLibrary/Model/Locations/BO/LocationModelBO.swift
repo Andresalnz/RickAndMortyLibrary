@@ -8,8 +8,8 @@
 import Foundation
 
 struct LocationModelBO: Codable {
-    let info: [InfoLocationBO]
-    let locations: [LocationsResultsBO]
+    let info: [InfoLocationBO]?
+    let locations: [LocationsResultsBO]?
     
     enum CodingKeys: String, CodingKey {
         case info
@@ -25,6 +25,7 @@ struct InfoLocationBO: Codable {
 }
 
 struct LocationsResultsBO: Codable {
+    let home: RowListAndDetail
     let id: Int?
     let name: String?
     let type: String?
@@ -32,4 +33,15 @@ struct LocationsResultsBO: Codable {
     let residents: [URL]?
     let url: URL?
     let created: Date?
+    
+    init(home: RowListAndDetail, id: Int?, name: String?, type: String?, dimension: String?, residents: [URL]?, url: URL?, created: Date?) {
+        self.home = RowListAndDetail(name: name)
+        self.id = id
+        self.name = name
+        self.type = type
+        self.dimension = dimension
+        self.residents = residents
+        self.url = url
+        self.created = created
+    }
 }

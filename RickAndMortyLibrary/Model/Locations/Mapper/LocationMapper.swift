@@ -15,7 +15,8 @@ extension LocationsResultsDTO {
                 urlresidents.append(resident)
             }
         })
-        return LocationsResultsBO(id: id,
+        return LocationsResultsBO(home: RowListAndDetail(),
+                                  id: id,
                                   name: name,
                                   type: type,
                                   dimension: dimension,
