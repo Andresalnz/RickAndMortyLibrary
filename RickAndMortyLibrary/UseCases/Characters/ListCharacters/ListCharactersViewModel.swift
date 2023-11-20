@@ -14,7 +14,7 @@ final class ListCharactersViewModel: ObservableObject {
     private let interactorRickAndMorty: InteractorRickAndMorty = InteractorRickAndMorty()
     
     //Array que almacena los personajes
-    @Published var characters: [CharactersInfoBO] = []
+    @Published var characters: [CharactersResultsBO] = []
     @Published var episodes: [EpisodeInfoBO] = []
     @Published var locations: [LocationsResultsBO] = []
     
@@ -32,7 +32,7 @@ final class ListCharactersViewModel: ObservableObject {
     @Published var searchText: String = ""
     
     //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
-    var filterCharactersbyName: [CharactersInfoBO] {
+    var filterCharactersbyName: [CharactersResultsBO] {
         guard !searchText.isEmpty else { return characters }
         return characters.filter { character in
             character.name!.lowercased().contains(searchText.lowercased())
@@ -40,10 +40,10 @@ final class ListCharactersViewModel: ObservableObject {
     }
     //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar mas personajes al llegar al final de la lista
     @MainActor
-    func loadMoreIfNeeded(characterInfo: CharactersInfoBO) async throws {
+    func loadMoreIfNeeded(characterInfo: CharactersResultsBO) async throws {
         if characters.last == characterInfo {
             currentPage += 1
-            var moreCharacters: [CharactersInfoBO] = []
+            var moreCharacters: [CharactersResultsBO] = []
             moreCharacters = try await interactorRickAndMorty.allCharacters(currentPage)
             characters.append(contentsOf: moreCharacters)
         }

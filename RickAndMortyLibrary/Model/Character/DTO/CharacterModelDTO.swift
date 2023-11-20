@@ -8,8 +8,8 @@
 import Foundation
 
 struct CharacterModelDTO: Codable {
-    let info: InfoDTO?
-    let characters: [CharactersInfoDTO]?
+    let info: InfoCharactersDTO?
+    let characters: [CharactersResultsDTO]?
     
     enum CodingKeys: String, CodingKey {
         case info
@@ -17,7 +17,7 @@ struct CharacterModelDTO: Codable {
     }
 }
 
-struct InfoDTO: Codable {
+struct InfoCharactersDTO: Codable {
     let count: Int?
     let pages: Int?
     let next: String?
@@ -25,7 +25,7 @@ struct InfoDTO: Codable {
     
 }
 
-struct CharactersInfoDTO: Codable {
+struct CharactersResultsDTO: Codable {
     let id: Int?
     let name: String?
     let status: Status?

@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension CharactersInfoDTO {
-    func toBo() -> CharactersInfoBO {
+extension CharactersResultsDTO {
+    func toBo() -> CharactersResultsBO {
         
         var urlEpisodes: [URL] = []
         episode?.forEach({ episode in
@@ -17,7 +17,7 @@ extension CharactersInfoDTO {
             }
         })
             
-        return CharactersInfoBO(rowListAndDetail: RowListAndDetail(),
+        return CharactersResultsBO(rowListAndDetail: RowListAndDetail(),
                                 detail: Detail(),
                                 id: id,
                                 name: name,

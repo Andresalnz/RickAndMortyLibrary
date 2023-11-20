@@ -8,8 +8,8 @@
 import Foundation
 
 struct CharacterModelBO: Codable {
-    let info: InfoBO?
-    let characters: [CharactersInfoBO]?
+    let info: InfoCharactersBO?
+    let characters: [CharactersResultsBO]?
     
     enum CodingKeys: String, CodingKey {
         case info
@@ -17,7 +17,7 @@ struct CharacterModelBO: Codable {
     }
 }
 
-struct InfoBO: Codable {
+struct InfoCharactersBO: Codable {
     let count: Int?
     let pages: Int?
     let next: URL?
@@ -25,8 +25,8 @@ struct InfoBO: Codable {
     
 }
 
-struct CharactersInfoBO: Codable, Equatable {
-    static func == (lhs: CharactersInfoBO, rhs: CharactersInfoBO) -> Bool {
+struct CharactersResultsBO: Codable, Equatable {
+    static func == (lhs: CharactersResultsBO, rhs: CharactersResultsBO) -> Bool {
           return  lhs.id == rhs.id &&
             lhs.name == rhs.name &&
             lhs.status == rhs.status &&

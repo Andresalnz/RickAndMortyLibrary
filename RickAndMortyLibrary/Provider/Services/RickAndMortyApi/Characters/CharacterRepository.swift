@@ -9,7 +9,7 @@ import Foundation
 
 final class CharacterRepository {
     //MARK: -
-    func getAllCharacters(url: URL?) async throws -> [CharactersInfoBO] {
+    func getAllCharacters(url: URL?) async throws -> [CharactersResultsBO] {
         guard let url = url else { throw ErrorHandler.invalidUrl }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
