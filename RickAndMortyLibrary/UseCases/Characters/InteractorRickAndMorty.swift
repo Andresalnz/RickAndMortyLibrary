@@ -17,6 +17,10 @@ final class InteractorRickAndMorty {
         EpisodeRepository()
     }()
     
+    lazy var repositoryLocations: LocationRepository = {
+        LocationRepository()
+    }()
+    
   
   
     //MARK: - Characters
@@ -35,6 +39,11 @@ final class InteractorRickAndMorty {
     func allEpisodes() async throws -> [EpisodeInfoBO] {
         return try await repositoryEpisodes.getAllEpisodes(url: Util.Services.episodes.shapeURL())
         
+    }
+    
+    //MARK: - Locations
+    func allLocations() async throws -> [LocationsResultsBO] {
+        return try await repositoryLocations.getAllLocations(url: URL(string: "https://rickandmortyapi.com/api/location"))
     }
 }
 
