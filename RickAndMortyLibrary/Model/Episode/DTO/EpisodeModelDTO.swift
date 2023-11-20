@@ -10,7 +10,7 @@ import Foundation
 
 struct EpisodeModelDTO: Codable {
     let info: InfoEpisodeDTO?
-    let episodes: [EpisodeInfoDTO]
+    let results: [EpisodeInfoDTO]?
 }
 
 struct InfoEpisodeDTO: Codable {
