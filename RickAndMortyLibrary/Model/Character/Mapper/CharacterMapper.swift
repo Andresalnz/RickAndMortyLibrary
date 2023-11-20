@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension CharactersInfoDTO {
-    func toBo() -> CharactersInfoBO {
+extension CharactersResultsDTO {
+    func toBo() -> CharactersResultsBO {
         
         var urlEpisodes: [URL] = []
         episode?.forEach({ episode in
@@ -16,19 +16,21 @@ extension CharactersInfoDTO {
                 urlEpisodes.append(episode)
             }
         })
-            
-        return CharactersInfoBO(id: id,
-                                name: name,
-                                status: status,
-                                species: species,
-                                type: type,
-                                gender: gender,
-                                origin: origin?.toBo(),
-                                location: location?.toBo(),
-                                image: URL(string: image ?? ""),
-                                episode: urlEpisodes,
-                                url: URL(string: url ?? ""),
-                                created: Date())
+        
+        return CharactersResultsBO(rowListMain: RowListMain(),
+                                   rowDetail: RowDetail(),
+                                   id: id,
+                                   name: name,
+                                   status: status,
+                                   species: species,
+                                   type: type,
+                                   gender: gender,
+                                   origin: origin?.toBo(),
+                                   location: location?.toBo(),
+                                   image: URL(string: image ?? ""),
+                                   episode: urlEpisodes,
+                                   url: URL(string: url ?? ""),
+                                   created: Date())
     }
 }
 

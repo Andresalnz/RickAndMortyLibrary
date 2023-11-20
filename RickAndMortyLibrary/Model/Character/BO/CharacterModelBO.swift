@@ -8,8 +8,8 @@
 import Foundation
 
 struct CharacterModelBO: Codable {
-    let info: InfoBO?
-    let characters: [CharactersInfoBO]?
+    let info: CharactersInfoBO?
+    let characters: [CharactersResultsBO]?
     
     enum CodingKeys: String, CodingKey {
         case info
@@ -17,7 +17,7 @@ struct CharacterModelBO: Codable {
     }
 }
 
-struct InfoBO: Codable {
+struct CharactersInfoBO: Codable {
     let count: Int?
     let pages: Int?
     let next: URL?
@@ -25,8 +25,8 @@ struct InfoBO: Codable {
     
 }
 
-struct CharactersInfoBO: Codable, Equatable {
-    static func == (lhs: CharactersInfoBO, rhs: CharactersInfoBO) -> Bool {
+struct CharactersResultsBO: Codable, Equatable {
+    static func == (lhs: CharactersResultsBO, rhs: CharactersResultsBO) -> Bool {
           return  lhs.id == rhs.id &&
             lhs.name == rhs.name &&
             lhs.status == rhs.status &&
@@ -41,6 +41,8 @@ struct CharactersInfoBO: Codable, Equatable {
             lhs.created == rhs.created
         }
     
+    var rowListMain: RowListMain
+    var rowDetail: RowDetail
     var id: Int?
     var name: String?
     var status: Status?
@@ -52,8 +54,24 @@ struct CharactersInfoBO: Codable, Equatable {
     var episode: [URL]?
     var url: URL?
     var created: Date?
+    
+    init(rowListMain: RowListMain, rowDetail: RowDetail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
+        self.rowListMain = RowListMain(image: image, name: name, species: species)
+        self.rowDetail = RowDetail(status: status, gender: gender, origin: origin, location: location, episodes: episode, image: image, name: name, species: species)
+        self.id = id
+        self.name = name
+        self.status = status
+        self.species = species
+        self.type = type
+        self.gender = gender
+        self.origin = origin
+        self.location = location
+        self.image = image
+        self.episode = episode
+        self.url = url
+        self.created = created
+    }
 }
-
 
 struct LocationOriginBO: Codable, Equatable {
     let name: String?

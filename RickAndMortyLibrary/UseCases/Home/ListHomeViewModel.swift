@@ -7,12 +7,16 @@
 
 import Foundation
 
-final class ListCharactersViewModel: ObservableObject {
+final class ListHomeViewModel: ObservableObject {
     
     //MARK: - Variables
     
+    private let interactorRickAndMorty: InteractorRickAndMorty = InteractorRickAndMorty()
+    
     //Array que almacena los personajes
-    @Published var characters: [CharactersInfoBO] = []
+    @Published var characters: [CharactersResultsBO] = []
+    @Published var episodes: [EpisodeResultsBO] = []
+    @Published var locations: [LocationResultsBO] = []
     
     //Manejo de errores
     @Published var errorValue = false
@@ -26,12 +30,9 @@ final class ListCharactersViewModel: ObservableObject {
     
     //Propiedad que almacena el texto que se esta buscando
     @Published var searchText: String = ""
-
-    //Instancia de la clase del servicio, para el uso de los metodos que hacen las peticiones a la API
-    let service: RickAndMortyServices = RickAndMortyServices()
     
     //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
-    var filterCharactersbyName: [CharactersInfoBO] {
+    var filterCharactersbyName: [CharactersResultsBO] {
         guard !searchText.isEmpty else { return characters }
         return characters.filter { character in
             character.name!.lowercased().contains(searchText.lowercased())
@@ -39,11 +40,11 @@ final class ListCharactersViewModel: ObservableObject {
     }
     //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar mas personajes al llegar al final de la lista
     @MainActor
-    func loadMoreIfNeeded(characterInfo: CharactersInfoBO) async throws {
+    func loadMoreIfNeeded(characterInfo: CharactersResultsBO) async throws {
         if characters.last == characterInfo {
             currentPage += 1
-            var moreCharacters: [CharactersInfoBO] = []
-            moreCharacters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+            var moreCharacters: [CharactersResultsBO] = []
+            moreCharacters = try await interactorRickAndMorty.allCharacters(currentPage)
             characters.append(contentsOf: moreCharacters)
         }
     }
@@ -60,7 +61,9 @@ final class ListCharactersViewModel: ObservableObject {
     func loadData() async throws {
         do {
             if !negativeRequest {
-                characters = try await service.getRickAndMorty(url: Util.Services.characters.shapeURL(currentPage))
+                characters = try await interactorRickAndMorty.allCharacters(currentPage)
+                episodes = try await interactorRickAndMorty.allEpisodes()
+                locations = try await interactorRickAndMorty.allLocations()
             }
             negativeRequest = true
         } catch {

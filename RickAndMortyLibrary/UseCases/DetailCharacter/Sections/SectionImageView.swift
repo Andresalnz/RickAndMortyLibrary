@@ -7,13 +7,12 @@
 
 import SwiftUI
 
-struct SectionImageView: View {
+struct SectionImageView<T>: View where T: DetailView {
     
-    let character: CharactersInfoBO
+    let model: T
     
     var body: some View {
-        Section("Image") {
-            if let image = character.image {
+        if let image = model.image {
                 AsyncImageView(urlImage: image)
                     .scaledToFill()
                     .listRowBackground(RoundedRectangle(cornerRadius: Constants.sizeCornerRadius)
@@ -25,10 +24,9 @@ struct SectionImageView: View {
             } else {
                 Image(systemName: "person.fill")
             }
-        }
     }
 }
 
 #Preview {
-    SectionImageView(character: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "Human with antens", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [URL(string: "https://rickandmortyapi.com/api/episode/28")!], url: URL(string: ""), created: Date()))
+    SectionImageView(model: RowDetail(image: URL(string: "")))
 }

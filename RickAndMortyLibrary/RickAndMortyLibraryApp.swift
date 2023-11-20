@@ -11,7 +11,23 @@ import SwiftUI
 struct RickAndMortyLibraryApp: App {
     var body: some Scene {
         WindowGroup {
-            ListCharactersView().environmentObject(ListCharactersViewModel())
+            TabView {
+                ListHomeView(type: .characters, navigationTitle: Constants.titleCharacters).environmentObject(ListHomeViewModel())
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Characters")
+                    }
+                ListHomeView(type: .episodes, navigationTitle: Constants.titleEpisodes).environmentObject(ListHomeViewModel())
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Episodes")
+                    }
+                ListHomeView(type: .locations, navigationTitle: Constants.titleLocations).environmentObject(ListHomeViewModel())
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Characters")
+                    }
+            }
         }
     }
 }

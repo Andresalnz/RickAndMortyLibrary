@@ -9,6 +9,19 @@ import Foundation
 
 
 struct EpisodeModelBO: Codable {
+    let info: EpisodeInfoBO?
+    let episodes: [EpisodeResultsBO]?
+}
+
+struct EpisodeInfoBO: Codable {
+    let count: Int?
+    let pages: Int?
+    let next: String?
+    let prev: String?
+}
+
+struct EpisodeResultsBO: Codable {
+    var rowListMain: RowListMain
     let id: Int?
     let name: String?
     let airDate: String?
@@ -17,7 +30,19 @@ struct EpisodeModelBO: Codable {
     let url: URL?
     let created: Date?
     
+    init(rowListMain: RowListMain, id: Int?, name: String?, airDate: String?, episode: String?, characters: [URL]?, url: URL?, created: Date?) {
+        self.rowListMain = RowListMain(name: name)
+        self.id = id
+        self.name = name
+        self.airDate = airDate
+        self.episode = episode
+        self.characters = characters
+        self.url = url
+        self.created = created
+    }
+    
     enum CodingKeys: String, CodingKey {
+        case rowListMain
         case id
         case name
         case airDate = "air_date"

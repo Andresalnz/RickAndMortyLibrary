@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct CharacterRowView: View {
-    var type: CharactersInfoBO
+struct CharacterRowView<T>: View  where T: HomeRowView {
+    
+    let type: T
     
     var body: some View {
         HStack {
@@ -25,11 +26,10 @@ struct CharacterRowView: View {
                     .font(.title3)
                 Text(type.species?.rawValue ?? Constants.noText)
             }
-            
         }
     }
 }
 
 #Preview {
-    CharacterRowView(type: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .unknown, species: .human, type: "", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [URL(string: "https://rickandmortyapi.com/api/episode/28")!], url: URL(string: ""), created: Date()))
+    CharacterRowView(type: RowListMain(image: URL(string: ""), name: "Rick", species: .Animal))
 }

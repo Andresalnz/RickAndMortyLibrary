@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension EpisodeModelDTO {
-    func toBo() -> EpisodeModelBO {
+extension EpisodeResultsDTO {
+    func toBo() -> EpisodeResultsBO {
         var urlCharacter: [URL] = []
         characters?.forEach({ character in
             if let character = URL(string: character) {
@@ -16,13 +16,14 @@ extension EpisodeModelDTO {
             }
             
         })
-        return EpisodeModelBO(id: id,
-                              name: name,
-                              airDate: airDate,
-                              episode: episode,
-                              characters: urlCharacter,
-                              url: URL(string: url ?? ""),
-                              created: Date())
+        return EpisodeResultsBO(rowListMain: RowListMain(),
+                             id: id,
+                             name: name,
+                             airDate: airDate,
+                             episode: episode,
+                             characters: urlCharacter,
+                             url: URL(string: url ?? ""),
+                             created: Date())
     }
 }
 
