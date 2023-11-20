@@ -18,6 +18,8 @@ struct Constants {
     
     //Texts
     static let titleCharacters: String = "Characters"
+    static let titleEpisodes: String = "Episodes"
+    static let titleLocations: String = "Locations"
     static let noText: String = "N/A"
     static let messageAlertError: String = "Error en la App, intentelo mas tarde"
     

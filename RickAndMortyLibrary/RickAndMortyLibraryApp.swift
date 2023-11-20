@@ -12,17 +12,17 @@ struct RickAndMortyLibraryApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                ListCharactersView(type: .characters).environmentObject(ListCharactersViewModel())
+                ListHomeView(type: .characters, navigationTitle: Constants.titleCharacters).environmentObject(ListHomeViewModel())
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Characters")
                     }
-                ListCharactersView(type: .episodes).environmentObject(ListCharactersViewModel())
+                ListHomeView(type: .episodes, navigationTitle: Constants.titleEpisodes).environmentObject(ListHomeViewModel())
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Episodes")
                     }
-                ListCharactersView(type: .locations).environmentObject(ListCharactersViewModel())
+                ListHomeView(type: .locations, navigationTitle: Constants.titleLocations).environmentObject(ListHomeViewModel())
                     .tabItem {
                         Image(systemName: "person.fill")
                         Text("Characters")

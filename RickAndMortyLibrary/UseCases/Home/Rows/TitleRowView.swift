@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleRowView<T>: View where T: RowList {
+struct TitleRowView<T>: View where T: HomeRowView {
     
     let type: T
     var body: some View {
