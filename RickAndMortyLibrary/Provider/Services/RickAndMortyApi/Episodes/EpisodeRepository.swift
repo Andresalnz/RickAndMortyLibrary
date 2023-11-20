@@ -25,7 +25,7 @@ final class EpisodeRepository {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let rickAndMortyModel = try JSONDecoder().decode(EpisodeModelDTO.self, from: data)
-            if let rickAndMortyCharacters = rickAndMortyModel.results {
+            if let rickAndMortyCharacters = rickAndMortyModel.episodes {
                 let episodes = rickAndMortyCharacters.compactMap { $0.toBo() }
                 return episodes
             } else {

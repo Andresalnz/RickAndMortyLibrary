@@ -23,7 +23,7 @@ struct ListCharactersView: View {
     var body: some View {
         NavigationView {
             List {
-                contentList
+                HomeContentView
             }
             .navigationTitle(Constants.titleCharacters)
         }
@@ -39,26 +39,27 @@ struct ListCharactersView: View {
         }
     }
     
+    //MARK: - ViewBuilder
     @ViewBuilder
-    private var contentList: some View {
+    private var HomeContentView: some View {
         switch type {
             case .characters:
-                ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
+                ForEach(viewModel.characters, id: \.id) { character in
                     //TODO: Sacar fuera if let
                     if let episodes = character.episode {
-                        NavigationLink(destination: DetailCharacterView(model: character.detail, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episodes))) {
-                            CharacterRowView(type: character.rowListAndDetail)
+                        NavigationLink(destination: DetailCharacterView(model: character.rowDetail, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episodes))) {
+                            CharacterRowView(type: character.rowListMain)
                         }
                     }
-                   
+                    
                 }
             case .episodes:
-                    ForEach(viewModel.episodes, id: \.id) { episode in
-                        TitleRowView(type: episode.rowListAndDetail)
-                    }
+                ForEach(viewModel.episodes, id: \.id) { episode in
+                    TitleRowView(type: episode.rowListMain)
+                }
             case .locations:
                 ForEach(viewModel.locations, id: \.id) { location in
-                    TitleRowView(type: location.home)
+                    TitleRowView(type: location.rowListMain)
                 }
         }
     }

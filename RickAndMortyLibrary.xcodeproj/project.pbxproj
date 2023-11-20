@@ -154,6 +154,7 @@
 		9F0DEA252AE143F3009376F1 /* Provider */ = {
 			isa = PBXGroup;
 			children = (
+				9FAAFBCA2B0BCBC000D65E6F /* Interactors */,
 				9F0DEA322AE1575C009376F1 /* Services */,
 			);
 			path = Provider;
@@ -162,7 +163,8 @@
 		9F0DEA262AE143FD009376F1 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				9F8CFF142B04D5C600BC00EC /* Characters */,
+				9F8CFF142B04D5C600BC00EC /* Home */,
+				9F0DEA4F2AE1D916009376F1 /* DetailCharacter */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -228,16 +230,6 @@
 				9F8CFF152B04D69300BC00EC /* Characters */,
 			);
 			path = RickAndMortyApi;
-			sourceTree = "<group>";
-		};
-		9F0DEA362AE15EE6009376F1 /* ListCharacters */ = {
-			isa = PBXGroup;
-			children = (
-				9F0DEA432AE18C79009376F1 /* Rows */,
-				9F0DEA372AE15F23009376F1 /* ListCharactersView.swift */,
-				9F0DEA392AE15F3B009376F1 /* ListCharactersViewModel.swift */,
-			);
-			path = ListCharacters;
 			sourceTree = "<group>";
 		};
 		9F0DEA3E2AE18547009376F1 /* AppImage */ = {
@@ -338,14 +330,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		9F8CFF142B04D5C600BC00EC /* Characters */ = {
+		9F8CFF142B04D5C600BC00EC /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				9F0DEA362AE15EE6009376F1 /* ListCharacters */,
-				9F0DEA4F2AE1D916009376F1 /* DetailCharacter */,
-				9F8CFF1A2B04DA4800BC00EC /* InteractorRickAndMorty.swift */,
+				9F0DEA432AE18C79009376F1 /* Rows */,
+				9F0DEA372AE15F23009376F1 /* ListCharactersView.swift */,
+				9F0DEA392AE15F3B009376F1 /* ListCharactersViewModel.swift */,
 			);
-			path = Characters;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		9F8CFF152B04D69300BC00EC /* Characters */ = {
@@ -419,6 +411,14 @@
 				9FAAFBC02B0B880100D65E6F /* LocationModelDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		9FAAFBCA2B0BCBC000D65E6F /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				9F8CFF1A2B04DA4800BC00EC /* InteractorRickAndMorty.swift */,
+			);
+			path = Interactors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

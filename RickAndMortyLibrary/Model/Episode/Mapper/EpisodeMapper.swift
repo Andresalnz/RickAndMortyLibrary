@@ -16,7 +16,7 @@ extension EpisodeResultsDTO {
             }
             
         })
-        return EpisodeResultsBO(rowListMain: RowListAndDetail(),
+        return EpisodeResultsBO(rowListMain: RowListMain(),
                              id: id,
                              name: name,
                              airDate: airDate,
