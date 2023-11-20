@@ -11,10 +11,11 @@ final class ListCharactersViewModel: ObservableObject {
     
     //MARK: - Variables
     
-    private let charactersInteractor: InteractorRickAndMorty = InteractorRickAndMorty()
+    private let interactorRickAndMorty: InteractorRickAndMorty = InteractorRickAndMorty()
     
     //Array que almacena los personajes
     @Published var characters: [CharactersInfoBO] = []
+    @Published var episodes: [EpisodeInfoBO] = []
     
     //Manejo de errores
     @Published var errorValue = false
@@ -42,7 +43,7 @@ final class ListCharactersViewModel: ObservableObject {
         if characters.last == characterInfo {
             currentPage += 1
             var moreCharacters: [CharactersInfoBO] = []
-            moreCharacters = try await charactersInteractor.allCharacters(currentPage)
+            moreCharacters = try await interactorRickAndMorty.allCharacters(currentPage)
             characters.append(contentsOf: moreCharacters)
         }
     }
@@ -59,7 +60,9 @@ final class ListCharactersViewModel: ObservableObject {
     func loadData() async throws {
         do {
             if !negativeRequest {
-                characters = try await charactersInteractor.allCharacters(currentPage)
+                characters = try await interactorRickAndMorty.allCharacters(currentPage)
+                episodes = try await interactorRickAndMorty.allEpisodes()
+           
             }
             negativeRequest = true
         } catch {
