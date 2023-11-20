@@ -8,8 +8,8 @@
 import Foundation
 
 struct LocationModelDTO: Codable {
-    let info: InfoLocationDTO?
-    let locations: [LocationsResultsDTO]?
+    let info: LocationInfoDTO?
+    let locations: [LocationResultsDTO]?
     
     enum CodingKeys: String, CodingKey {
         case info
@@ -17,14 +17,14 @@ struct LocationModelDTO: Codable {
     }
 }
 
-struct InfoLocationDTO: Codable {
+struct LocationInfoDTO: Codable {
     let count: Int?
     let pages: Int?
     let next: String?
     let prev: String?
 }
 
-struct LocationsResultsDTO: Codable {
+struct LocationResultsDTO: Codable {
     let id: Int?
     let name: String?
     let type: String?

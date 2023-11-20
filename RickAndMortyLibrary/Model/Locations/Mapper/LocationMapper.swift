@@ -7,15 +7,15 @@
 
 import Foundation
 
-extension LocationsResultsDTO {
-    func toBo() -> LocationsResultsBO {
+extension LocationResultsDTO {
+    func toBo() -> LocationResultsBO {
         var urlresidents: [URL] = []
         residents?.forEach({ resident in
             if let resident = URL(string: resident) {
                 urlresidents.append(resident)
             }
         })
-        return LocationsResultsBO(home: RowListAndDetail(),
+        return LocationResultsBO(home: RowListAndDetail(),
                                   id: id,
                                   name: name,
                                   type: type,

@@ -42,7 +42,7 @@ final class InteractorRickAndMorty {
     }
     
     //MARK: - Locations
-    func allLocations() async throws -> [LocationsResultsBO] {
+    func allLocations() async throws -> [LocationResultsBO] {
         return try await repositoryLocations.getAllLocations(url: URL(string: "https://rickandmortyapi.com/api/location"))
     }
 }

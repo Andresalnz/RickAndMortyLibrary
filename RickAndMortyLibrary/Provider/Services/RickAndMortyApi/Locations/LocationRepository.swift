@@ -9,7 +9,7 @@ import Foundation
 
 final class LocationRepository {
     //MARK: - All Locations
-    func getAllLocations(url: URL?) async throws -> [LocationsResultsBO] {
+    func getAllLocations(url: URL?) async throws -> [LocationResultsBO] {
         guard let url = url else { throw ErrorHandler.invalidUrl }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
