@@ -8,7 +8,7 @@
 import Foundation
 
 struct CharacterModelBO: Codable {
-    let info: InfoCharactersBO?
+    let info: CharactersInfoBO?
     let characters: [CharactersResultsBO]?
     
     enum CodingKeys: String, CodingKey {
@@ -17,7 +17,7 @@ struct CharacterModelBO: Codable {
     }
 }
 
-struct InfoCharactersBO: Codable {
+struct CharactersInfoBO: Codable {
     let count: Int?
     let pages: Int?
     let next: URL?

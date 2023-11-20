@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension EpisodeInfoDTO {
-    func toBo() -> EpisodeInfoBO {
+extension EpisodeResultsDTO {
+    func toBo() -> EpisodeResultsBO {
         var urlCharacter: [URL] = []
         characters?.forEach({ character in
             if let character = URL(string: character) {
@@ -16,7 +16,7 @@ extension EpisodeInfoDTO {
             }
             
         })
-        return EpisodeInfoBO(rowListAndDetail: RowListAndDetail(),
+        return EpisodeResultsBO(rowListAndDetail: RowListAndDetail(),
                              id: id,
                              name: name,
                              airDate: airDate,

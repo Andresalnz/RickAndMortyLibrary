@@ -31,12 +31,12 @@ final class InteractorRickAndMorty {
     //MARK: - Episodes
     
     //Single episode
-    func singleEpisode(url: URL?) async throws -> EpisodeInfoBO? {
+    func singleEpisode(url: URL?) async throws -> EpisodeResultsBO? {
         return try await repositoryEpisodes.getSingleEpisode(url: url)
     }
     
     //All Episodes
-    func allEpisodes() async throws -> [EpisodeInfoBO] {
+    func allEpisodes() async throws -> [EpisodeResultsBO] {
         return try await repositoryEpisodes.getAllEpisodes(url: Util.Services.episodes.shapeURL())
         
     }

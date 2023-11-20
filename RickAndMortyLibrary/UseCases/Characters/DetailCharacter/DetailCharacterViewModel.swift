@@ -17,10 +17,10 @@ final class DetailCharacterViewModel: ObservableObject {
     let allEpisodeCharacter: [URL]
     
     //Propidedad que almacena todos los episodios
-    @Published var allEpisodes: [EpisodeInfoBO] = []
+    @Published var allEpisodes: [EpisodeResultsBO] = []
     
     //Propiedad que almacena un solo episodio
-    var episode: EpisodeInfoBO?
+    var episode: EpisodeResultsBO?
     
     //MARK: - Init
     init(allEpisodeCharacter: [URL]) {

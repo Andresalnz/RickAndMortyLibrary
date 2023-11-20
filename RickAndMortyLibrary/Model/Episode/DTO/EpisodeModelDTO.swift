@@ -9,18 +9,23 @@ import Foundation
 
 
 struct EpisodeModelDTO: Codable {
-    let info: InfoEpisodeDTO?
-    let results: [EpisodeInfoDTO]?
+    let info: EpisodeInfoDTO?
+    let episodes: [EpisodeResultsDTO]?
+    
+    enum CodingKeys: String, CodingKey {
+        case info
+        case episodes = "results"
+    }
 }
 
-struct InfoEpisodeDTO: Codable {
+struct EpisodeInfoDTO: Codable {
     let count: Int?
     let pages: Int?
     let next: String?
     let prev: String?
 }
 
-struct EpisodeInfoDTO: Codable {
+struct EpisodeResultsDTO: Codable {
     let id: Int?
     let name: String?
     let airDate: String?

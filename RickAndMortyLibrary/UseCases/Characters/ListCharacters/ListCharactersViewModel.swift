@@ -15,7 +15,7 @@ final class ListCharactersViewModel: ObservableObject {
     
     //Array que almacena los personajes
     @Published var characters: [CharactersResultsBO] = []
-    @Published var episodes: [EpisodeInfoBO] = []
+    @Published var episodes: [EpisodeResultsBO] = []
     @Published var locations: [LocationsResultsBO] = []
     
     //Manejo de errores

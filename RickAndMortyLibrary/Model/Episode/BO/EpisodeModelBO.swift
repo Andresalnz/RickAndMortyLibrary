@@ -9,18 +9,18 @@ import Foundation
 
 
 struct EpisodeModelBO: Codable {
-    let info: InfoEpisodeBO?
-    let episodes: [EpisodeInfoBO]
+    let info: EpisodeInfoBO?
+    let episodes: [EpisodeResultsBO]?
 }
 
-struct InfoEpisodeBO: Codable {
+struct EpisodeInfoBO: Codable {
     let count: Int?
     let pages: Int?
     let next: String?
     let prev: String?
 }
 
-struct EpisodeInfoBO: Codable {
+struct EpisodeResultsBO: Codable {
     var rowListAndDetail: RowListAndDetail
     let id: Int?
     let name: String?
