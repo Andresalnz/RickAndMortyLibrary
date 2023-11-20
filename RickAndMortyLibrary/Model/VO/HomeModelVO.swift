@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RowListMain: Codable, RowList {
+struct RowListMain: Codable, HomeRowView {
     var image: URL?
     var name: String?
     var species: Species?

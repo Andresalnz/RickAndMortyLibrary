@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-protocol RowList {
-    var image: URL? { get }
-    var name: String? { get }
-    var species: Species? { get }
-}
-
-struct CharacterRowView<T>: View  where T: RowList {
+struct CharacterRowView<T>: View  where T: HomeRowView {
     
     let type: T
     

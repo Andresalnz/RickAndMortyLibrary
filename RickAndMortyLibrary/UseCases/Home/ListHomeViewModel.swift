@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ListCharactersViewModel: ObservableObject {
+final class ListHomeViewModel: ObservableObject {
     
     //MARK: - Variables
     

@@ -13,19 +13,20 @@ enum TypeViewList {
     case episodes
 }
 
-struct ListCharactersView: View {
+struct ListHomeView: View {
     
     //MARK: - ViewModel
-    @EnvironmentObject var viewModel: ListCharactersViewModel
+    @EnvironmentObject var viewModel: ListHomeViewModel
     
     var type: TypeViewList
+    let navigationTitle: String?
     
     var body: some View {
         NavigationView {
             List {
                 HomeContentView
             }
-            .navigationTitle(Constants.titleCharacters)
+            .navigationTitle(navigationTitle ?? Constants.noText)
         }
         .searchable(text: $viewModel.searchText)
         .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
@@ -66,5 +67,5 @@ struct ListCharactersView: View {
 }
 
 #Preview {
-    ListCharactersView(type: .characters).environmentObject(ListCharactersViewModel())
+    ListHomeView(type: .characters, navigationTitle: "Characters").environmentObject(ListHomeViewModel())
 }
