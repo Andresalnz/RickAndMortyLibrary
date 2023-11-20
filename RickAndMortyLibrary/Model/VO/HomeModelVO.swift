@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct RowListAndDetail: Codable, RowList {
+struct RowListMain: Codable, RowList {
     var image: URL?
     var name: String?
     var species: Species?
 }
 
-struct Detail: Codable, DetailView {
+struct RowDetail: Codable, DetailView {
     var status: Status?
     var gender: Gender?
     var origin: LocationOriginBO?

@@ -41,8 +41,8 @@ struct CharactersResultsBO: Codable, Equatable {
             lhs.created == rhs.created
         }
     
-    var rowListAndDetail: RowListAndDetail
-    var detail: Detail
+    var rowListMain: RowListMain
+    var rowDetail: RowDetail
     var id: Int?
     var name: String?
     var status: Status?
@@ -55,9 +55,9 @@ struct CharactersResultsBO: Codable, Equatable {
     var url: URL?
     var created: Date?
     
-    init(rowListAndDetail: RowListAndDetail, detail: Detail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
-        self.rowListAndDetail = RowListAndDetail(image: image, name: name, species: species)
-        self.detail = Detail(status: status, gender: gender, origin: origin, location: location, episodes: episode, image: image, name: name, species: species)
+    init(rowListMain: RowListMain, rowDetail: RowDetail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
+        self.rowListMain = RowListMain(image: image, name: name, species: species)
+        self.rowDetail = RowDetail(status: status, gender: gender, origin: origin, location: location, episodes: episode, image: image, name: name, species: species)
         self.id = id
         self.name = name
         self.status = status

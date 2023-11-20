@@ -15,14 +15,14 @@ extension LocationResultsDTO {
                 urlresidents.append(resident)
             }
         })
-        return LocationResultsBO(home: RowListAndDetail(),
-                                  id: id,
-                                  name: name,
-                                  type: type,
-                                  dimension: dimension,
-                                  residents: urlresidents,
-                                  url: URL(string: url ?? ""),
-                                  created: Date())
+        return LocationResultsBO(rowListMain: RowListMain(),
+                                 id: id,
+                                 name: name,
+                                 type: type,
+                                 dimension: dimension,
+                                 residents: urlresidents,
+                                 url: URL(string: url ?? ""),
+                                 created: Date())
     }
 }
 

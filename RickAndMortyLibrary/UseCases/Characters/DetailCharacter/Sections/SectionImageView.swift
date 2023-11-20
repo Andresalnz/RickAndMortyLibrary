@@ -28,5 +28,5 @@ struct SectionImageView<T>: View where T: DetailView {
 }
 
 #Preview {
-    SectionImageView(model: Detail(image: URL(string: "")))
+    SectionImageView(model: RowDetail(image: URL(string: "")))
 }

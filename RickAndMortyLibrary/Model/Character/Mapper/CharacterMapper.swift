@@ -16,21 +16,21 @@ extension CharactersResultsDTO {
                 urlEpisodes.append(episode)
             }
         })
-            
-        return CharactersResultsBO(rowListAndDetail: RowListAndDetail(),
-                                detail: Detail(),
-                                id: id,
-                                name: name,
-                                status: status,
-                                species: species,
-                                type: type,
-                                gender: gender,
-                                origin: origin?.toBo(),
-                                location: location?.toBo(),
-                                image: URL(string: image ?? ""),
-                                episode: urlEpisodes,
-                                url: URL(string: url ?? ""),
-                                created: Date())
+        
+        return CharactersResultsBO(rowListMain: RowListMain(),
+                                   rowDetail: RowDetail(),
+                                   id: id,
+                                   name: name,
+                                   status: status,
+                                   species: species,
+                                   type: type,
+                                   gender: gender,
+                                   origin: origin?.toBo(),
+                                   location: location?.toBo(),
+                                   image: URL(string: image ?? ""),
+                                   episode: urlEpisodes,
+                                   url: URL(string: url ?? ""),
+                                   created: Date())
     }
 }
 

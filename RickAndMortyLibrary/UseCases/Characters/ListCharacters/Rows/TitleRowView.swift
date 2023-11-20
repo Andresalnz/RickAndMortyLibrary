@@ -16,5 +16,5 @@ struct TitleRowView<T>: View where T: RowList {
 }
 
 #Preview {
-    TitleRowView(type: RowListAndDetail(name: ""))
+    TitleRowView(type: RowListMain(name: ""))
 }

@@ -37,5 +37,5 @@ struct CharacterRowView<T>: View  where T: RowList {
 }
 
 #Preview {
-    CharacterRowView(type: RowListAndDetail(image: URL(string: ""), name: "Rick", species: .Animal))
+    CharacterRowView(type: RowListMain(image: URL(string: ""), name: "Rick", species: .Animal))
 }
