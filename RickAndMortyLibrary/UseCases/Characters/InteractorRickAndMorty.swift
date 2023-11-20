@@ -9,12 +9,19 @@ import Foundation
 
 final class InteractorRickAndMorty {
     
-    let repositoryCharacters = CharacterRepository()
-    let repositoryEpisodes = EpisodeRepository()
+    lazy var repositoryCharacters: CharacterRepository = {
+        CharacterRepository()
+    }()
+    
+    lazy var repositoryEpisodes: EpisodeRepository = {
+        EpisodeRepository()
+    }()
+    
+  
   
     //MARK: - Characters
     func allCharacters (_ page: Int) async throws -> [CharactersInfoBO] {
-        return try await repositoryCharacters.getAllCharacters(url: Util.Services.allCharacters.shapeURL(page))
+        return try await repositoryCharacters.getAllCharacters(url: Util.Services.allCharacters.shapeURL())
     }
     
     //MARK: - Episodes
@@ -23,4 +30,13 @@ final class InteractorRickAndMorty {
     func singleEpisode(url: URL?) async throws -> EpisodeInfoBO? {
         return try await repositoryEpisodes.getSingleEpisode(url: url)
     }
+    
+    //All Episodes
+    func allEpisodes() async throws -> [EpisodeInfoBO] {
+        return try await repositoryEpisodes.getAllEpisodes(url: Util.Services.episodes.shapeURL())
+        
+    }
 }
+
+
+
