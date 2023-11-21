@@ -28,7 +28,7 @@ struct ListHomeView: View {
             }
             .navigationTitle(navigationTitle ?? Constants.noText)
         }
-        .searchable(text: $viewModel.searchText)
+        .searchable(text: $viewModel.searchText, prompt: "BUSCA")
         .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
             //Salir de la app
         } message: {
@@ -45,7 +45,7 @@ struct ListHomeView: View {
     private var HomeContentView: some View {
         switch type {
             case .characters:
-                ForEach(viewModel.characters, id: \.id) { character in
+                ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
                     //TODO: Sacar fuera if let
                     if let episodes = character.episode {
                         NavigationLink(destination: DetailCharacterView(model: character.rowDetail, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episodes))) {
@@ -55,11 +55,11 @@ struct ListHomeView: View {
                     
                 }
             case .episodes:
-                ForEach(viewModel.episodes, id: \.id) { episode in
+                ForEach(viewModel.filterEpisodes, id: \.id) { episode in
                     TitleRowView(type: episode.rowListMain)
                 }
             case .locations:
-                ForEach(viewModel.locations, id: \.id) { location in
+                ForEach(viewModel.filterLocations, id: \.id) { location in
                     TitleRowView(type: location.rowListMain)
                 }
         }

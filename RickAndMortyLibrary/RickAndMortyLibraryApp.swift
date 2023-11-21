@@ -19,13 +19,13 @@ struct RickAndMortyLibraryApp: App {
                     }
                 ListHomeView(type: .episodes, navigationTitle: Constants.titleEpisodes).environmentObject(ListHomeViewModel())
                     .tabItem {
-                        Image(systemName: "person.fill")
+                        Image(systemName: "book.fill")
                         Text("Episodes")
                     }
                 ListHomeView(type: .locations, navigationTitle: Constants.titleLocations).environmentObject(ListHomeViewModel())
                     .tabItem {
-                        Image(systemName: "person.fill")
-                        Text("Characters")
+                        Image(systemName: "globe")
+                        Text("Locations")
                     }
             }
         }
