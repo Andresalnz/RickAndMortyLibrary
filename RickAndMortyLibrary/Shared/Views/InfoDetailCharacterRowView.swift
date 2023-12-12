@@ -9,13 +9,15 @@ import SwiftUI
 
 struct InfoDetailCharacterRowView: View {
     
-    let icon: String
-    let label: Text
+    let icon: String?
+    let label: Text?
     let value: Text
     
     var body: some View {
         HStack {
-            Image(systemName: icon)
+            if let icon = icon {
+                Image(systemName: icon)
+            }
             label
             Spacer()
             value
