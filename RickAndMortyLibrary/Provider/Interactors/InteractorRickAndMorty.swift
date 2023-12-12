@@ -28,6 +28,10 @@ final class InteractorRickAndMorty {
         return try await repositoryCharacters.getAllCharacters(url: Util.Services.allCharacters.shapeURL())
     }
     
+    func singleCharacter(url: URL?) async throws -> CharactersResultsBO? {
+        return try await repositoryCharacters.getSingleCharacter(url: url)
+    }
+    
     //MARK: - Episodes
     
     //Single episode

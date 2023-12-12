@@ -24,4 +24,17 @@ final class CharacterRepository {
             throw ErrorHandler.requestCharactersInvalid
         }
     }
+    
+    //MARK: - Single Character
+    func getSingleCharacter(url: URL?) async throws -> CharactersResultsBO {
+        guard let url = url else {  throw ErrorHandler.invalidUrl }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let singleCharacterModel = try JSONDecoder().decode(CharactersResultsDTO.self, from: data)
+            let singleCharacter = singleCharacterModel.toBo()
+            return singleCharacter
+        } catch {
+            throw ErrorHandler.requestEpisodeInvalid
+        }
+    }
 }
