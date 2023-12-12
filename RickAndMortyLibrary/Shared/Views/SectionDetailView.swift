@@ -12,6 +12,11 @@ struct SectionDetailView<Content: View>: View {
     let content: Content
     let titleSection: String
     
+    init(content: () -> Content , titleSection: String) {
+        self.content = content()
+        self.titleSection = titleSection
+    }
+    
     var body: some View {
         Section(titleSection) {
             content

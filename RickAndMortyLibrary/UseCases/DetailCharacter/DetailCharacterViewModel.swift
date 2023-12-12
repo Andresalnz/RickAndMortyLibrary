@@ -15,16 +15,20 @@ final class DetailCharacterViewModel: ObservableObject {
     
     //Propiedad que almacena las URL de los episodios del personaje elegido
     let allEpisodeCharacter: [URL]
+    let type: TypeViewList
     
     //Propidedad que almacena todos los episodios
     @Published var allEpisodes: [EpisodeResultsBO] = []
+    @Published var allCharacters: [CharactersResultsBO] = []
     
     //Propiedad que almacena un solo episodio
     var episode: EpisodeResultsBO?
+    var character: CharactersResultsBO?
     
     //MARK: - Init
-    init(allEpisodeCharacter: [URL]) {
+    init(allEpisodeCharacter: [URL], type: TypeViewList) {
         self.allEpisodeCharacter = allEpisodeCharacter
+        self.type = type
     }
     
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
@@ -37,11 +41,22 @@ final class DetailCharacterViewModel: ObservableObject {
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     @MainActor
     func loadData() async throws {
+        
         do {
             for urlEpisode in allEpisodeCharacter {
-                episode = try await episodeInteractor.singleEpisode(url: urlEpisode)
-                if let episode = episode {
-                    allEpisodes.append(episode)
+                switch type {
+                    case .characters:
+                        episode = try await episodeInteractor.singleEpisode(url: urlEpisode)
+                        if let episode = episode {
+                            allEpisodes.append(episode)
+                        }
+                    case .locations:
+                        print("Request location")
+                    case .episodes:
+                        character = try await episodeInteractor.singleCharacter(url: urlEpisode)
+                        if let character = character {
+                            allCharacters.append(character)
+                        }
                 }
             }
         } catch {
