@@ -17,13 +17,14 @@ extension EpisodeResultsDTO {
             
         })
         return EpisodeResultsBO(rowListMain: RowListMain(),
-                             id: id,
-                             name: name,
-                             airDate: airDate,
-                             episode: episode,
-                             characters: urlCharacter,
-                             url: URL(string: url ?? ""),
-                             created: Date())
+                                rowDetail: RowDetail(),
+                                id: id,
+                                name: name,
+                                airDate: airDate,
+                                episode: episode,
+                                characters: urlCharacter,
+                                url: URL(string: url ?? ""),
+                                created: Date())
     }
 }
 

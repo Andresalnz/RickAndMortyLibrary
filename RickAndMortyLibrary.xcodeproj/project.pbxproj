@@ -20,6 +20,7 @@
 		9F0DEA452AE18C8C009376F1 /* CharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DEA442AE18C8C009376F1 /* CharacterRowView.swift */; };
 		9F0DEA512AE1D92E009376F1 /* DetailCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DEA502AE1D92E009376F1 /* DetailCharacterViewModel.swift */; };
 		9F0DEA532AE1D93B009376F1 /* DetailCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DEA522AE1D93B009376F1 /* DetailCharacterView.swift */; };
+		9F798BCB2B18FFA7008BEC6E /* ListWithSeparation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F798BCA2B18FFA7008BEC6E /* ListWithSeparation.swift */; };
 		9F8445F92AF1E50700460822 /* SectionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445F82AF1E50700460822 /* SectionImageView.swift */; };
 		9F8445FB2AF1E6B200460822 /* SectionInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445FA2AF1E6B200460822 /* SectionInformationView.swift */; };
 		9F8445FD2AF1E6F700460822 /* SectionEpisodesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445FC2AF1E6F700460822 /* SectionEpisodesView.swift */; };
@@ -41,6 +42,8 @@
 		9FAAFBC52B0B882000D65E6F /* LocationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAFBC42B0B882000D65E6F /* LocationMapper.swift */; };
 		9FAAFBC72B0B8BA400D65E6F /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAFBC62B0B8BA400D65E6F /* LocationRepository.swift */; };
 		9FAAFBCC2B0BCFE700D65E6F /* HomeViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAFBCB2B0BCFE700D65E6F /* HomeViewProtocols.swift */; };
+		9FAAFBCE2B0CD53800D65E6F /* DetailViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAFBCD2B0CD53800D65E6F /* DetailViewProtocols.swift */; };
+		9FAAFBD02B0CD69800D65E6F /* DetailModelVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FAAFBCF2B0CD69800D65E6F /* DetailModelVO.swift */; };
 		9FF9F9082AF18EAB00411BCC /* InfoDetailCharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,7 @@
 		9F0DEA442AE18C8C009376F1 /* CharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRowView.swift; sourceTree = "<group>"; };
 		9F0DEA502AE1D92E009376F1 /* DetailCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewModel.swift; sourceTree = "<group>"; };
 		9F0DEA522AE1D93B009376F1 /* DetailCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterView.swift; sourceTree = "<group>"; };
+		9F798BCA2B18FFA7008BEC6E /* ListWithSeparation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithSeparation.swift; sourceTree = "<group>"; };
 		9F8445F82AF1E50700460822 /* SectionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionImageView.swift; sourceTree = "<group>"; };
 		9F8445FA2AF1E6B200460822 /* SectionInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionInformationView.swift; sourceTree = "<group>"; };
 		9F8445FC2AF1E6F700460822 /* SectionEpisodesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEpisodesView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 		9FAAFBC42B0B882000D65E6F /* LocationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapper.swift; sourceTree = "<group>"; };
 		9FAAFBC62B0B8BA400D65E6F /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		9FAAFBCB2B0BCFE700D65E6F /* HomeViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocols.swift; sourceTree = "<group>"; };
+		9FAAFBCD2B0CD53800D65E6F /* DetailViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewProtocols.swift; sourceTree = "<group>"; };
+		9FAAFBCF2B0CD69800D65E6F /* DetailModelVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModelVO.swift; sourceTree = "<group>"; };
 		9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCharacterRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,6 +334,7 @@
 				9F8CFF0F2B028A6100BC00EC /* SectionDetailView.swift */,
 				9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */,
 				9F85AA892AE66BF400949BBD /* AsyncImageView.swift */,
+				9F798BCA2B18FFA7008BEC6E /* ListWithSeparation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -370,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				9FAAFBCB2B0BCFE700D65E6F /* HomeViewProtocols.swift */,
+				9FAAFBCD2B0CD53800D65E6F /* DetailViewProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -378,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				9FAAFBBA2B0B83CC00D65E6F /* HomeModelVO.swift */,
+				9FAAFBCF2B0CD69800D65E6F /* DetailModelVO.swift */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -498,6 +507,7 @@
 				9F0DEA452AE18C8C009376F1 /* CharacterRowView.swift in Sources */,
 				9FAAFBBB2B0B83CC00D65E6F /* HomeModelVO.swift in Sources */,
 				9FAAFBC12B0B880100D65E6F /* LocationModelDTO.swift in Sources */,
+				9F798BCB2B18FFA7008BEC6E /* ListWithSeparation.swift in Sources */,
 				9F8CFF1B2B04DA4800BC00EC /* InteractorRickAndMorty.swift in Sources */,
 				9FAAFBC32B0B881000D65E6F /* LocationModelBO.swift in Sources */,
 				9F8814902AE2A96A00448501 /* Constants.swift in Sources */,
@@ -506,6 +516,7 @@
 				9F8445FD2AF1E6F700460822 /* SectionEpisodesView.swift in Sources */,
 				9FAAFBC72B0B8BA400D65E6F /* LocationRepository.swift in Sources */,
 				9F0DEA532AE1D93B009376F1 /* DetailCharacterView.swift in Sources */,
+				9FAAFBD02B0CD69800D65E6F /* DetailModelVO.swift in Sources */,
 				9F0DEA3C2AE17AF6009376F1 /* Util.swift in Sources */,
 				9FAAFBB82B0B75A500D65E6F /* TitleRowView.swift in Sources */,
 				9F8445FB2AF1E6B200460822 /* SectionInformationView.swift in Sources */,
@@ -526,6 +537,7 @@
 				9F85AA8A2AE66BF400949BBD /* AsyncImageView.swift in Sources */,
 				9FF9F9082AF18EAB00411BCC /* InfoDetailCharacterRowView.swift in Sources */,
 				9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */,
+				9FAAFBCE2B0CD53800D65E6F /* DetailViewProtocols.swift in Sources */,
 				9F0DEA402AE18559009376F1 /* AppImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

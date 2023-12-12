@@ -20,18 +20,34 @@ struct EpisodeInfoBO: Codable {
     let prev: String?
 }
 
-struct EpisodeResultsBO: Codable {
-    var rowListMain: RowListMain
-    let id: Int?
-    let name: String?
-    let airDate: String?
-    let episode: String?
-    let characters: [URL]?
-    let url: URL?
-    let created: Date?
+struct EpisodeResultsBO: Codable, Hashable {
+    static func == (lhs: EpisodeResultsBO, rhs: EpisodeResultsBO) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.name == rhs.name &&
+        lhs.airDate == rhs.airDate &&
+        lhs.episode == rhs.episode &&
+        lhs.characters == rhs.characters &&
+        lhs.url == rhs.url &&
+        lhs.created == rhs.created 
+    }
     
-    init(rowListMain: RowListMain, id: Int?, name: String?, airDate: String?, episode: String?, characters: [URL]?, url: URL?, created: Date?) {
+    func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+    var rowListMain: RowListMain
+    var rowDetail: RowDetail
+    var id: Int?
+    var name: String?
+    var airDate: String?
+    var episode: String?
+    var characters: [URL]?
+    var url: URL?
+    var created: Date?
+    
+    init(rowListMain: RowListMain, rowDetail: RowDetail, id: Int?, name: String?, airDate: String?, episode: String?, characters: [URL]?, url: URL?, created: Date?) {
         self.rowListMain = RowListMain(name: name)
+        self.rowDetail = RowDetail(airDate: airDate, episode: episode, characters: characters, name: name)
         self.id = id
         self.name = name
         self.airDate = airDate
@@ -43,6 +59,7 @@ struct EpisodeResultsBO: Codable {
     
     enum CodingKeys: String, CodingKey {
         case rowListMain
+        case rowDetail
         case id
         case name
         case airDate = "air_date"
