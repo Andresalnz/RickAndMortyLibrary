@@ -28,8 +28,9 @@ struct SectionEpisodesView: View {
                     
                 }
             case .episodes:
-                HStack {
-                    
+                ForEach(viewModel.allCharacters, id: \.id) { character in
+                    ListWithSeparation(model: character.rowDetail)
+
                 }
         }
     }
