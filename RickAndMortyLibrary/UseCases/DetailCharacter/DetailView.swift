@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct DetailCharacterView<T>: View  where T: Detail {
+struct DetailView<T>: View  where T: Detail {
     
     let model: T
     let type: TypeViewList
-    @StateObject var viewModel: DetailCharacterViewModel
+    @StateObject var viewModel: DetailViewModel
     
     var body: some View {
         List {
@@ -39,7 +39,7 @@ struct DetailCharacterView<T>: View  where T: Detail {
                 }, titleSection: "Information")
                 //MARK: - Seccion de los episodios
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .characters)
+                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .characters)
                 },titleSection: "Episodes")
               
             case .episodes:
@@ -47,14 +47,14 @@ struct DetailCharacterView<T>: View  where T: Detail {
                     SectionInformationView(model: model, type: .episodes)
                 }, titleSection: "Information")
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
+                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
                 },titleSection: "Episodes")
             case .locations:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .locations)
                 }, titleSection: "Information")
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
+                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
                 },titleSection: "Residents")
         }
     }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class DetailCharacterViewModel: ObservableObject {
+final class DetailViewModel: ObservableObject {
     
     //MARK: - Variables
     
-    private let episodeInteractor: InteractorRickAndMorty = InteractorRickAndMorty()
+    private let interactor: InteractorRickAndMorty = InteractorRickAndMorty()
     
     //Propiedad que almacena las URL de los episodios del personaje elegido
     let allEpisodeCharacter: [URL]
@@ -46,12 +46,12 @@ final class DetailCharacterViewModel: ObservableObject {
             for urlEpisode in allEpisodeCharacter {
                 switch type {
                     case .characters:
-                        episode = try await episodeInteractor.singleEpisode(url: urlEpisode)
+                        episode = try await interactor.singleEpisode(url: urlEpisode)
                         if let episode = episode {
                             allEpisodes.append(episode)
                         }
                     case .episodes, .locations:
-                        character = try await episodeInteractor.singleCharacter(url: urlEpisode)
+                        character = try await interactor.singleCharacter(url: urlEpisode)
                         if let character = character {
                             allCharacters.append(character)
                         }
