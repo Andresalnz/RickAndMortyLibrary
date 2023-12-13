@@ -16,6 +16,7 @@ extension LocationResultsDTO {
             }
         })
         return LocationResultsBO(rowListMain: RowListMain(),
+                                 rowDetail: RowDetail(),
                                  id: id,
                                  name: name,
                                  type: type,

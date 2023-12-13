@@ -26,6 +26,7 @@ struct LocationInfoBO: Codable {
 
 struct LocationResultsBO: Codable {
     let rowListMain: RowListMain
+    var rowDetail: RowDetail
     let id: Int?
     let name: String?
     let type: String?
@@ -34,8 +35,9 @@ struct LocationResultsBO: Codable {
     let url: URL?
     let created: Date?
     
-    init(rowListMain: RowListMain, id: Int?, name: String?, type: String?, dimension: String?, residents: [URL]?, url: URL?, created: Date?) {
+    init(rowListMain: RowListMain, rowDetail: RowDetail, id: Int?, name: String?, type: String?, dimension: String?, residents: [URL]?, url: URL?, created: Date?) {
         self.rowListMain = RowListMain(name: name)
+        self.rowDetail = RowDetail(dimension: dimension, residents: residents, type: type, name: name)
         self.id = id
         self.name = name
         self.type = type
