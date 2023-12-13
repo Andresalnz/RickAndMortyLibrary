@@ -12,7 +12,7 @@ Aplicación que muestra un listado de personajes de Rick and Morty y su detalle,
 <h2 id="capturas">Capturas</h2>
 
 | Lista de personajes | Lista de episodios | Lista de localizaciones | Detalle del personaje | Detalle del personaje | Detalle de episodio | Detalle de localización | Buscador |
-| ----------- | ------------ | ------------ | ------------
+| ----------- | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ------------
 | ![List Characters](ScreenShots/ListCharacters.png) | ![List Episodes](ScreenShots/ListEpisodes.png) | ![List Locations](ScreenShots/ListLocations.png) | ![Detail Characters](ScreenShots/DetailImageAndInfo.png) | ![Detail Characters](ScreenShots/DetailInfoAndEpisodes.png) | ![Detail Episode](ScreenShots/DetailEpisode.png) | ![Detail Location](ScreenShots/DetailLocation.png) | ![List Characters](ScreenShots/Search.png) |
 
 <h2 id="conociendo">Conociendo el proyecto</h2>
