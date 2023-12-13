@@ -16,12 +16,6 @@ struct DetailCharacterView<T>: View  where T: Detail {
     var body: some View {
         List {
           DetailContentView
-//            //MARK: - Seccion de la imagen
-//            SectionDetailView(content: SectionImageView(model: model), titleSection: "Image")
-//            //MARK: - Seccion de la informacion
-//            SectionDetailView(content: SectionInformationView(model: model), titleSection: "Information")
-//            //MARK: - Seccion de los episodios
-//            SectionDetailView(content: SectionEpisodesView(viewModel: viewModel), titleSection: "Episodes")
         }
         .navigationTitle(model.name ?? Constants.noText)
         .onAppear {
@@ -45,7 +39,7 @@ struct DetailCharacterView<T>: View  where T: Detail {
                 }, titleSection: "Information")
                 //MARK: - Seccion de los episodios
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, model: model, type: .characters)
+                    SectionEpisodesView(viewModel: viewModel, type: .characters)
                 },titleSection: "Episodes")
               
             case .episodes:
@@ -53,12 +47,15 @@ struct DetailCharacterView<T>: View  where T: Detail {
                     SectionInformationView(model: model, type: .episodes)
                 }, titleSection: "Information")
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, model: model, type: .episodes)
+                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
                 },titleSection: "Episodes")
             case .locations:
                 SectionDetailView(content: {
-                    SectionInformationView(model: model, type: .locations)
+                    SectionInformationView(model: model, type: .episodes)
                 }, titleSection: "Information")
+                SectionDetailView(content: {
+                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
+                },titleSection: "Residents")
         }
     }
 }

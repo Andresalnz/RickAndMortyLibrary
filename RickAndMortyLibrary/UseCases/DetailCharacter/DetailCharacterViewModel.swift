@@ -50,9 +50,7 @@ final class DetailCharacterViewModel: ObservableObject {
                         if let episode = episode {
                             allEpisodes.append(episode)
                         }
-                    case .locations:
-                        print("Request location")
-                    case .episodes:
+                    case .episodes, .locations:
                         character = try await episodeInteractor.singleCharacter(url: urlEpisode)
                         if let character = character {
                             allCharacters.append(character)

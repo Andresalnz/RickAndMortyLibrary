@@ -46,7 +46,6 @@ struct ListHomeView: View {
         switch type {
             case .characters:
                 ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
-                    //TODO: Sacar fuera if let
                     if let episodes = character.episode {
                         NavigationLink(destination: DetailCharacterView(model: character.rowDetail, type: .characters, viewModel: DetailCharacterViewModel(allEpisodeCharacter: episodes, type: .characters))) {
                             CharacterRowView(type: character.rowListMain)
@@ -63,7 +62,9 @@ struct ListHomeView: View {
                 }
             case .locations:
                 ForEach(viewModel.filterLocations, id: \.id) { location in
-                    TitleRowView(type: location.rowListMain)
+                    NavigationLink(destination: DetailCharacterView(model: location.rowDetail, type: .locations, viewModel: DetailCharacterViewModel(allEpisodeCharacter: location.residents!, type: .locations))) {
+                        TitleRowView(type: location.rowListMain)
+                    }
                 }
         }
     }
