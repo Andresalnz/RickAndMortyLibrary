@@ -16,9 +16,15 @@ struct ListWithSeparation<T>: View where T: Detail {
             Text(model.name ?? " no name")
                 .frame(maxWidth: .infinity, alignment: .leading)
             HStack {
-                Text(model.airDate ?? Constants.noText)
+                if let airDate = model.airDate {
+                    Text(airDate)
+                }
+                
                 Spacer()
-                Text(model.episode ?? Constants.noText)
+                if let episode = model.episode {
+                    Text(episode)
+                }
+               
             }
         }
         .padding(.bottom, 10)
