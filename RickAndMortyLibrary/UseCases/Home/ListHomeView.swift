@@ -28,7 +28,7 @@ struct ListHomeView: View {
             }
             .navigationTitle(navigationTitle ?? Constants.noText)
         }
-        .searchable(text: $viewModel.searchText, prompt: "BUSCA")
+        .searchable(text: $viewModel.searchText, prompt: "Search...")
         .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
             //Salir de la app
         } message: {

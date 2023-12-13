@@ -51,7 +51,7 @@ struct DetailCharacterView<T>: View  where T: Detail {
                 },titleSection: "Episodes")
             case .locations:
                 SectionDetailView(content: {
-                    SectionInformationView(model: model, type: .episodes)
+                    SectionInformationView(model: model, type: .locations)
                 }, titleSection: "Information")
                 SectionDetailView(content: {
                     SectionEpisodesView(viewModel: viewModel, type: .episodes)
