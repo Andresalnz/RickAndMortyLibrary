@@ -13,7 +13,7 @@ final class Util {
     enum Services {
         case allCharacters
         case episodes
-//        case locations
+        case locations
         
         func shapeURL() -> URL? {
             switch self {
@@ -21,6 +21,8 @@ final class Util {
                     return URL(string: "\(Constants.uri + Constants.characters + Constants.page)")
                 case .episodes:
                     return URL(string: "\(Constants.uri + Constants.episodes)")
+                case .locations:
+                    return URL(string: "\(Constants.uri + Constants.locations)")
             }
         }
     }
