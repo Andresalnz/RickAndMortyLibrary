@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SectionImageView<T>: View where T: DetailView {
+struct SectionImageView<T>: View where T: Detail {
     
     let model: T
     
