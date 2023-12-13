@@ -43,15 +43,15 @@ final class DetailViewModel: ObservableObject {
     func loadData() async throws {
         
         do {
-            for urlEpisode in allEpisodeCharacter {
+            for urlEpisodeOrCharacter in allEpisodeCharacter {
                 switch type {
                     case .characters:
-                        episode = try await interactor.singleEpisode(url: urlEpisode)
+                        episode = try await interactor.singleEpisode(url: urlEpisodeOrCharacter)
                         if let episode = episode {
                             allEpisodes.append(episode)
                         }
                     case .episodes, .locations:
-                        character = try await interactor.singleCharacter(url: urlEpisode)
+                        character = try await interactor.singleCharacter(url: urlEpisodeOrCharacter)
                         if let character = character {
                             allCharacters.append(character)
                         }

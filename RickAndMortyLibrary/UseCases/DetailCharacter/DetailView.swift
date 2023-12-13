@@ -32,30 +32,30 @@ struct DetailView<T>: View  where T: Detail {
                 //MARK: - Seccion de la imagen
                 SectionDetailView(content: {
                     SectionImageView(model: model)
-                }, titleSection: "Image")
+                }, titleSection: Constants.titleImage)
                 //MARK: - Seccion de la informacion
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .characters)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 //MARK: - Seccion de los episodios
                 SectionDetailView(content: {
                     SectionEpisodesAndCharactersView(viewModel: viewModel, type: .characters)
-                },titleSection: "Episodes")
+                },titleSection: Constants.titleEpisodes)
               
             case .episodes:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .episodes)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
                     SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
-                },titleSection: "Episodes")
+                },titleSection: Constants.titleCharacters)
             case .locations:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .locations)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
                     SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
-                },titleSection: "Residents")
+                },titleSection: Constants.titleResidents)
         }
     }
 }
