@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0C75D22B31C30F00DF1CB7 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C75D12B31C30F00DF1CB7 /* TabBarView.swift */; };
 		9F0DEA162AE13CC5009376F1 /* RickAndMortyLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0DEA152AE13CC5009376F1 /* RickAndMortyLibraryApp.swift */; };
 		9F0DEA1A2AE13CC6009376F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DEA192AE13CC6009376F1 /* Assets.xcassets */; };
 		9F0DEA1D2AE13CC6009376F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0DEA1C2AE13CC6009376F1 /* Preview Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F0C75D12B31C30F00DF1CB7 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		9F0DEA122AE13CC5009376F1 /* RickAndMortyLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F0DEA152AE13CC5009376F1 /* RickAndMortyLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyLibraryApp.swift; sourceTree = "<group>"; };
 		9F0DEA192AE13CC6009376F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F0C75D02B31C2D600DF1CB7 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				9F0C75D12B31C30F00DF1CB7 /* TabBarView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		9F0DEA092AE13CC5009376F1 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		9F0DEA262AE143FD009376F1 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				9F0C75D02B31C2D600DF1CB7 /* TabBar */,
 				9F8CFF142B04D5C600BC00EC /* Home */,
 				9F0DEA4F2AE1D916009376F1 /* DetailCharacter */,
 			);
@@ -514,6 +525,7 @@
 				9F0DEA512AE1D92E009376F1 /* DetailViewModel.swift in Sources */,
 				9F0DEA3A2AE15F3B009376F1 /* ListHomeViewModel.swift in Sources */,
 				9F8445FD2AF1E6F700460822 /* SectionEpisodesAndCharactersView.swift in Sources */,
+				9F0C75D22B31C30F00DF1CB7 /* TabBarView.swift in Sources */,
 				9FAAFBC72B0B8BA400D65E6F /* LocationRepository.swift in Sources */,
 				9F0DEA532AE1D93B009376F1 /* DetailView.swift in Sources */,
 				9FAAFBD02B0CD69800D65E6F /* DetailModelVO.swift in Sources */,
