@@ -39,23 +39,25 @@ struct DetailView<T>: View  where T: Detail {
                 }, titleSection: Constants.titleInformation)
                 //MARK: - Seccion de los episodios
                 SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .characters)
+                    SectionEpisodesAndCharactersView(type: .characters)
                 },titleSection: Constants.titleEpisodes)
-              
+                .environmentObject(viewModel)
             case .episodes:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .episodes)
                 }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
+                    SectionEpisodesAndCharactersView(type: .episodes)
                 },titleSection: Constants.titleCharacters)
+                .environmentObject(viewModel)
             case .locations:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .locations)
                 }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(viewModel: viewModel, type: .episodes)
+                    SectionEpisodesAndCharactersView(type: .episodes)
                 },titleSection: Constants.titleResidents)
+                .environmentObject(viewModel)
         }
     }
 }

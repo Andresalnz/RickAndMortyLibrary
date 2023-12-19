@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SectionEpisodesAndCharactersView: View {
     
-    @StateObject var viewModel: DetailViewModel
+    @EnvironmentObject var viewModel: DetailViewModel
    
     let type: TypeViewList
     
