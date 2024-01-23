@@ -11,12 +11,21 @@ final class ListHomeViewModel: ObservableObject {
     
     //MARK: - Variables
     
-    private let interactorRickAndMorty: InteractorRickAndMorty = InteractorRickAndMorty()
+    //Interactor
+    private let interactor: Interactor
     
     //Array que almacena la informacion
-    @Published var characters: [CharactersResultsBO] = []
-    @Published var episodes: [EpisodeResultsBO] = []
-    @Published var locations: [LocationResultsBO] = []
+    @Published var characters: [CharactersResultsBO]
+    @Published var episodes: [EpisodeResultsBO]
+    @Published var locations: [LocationResultsBO]
+    
+    //MARK: - Init
+    init(interactor: Interactor = Interactor.shared, characters: [CharactersResultsBO] = [], episodes: [EpisodeResultsBO] = [], locations: [LocationResultsBO] = []) {
+        self.interactor = interactor
+        self.characters = characters
+        self.episodes = episodes
+        self.locations = locations
+    }
     
     
     //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
@@ -48,8 +57,6 @@ final class ListHomeViewModel: ObservableObject {
 //    @Published var errorValue = false
 //    @Published var messageError: String = ""
     
-    //Almacena la actual pagina
-    var currentPage: Int = 1
     
     //Booleano para cuando se esta en el detalle y se vuelva atras no haga ninguna petición
    // var negativeRequest: Bool = false
@@ -82,12 +89,23 @@ final class ListHomeViewModel: ObservableObject {
     @MainActor
     func loadData() async throws {
         do {
-           
-                characters = try await interactorRickAndMorty.allCharacters()
-                episodes = try await interactorRickAndMorty.allEpisodes()
-                locations = try await interactorRickAndMorty.allLocations()
-            
-          
+            let getAllCharacters = try await interactor.getAllCharacters()
+            let getAllEpisodes = try await interactor.getAllEpisodes()
+            let getAllLocations = try await interactor.getAllLocations()
+            await MainActor.run {
+                if let infoCharacters = getAllCharacters.characters {
+                    self.characters = infoCharacters.compactMap { $0.toBo() }
+                    
+                }
+                
+                if let infoEpisodes = getAllEpisodes.episodes {
+                    self.episodes = infoEpisodes.compactMap { $0.toBo() }
+                }
+                
+                if let infoLocations = getAllLocations.locations {
+                    self.locations = infoLocations.compactMap { $0.toBo() }
+                }
+            }
         } catch {
             throw ErrorHandler.requestCharactersInvalid
         }

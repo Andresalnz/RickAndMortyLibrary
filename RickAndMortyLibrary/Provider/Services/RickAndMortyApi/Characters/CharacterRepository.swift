@@ -7,23 +7,22 @@
 
 import Foundation
 
-final class CharacterRepository {
-    //MARK: -
-    func getAllCharacters(url: URL?) async throws -> [CharactersResultsBO] {
+struct Repository {
+    func getJSON<T>(url: URL?, type: T.Type) async throws -> T where T: Codable {
         guard let url = url else { throw ErrorHandler.invalidUrl }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let rickAndMortyModel = try JSONDecoder().decode(CharacterModelDTO.self, from: data)
-            if let rickAndMortyCharacters = rickAndMortyModel.characters {
-                let characters = rickAndMortyCharacters.compactMap { $0.toBo() }
-                return characters
-            } else {
-                throw ErrorHandler.listCharactersEmptyOrDataEmpty
-            }
+            let rickAndMortyModel = try JSONDecoder().decode(type, from: data)
+            return rickAndMortyModel
         } catch {
             throw ErrorHandler.requestCharactersInvalid
         }
     }
+}
+
+
+final class CharacterRepository {
+    
     
     //MARK: - Single Character
     func getSingleCharacter(url: URL?) async throws -> CharactersResultsBO {

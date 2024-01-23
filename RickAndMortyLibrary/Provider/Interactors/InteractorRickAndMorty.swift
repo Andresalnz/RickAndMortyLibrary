@@ -7,49 +7,52 @@
 
 import Foundation
 
-final class InteractorRickAndMorty {
+protocol RickAndMortyInteractor {
+    func getAllCharacters() async throws -> CharacterModelDTO
+    func getAllEpisodes() async throws -> EpisodeModelDTO
+    func getAllLocations() async throws -> LocationModelDTO
+    func singleCharacter(url: URL?) async throws -> CharactersResultsDTO
+    func singleEpisode(url: URL?) async throws -> EpisodeResultsDTO
+}
+
+struct Interactor: RickAndMortyInteractor {
     
-    lazy var repositoryCharacters: CharacterRepository = {
-        CharacterRepository()
-    }()
+    var repository: Repository
     
-    lazy var repositoryEpisodes: EpisodeRepository = {
-        EpisodeRepository()
-    }()
+    static let shared: Interactor = Interactor(repository: Repository())
     
-    lazy var repositoryLocations: LocationRepository = {
-        LocationRepository()
-    }()
-    
-  
-  
     //MARK: - Characters
-    func allCharacters () async throws -> [CharactersResultsBO] {
-        return try await repositoryCharacters.getAllCharacters(url: Util.Services.allCharacters.shapeURL())
+    
+    //allCharacters
+    func getAllCharacters() async throws -> CharacterModelDTO {
+        return try await repository.getJSON(url: Util.Services.allCharacters.shapeURL(), type: CharacterModelDTO.self)
     }
     
-    func singleCharacter(url: URL?) async throws -> CharactersResultsBO? {
-        return try await repositoryCharacters.getSingleCharacter(url: url)
+    //singleCharacter
+    func singleCharacter(url: URL?) async throws -> CharactersResultsDTO {
+        return try await repository.getJSON(url: url, type: CharactersResultsDTO.self)
     }
     
     //MARK: - Episodes
     
-    //Single episode
-    func singleEpisode(url: URL?) async throws -> EpisodeResultsBO? {
-        return try await repositoryEpisodes.getSingleEpisode(url: url)
+    //allEpisodes
+    func getAllEpisodes() async throws -> EpisodeModelDTO {
+        return try await repository.getJSON(url: Util.Services.allEpisodes.shapeURL(), type: EpisodeModelDTO.self)
     }
     
-    //All Episodes
-    func allEpisodes() async throws -> [EpisodeResultsBO] {
-        return try await repositoryEpisodes.getAllEpisodes(url: Util.Services.episodes.shapeURL())
-        
+    
+    //singleEpisode
+    func singleEpisode(url: URL?) async throws -> EpisodeResultsDTO {
+        return try await repository.getJSON(url: url, type: EpisodeResultsDTO.self)
     }
     
-    //MARK: - Locations
-    func allLocations() async throws -> [LocationResultsBO] {
-        return try await repositoryLocations.getAllLocations(url: Util.Services.locations.shapeURL())
+
+    
+    //MARK: - Location
+    
+    //allLocations
+    func getAllLocations() async throws -> LocationModelDTO {
+        return try await repository.getJSON(url: Util.Services.allLocations.shapeURL(), type: LocationModelDTO.self)
     }
+    
 }
-
-
-
