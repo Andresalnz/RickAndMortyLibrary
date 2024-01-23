@@ -49,15 +49,15 @@ final class DetailViewModel: ObservableObject {
         
         do {
             for urlEpisodeOrCharacter in allEpisodeCharacter {
-                let singleEpisode = try await interactor.singleEpisode(url: urlEpisodeOrCharacter)
-                let singleCharacter = try await interactor.singleCharacter(url: urlEpisodeOrCharacter)
                 switch type {
                     case .characters:
+                        let singleEpisode = try await interactor.singleEpisode(url: urlEpisodeOrCharacter)
                         self.episode = singleEpisode.toBo()
                         if let episode = episode {
                             allEpisodes.append(episode)
                         }
                     case .episodes, .locations:
+                        let singleCharacter = try await interactor.singleCharacter(url: urlEpisodeOrCharacter)
                         self.character = singleCharacter.toBo()
                         if let character = character {
                             allCharacters.append(character)
