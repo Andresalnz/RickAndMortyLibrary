@@ -24,7 +24,7 @@ final class InteractorRickAndMorty {
   
   
     //MARK: - Characters
-    func allCharacters (_ page: Int) async throws -> [CharactersResultsBO] {
+    func allCharacters () async throws -> [CharactersResultsBO] {
         return try await repositoryCharacters.getAllCharacters(url: Util.Services.allCharacters.shapeURL())
     }
     

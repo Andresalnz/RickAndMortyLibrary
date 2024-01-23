@@ -18,7 +18,7 @@ final class Util {
         func shapeURL() -> URL? {
             switch self {
                 case .allCharacters:
-                    return URL(string: "\(Constants.uri + Constants.characters + Constants.page)")
+                    return URL(string: "\(Constants.uri + Constants.characters)")
                 case .episodes:
                     return URL(string: "\(Constants.uri + Constants.episodes)")
                 case .locations:
