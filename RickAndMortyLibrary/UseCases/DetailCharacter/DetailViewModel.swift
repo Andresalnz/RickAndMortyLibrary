@@ -44,24 +44,28 @@ final class DetailViewModel: ObservableObject {
     }
     
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
-    @MainActor
     func loadData() async throws {
-        
         do {
             for urlEpisodeOrCharacter in allEpisodeCharacter {
                 switch type {
                     case .characters:
                         let singleEpisode = try await interactor.singleEpisode(url: urlEpisodeOrCharacter)
-                        self.episode = singleEpisode.toBo()
-                        if let episode = episode {
-                            allEpisodes.append(episode)
+                        await MainActor.run {
+                            self.episode = singleEpisode.toBo()
+                            if let episode = episode {
+                                allEpisodes.append(episode)
+                            }
                         }
+                       
                     case .episodes, .locations:
                         let singleCharacter = try await interactor.singleCharacter(url: urlEpisodeOrCharacter)
-                        self.character = singleCharacter.toBo()
-                        if let character = character {
-                            allCharacters.append(character)
+                        await MainActor.run {
+                            self.character = singleCharacter.toBo()
+                            if let character = character {
+                                allCharacters.append(character)
+                            }
                         }
+                       
                 }
             }
         } catch {
