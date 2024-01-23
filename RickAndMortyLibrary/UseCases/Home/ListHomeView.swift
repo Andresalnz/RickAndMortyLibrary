@@ -28,13 +28,14 @@ struct ListHomeView: View {
             }
             .navigationTitle(navigationTitle ?? Constants.noText)
         }
+        .navigationViewStyle(.stack)
         .searchable(text: $viewModel.searchText, prompt: Constants.searchPrompt)
-        .alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
+        //.alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
             //Salir de la app
-        } message: {
-            Text(Constants.messageAlertError)
-                .font(.body)
-        }
+//        } message: {
+//            Text(Constants.messageAlertError)
+//                .font(.body)
+//        }
         .onAppear {
             viewModel.loadUI()
         }
@@ -45,7 +46,7 @@ struct ListHomeView: View {
     private var HomeContentView: some View {
         switch type {
             case .characters:
-                ForEach(viewModel.filterCharactersbyName, id: \.id) { character in
+                ForEach(viewModel.characters, id: \.id) { character in
                     if let episodes = character.episode {
                         NavigationLink(destination: DetailView(model: character.rowDetail, type: .characters, viewModel: DetailViewModel(allEpisodeCharacter: episodes, type: .characters))) {
                             CharacterRowView(type: character.rowListMain)
@@ -54,14 +55,14 @@ struct ListHomeView: View {
                     
                 }
             case .episodes:
-                ForEach(viewModel.filterEpisodes, id: \.id) { episode in
+                ForEach(viewModel.episodes, id: \.id) { episode in
                     NavigationLink(destination: DetailView(model: episode.rowDetail, type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: episode.characters!, type: .episodes))) {
                         TitleRowView(type: episode.rowListMain)
                     }
                     
                 }
             case .locations:
-                ForEach(viewModel.filterLocations, id: \.id) { location in
+                ForEach(viewModel.locations, id: \.id) { location in
                     NavigationLink(destination: DetailView(model: location.rowDetail, type: .locations, viewModel: DetailViewModel(allEpisodeCharacter: location.residents!, type: .locations))) {
                         TitleRowView(type: location.rowListMain)
                     }
