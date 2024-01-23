@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RowDetail: Codable, Detail {
+struct RowDetail: Codable, Hashable, Detail {
     var airDate: String?
     var episode: String?
     var characters: [URL]?

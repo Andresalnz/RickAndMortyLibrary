@@ -7,17 +7,20 @@
 
 import Foundation
 
-struct CharacterModelBO: Codable {
+struct CharacterModelBO: Codable, Identifiable, Hashable {
+    let id: Int
     let info: CharactersInfoBO?
     let characters: [CharactersResultsBO]?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case info
         case characters = "results"
     }
 }
 
-struct CharactersInfoBO: Codable {
+struct CharactersInfoBO: Codable, Identifiable, Hashable {
+    let id: Int
     let count: Int?
     let pages: Int?
     let next: URL?
@@ -25,35 +28,22 @@ struct CharactersInfoBO: Codable {
     
 }
 
-struct CharactersResultsBO: Codable, Equatable {
-    static func == (lhs: CharactersResultsBO, rhs: CharactersResultsBO) -> Bool {
-          return  lhs.id == rhs.id &&
-            lhs.name == rhs.name &&
-            lhs.status == rhs.status &&
-            lhs.species == rhs.species &&
-            lhs.type == rhs.type &&
-            lhs.gender == rhs.gender &&
-            lhs.origin == rhs.origin &&
-            lhs.location == rhs.location &&
-            lhs.image == rhs.image &&
-            lhs.episode == rhs.episode &&
-            lhs.url == rhs.url &&
-            lhs.created == rhs.created
-        }
+struct CharactersResultsBO: Codable, Identifiable, Hashable {
+   
     
-    var rowListMain: RowListMain
-    var rowDetail: RowDetail
-    var id: Int?
-    var name: String?
-    var status: Status?
-    var species: Species?
-    var type: String?
-    var gender: Gender?
-    var origin, location: LocationOriginBO?
-    var image: URL?
-    var episode: [URL]?
-    var url: URL?
-    var created: Date?
+    let rowListMain: RowListMain
+    let rowDetail: RowDetail
+    let id: Int?
+    let name: String?
+    let status: Status?
+    let species: Species?
+    let type: String?
+    let gender: Gender?
+    let origin, location: LocationOriginBO?
+    let image: URL?
+    let episode: [URL]?
+    let url: URL?
+    let created: Date?
     
     init(rowListMain: RowListMain, rowDetail: RowDetail, id: Int? = nil, name: String? = nil, status: Status? = nil, species: Species? = nil, type: String? = nil, gender: Gender? = nil, origin: LocationOriginBO? = nil, location: LocationOriginBO? = nil, image: URL? = nil, episode: [URL]? = nil, url: URL? = nil, created: Date? = nil) {
         self.rowListMain = RowListMain(image: image, name: name, species: species)
@@ -73,21 +63,22 @@ struct CharactersResultsBO: Codable, Equatable {
     }
 }
 
-struct LocationOriginBO: Codable, Equatable {
+struct LocationOriginBO: Codable, Identifiable, Hashable {
+    let id: Int
     let name: String?
     let url: URL?
 }
 
 //MARK: - enum Gender, Species & Status
 
-enum Gender: String, Codable {
+enum Gender: String, Codable, CaseIterable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
     case Genderless = "Genderless"
 }
 
-enum Species: String, Codable {
+enum Species: String, Codable, CaseIterable {
     case alien = "Alien"
     case human = "Human"
     case Humanoid = "Humanoid"
@@ -100,7 +91,7 @@ enum Species: String, Codable {
     case Disease = "Disease"
 }
 
-enum Status: String, Codable {
+enum Status: String, Codable, CaseIterable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
