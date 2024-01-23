@@ -8,7 +8,7 @@
 import Foundation
 
 struct CharacterModelDTO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let info: CharactersInfoDTO?
     let characters: [CharactersResultsDTO]?
     
@@ -20,7 +20,7 @@ struct CharacterModelDTO: Codable, Identifiable, Hashable {
 }
 
 struct CharactersInfoDTO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let count: Int?
     let pages: Int?
     let next: String?
@@ -44,7 +44,7 @@ struct CharactersResultsDTO: Codable, Identifiable, Hashable {
 
 
 struct LocationOriginDTO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let name: String?
     let url: String?
 }

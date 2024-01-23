@@ -8,7 +8,7 @@
 import Foundation
 
 struct CharacterModelBO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let info: CharactersInfoBO?
     let characters: [CharactersResultsBO]?
     
@@ -20,7 +20,7 @@ struct CharacterModelBO: Codable, Identifiable, Hashable {
 }
 
 struct CharactersInfoBO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let count: Int?
     let pages: Int?
     let next: URL?
@@ -64,7 +64,7 @@ struct CharactersResultsBO: Codable, Identifiable, Hashable {
 }
 
 struct LocationOriginBO: Codable, Identifiable, Hashable {
-    let id: Int
+    let id: Int?
     let name: String?
     let url: URL?
 }
