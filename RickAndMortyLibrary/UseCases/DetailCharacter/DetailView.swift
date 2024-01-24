@@ -18,6 +18,12 @@ struct DetailView<T>: View  where T: Detail {
           DetailContentView
         }
         .navigationTitle(model.name ?? Constants.noText)
+        .alert(viewModel.errorMsg, isPresented: $viewModel.showAlert) {
+          //
+        } message: {
+            Text(Constants.messageAlertError)
+                .font(.body)
+        }
         .onAppear {
             viewModel.loadUI()
         }

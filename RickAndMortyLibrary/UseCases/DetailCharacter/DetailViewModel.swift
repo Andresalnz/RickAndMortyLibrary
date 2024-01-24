@@ -17,9 +17,15 @@ final class DetailViewModel: ObservableObject {
     let allEpisodeCharacter: [URL]
     let type: TypeViewList
     
+    //MARK: - Published
+    
     //Propidedad que almacena todos los episodios
     @Published var allEpisodes: [EpisodeResultsBO]
     @Published var allCharacters: [CharactersResultsBO]
+    
+    //Manejo de errores
+    @Published var errorMsg = ""
+    @Published var showAlert = false
     
     //Propiedad que almacena un solo episodio
     var episode: EpisodeResultsBO?
@@ -69,7 +75,11 @@ final class DetailViewModel: ObservableObject {
                 }
             }
         } catch {
-            throw ErrorHandler.requestEpisodeInvalid
+            await MainActor.run {
+                guard let errorDescription = ErrorHandler.requestNotWork.errorDescription else { return }
+                errorMsg = errorDescription
+                showAlert.toggle()
+            }
         }
     }
 }
