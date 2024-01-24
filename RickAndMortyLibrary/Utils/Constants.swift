@@ -20,7 +20,11 @@ struct Constants {
     static let titleCharacters: String = "Characters"
     static let titleEpisodes: String = "Episodes"
     static let titleLocations: String = "Locations"
+    static let titleResidents: String = "Residents"
+    static let titleImage: String = "Image"
+    static let titleInformation: String = "Information"
     static let noText: String = "N/A"
+    static let searchPrompt: String = "Search..."
     static let messageAlertError: String = "Error en la App, intentelo mas tarde"
     
     //Constants UI

@@ -7,17 +7,20 @@
 
 import Foundation
 
-struct CharacterModelDTO: Codable {
+struct CharacterModelDTO: Codable, Identifiable, Hashable {
+    let id: Int?
     let info: CharactersInfoDTO?
     let characters: [CharactersResultsDTO]?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case info
         case characters = "results"
     }
 }
 
-struct CharactersInfoDTO: Codable {
+struct CharactersInfoDTO: Codable, Identifiable, Hashable {
+    let id: Int?
     let count: Int?
     let pages: Int?
     let next: String?
@@ -25,7 +28,7 @@ struct CharactersInfoDTO: Codable {
     
 }
 
-struct CharactersResultsDTO: Codable {
+struct CharactersResultsDTO: Codable, Identifiable, Hashable {
     let id: Int?
     let name: String?
     let status: Status?
@@ -40,7 +43,8 @@ struct CharactersResultsDTO: Codable {
 }
 
 
-struct LocationOriginDTO: Codable {
+struct LocationOriginDTO: Codable, Identifiable, Hashable {
+    let id: Int?
     let name: String?
     let url: String?
 }

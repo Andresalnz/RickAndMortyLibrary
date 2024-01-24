@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct DetailCharacterView<T>: View  where T: Detail {
+struct DetailView<T>: View  where T: Detail {
     
     let model: T
     let type: TypeViewList
-    @StateObject var viewModel: DetailCharacterViewModel
+    @StateObject var viewModel: DetailViewModel
     
     var body: some View {
         List {
@@ -32,30 +32,32 @@ struct DetailCharacterView<T>: View  where T: Detail {
                 //MARK: - Seccion de la imagen
                 SectionDetailView(content: {
                     SectionImageView(model: model)
-                }, titleSection: "Image")
+                }, titleSection: Constants.titleImage)
                 //MARK: - Seccion de la informacion
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .characters)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 //MARK: - Seccion de los episodios
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .characters)
-                },titleSection: "Episodes")
-              
+                    SectionEpisodesAndCharactersView(type: .characters)
+                },titleSection: Constants.titleEpisodes)
+                .environmentObject(viewModel)
             case .episodes:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .episodes)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
-                },titleSection: "Episodes")
+                    SectionEpisodesAndCharactersView(type: .episodes)
+                },titleSection: Constants.titleCharacters)
+                .environmentObject(viewModel)
             case .locations:
                 SectionDetailView(content: {
                     SectionInformationView(model: model, type: .locations)
-                }, titleSection: "Information")
+                }, titleSection: Constants.titleInformation)
                 SectionDetailView(content: {
-                    SectionEpisodesView(viewModel: viewModel, type: .episodes)
-                },titleSection: "Residents")
+                    SectionEpisodesAndCharactersView(type: .episodes)
+                },titleSection: Constants.titleResidents)
+                .environmentObject(viewModel)
         }
     }
 }

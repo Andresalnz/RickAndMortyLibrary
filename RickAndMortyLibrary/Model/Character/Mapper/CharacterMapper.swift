@@ -37,7 +37,7 @@ extension CharactersResultsDTO {
 
 extension LocationOriginDTO {
     func toBo() -> LocationOriginBO {
-        return LocationOriginBO(name: name,
+        return LocationOriginBO(id: id, name: name,
                                 url: URL(string: url ?? ""))
     }
 }
