@@ -129,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				9F8CFF122B04004800BC00EC /* Shared */,
-				9F8CFF112B04004100BC00EC /* Extensions */,
 				9F0DEA272AE1440E009376F1 /* Model */,
 				9F0DEA262AE143FD009376F1 /* UseCases */,
 				9F0DEA252AE143F3009376F1 /* Provider */,
@@ -310,17 +309,18 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
-		9F8CFF112B04004100BC00EC /* Extensions */ = {
+		9F8CFF112B04004100BC00EC /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
 				9FB5F8522B61073F00C4042D /* StyleList.swift */,
 			);
-			path = Extensions;
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		9F8CFF122B04004800BC00EC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9F8CFF112B04004100BC00EC /* Modifiers */,
 				9F8CFF1C2B056E7700BC00EC /* Protocols */,
 				9F8CFF132B04014A00BC00EC /* Views */,
 				9F0DEA3E2AE18547009376F1 /* AppImage */,
