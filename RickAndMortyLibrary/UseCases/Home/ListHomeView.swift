@@ -26,6 +26,7 @@ struct ListHomeView: View {
             List {
                 HomeContentView
             }
+            
             .navigationTitle(navigationTitle ?? Constants.noText)
         }
         .navigationViewStyle(.stack)
@@ -52,8 +53,8 @@ struct ListHomeView: View {
                             CharacterRowView(type: character.rowListMain)
                         }
                     }
-                    
                 }
+                .modifier(StyleList())
             case .episodes:
                 ForEach(viewModel.episodes, id: \.id) { episode in
                     NavigationLink(destination: DetailView(model: episode.rowDetail, type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: episode.characters!, type: .episodes))) {
@@ -61,12 +62,14 @@ struct ListHomeView: View {
                     }
                     
                 }
+                .modifier(StyleList())
             case .locations:
                 ForEach(viewModel.locations, id: \.id) { location in
                     NavigationLink(destination: DetailView(model: location.rowDetail, type: .locations, viewModel: DetailViewModel(allEpisodeCharacter: location.residents!, type: .locations))) {
                         TitleRowView(type: location.rowListMain)
                     }
                 }
+                .modifier(StyleList())
         }
     }
 }

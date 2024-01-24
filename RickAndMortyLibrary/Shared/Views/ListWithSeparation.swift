@@ -27,18 +27,10 @@ struct ListWithSeparation<T>: View where T: Detail {
                
             }
         }
-        .padding(.bottom, 10)
-        
-        .listRowSeparator(.hidden)
-        .listRowBackground(RoundedRectangle(cornerRadius: Constants.sizeCornerRadius)
-            .background(.clear)
-            .foregroundStyle(.white)
-            .opacity(0.8)
-            .padding(.bottom, 10)
-        )
+        .modifier(StyleList())
     }
 }
-//
-//#Preview {
-//    ListWithSeparation(content: Text(""))
-//}
+
+#Preview {
+    ListWithSeparation(model: RowDetail())
+}
