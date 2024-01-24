@@ -14,10 +14,15 @@ final class ListHomeViewModel: ObservableObject {
     //Interactor
     private let interactor: Interactor
     
+    //MARK: - Published
     //Array que almacena la informacion
     @Published var characters: [CharactersResultsBO]
     @Published var episodes: [EpisodeResultsBO]
     @Published var locations: [LocationResultsBO]
+    
+    //Manejo de errores
+    @Published var errorMsg = ""
+    @Published var showAlert = false
     
     //MARK: - Init
     init(interactor: Interactor = Interactor.shared, characters: [CharactersResultsBO] = [], episodes: [EpisodeResultsBO] = [], locations: [LocationResultsBO] = []) {
@@ -52,10 +57,6 @@ final class ListHomeViewModel: ObservableObject {
 //        }
 //    }
     
-    
-    //Manejo de errores
-//    @Published var errorValue = false
-//    @Published var messageError: String = ""
     
     
     //Booleano para cuando se esta en el detalle y se vuelva atras no haga ninguna petición
@@ -106,7 +107,11 @@ final class ListHomeViewModel: ObservableObject {
                 }
             }
         } catch {
-            throw ErrorHandler.requestCharactersInvalid
+            await MainActor.run {
+                guard let errorDescription = ErrorHandler.requestNotWork.errorDescription else { return }
+                errorMsg = errorDescription
+                showAlert.toggle()
+            }
         }
     }
 }

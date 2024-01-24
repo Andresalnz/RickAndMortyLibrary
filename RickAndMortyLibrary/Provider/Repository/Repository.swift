@@ -15,7 +15,7 @@ struct Repository {
             let rickAndMortyModel = try JSONDecoder().decode(type, from: data)
             return rickAndMortyModel
         } catch {
-            throw ErrorHandler.requestCharactersInvalid
+            throw ErrorHandler.requestInvalid
         }
     }
 }

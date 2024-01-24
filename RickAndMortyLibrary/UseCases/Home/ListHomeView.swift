@@ -31,12 +31,12 @@ struct ListHomeView: View {
         }
         .navigationViewStyle(.stack)
         .searchable(text: $viewModel.searchText, prompt: Constants.searchPrompt)
-        //.alert(viewModel.messageError, isPresented: $viewModel.errorValue) {
-            //Salir de la app
-//        } message: {
-//            Text(Constants.messageAlertError)
-//                .font(.body)
-//        }
+        .alert(viewModel.errorMsg, isPresented: $viewModel.showAlert) {
+          //
+        } message: {
+            Text(Constants.messageAlertError)
+                .font(.body)
+        }
         .onAppear {
             viewModel.loadUI()
         }
