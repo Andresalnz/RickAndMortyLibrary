@@ -21,6 +21,7 @@ struct Constants {
     static let titleEpisodes: String = "Episodes"
     static let titleLocations: String = "Locations"
     static let titleResidents: String = "Residents"
+    static let titleFavourite: String = "Favourites"
     static let titleImage: String = "Image"
     static let titleInformation: String = "Information"
     static let noText: String = "N/A"

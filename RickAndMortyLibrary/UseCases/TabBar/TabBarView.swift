@@ -28,6 +28,11 @@ struct TabBarView: View {
                     Image(systemName: "globe")
                     Text(Constants.titleLocations)
                 }
+            FavouritesView(viewModel: FavouritesViewModel())
+                .tabItem {
+                    Image(systemName: "heart")
+                    Text(Constants.titleFavourite)
+                }
         }
     }
 }
