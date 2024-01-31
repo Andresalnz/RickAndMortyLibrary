@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-struct RowDetail: Codable, Hashable, Detail {
+struct RowDetail: Codable, Hashable, Identifiable, Detail {
+    @DocumentID var id: String?
     var airDate: String?
     var episode: String?
     var characters: [URL]?

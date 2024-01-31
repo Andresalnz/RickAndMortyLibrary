@@ -55,4 +55,13 @@ struct Interactor: RickAndMortyInteractor {
         return try await repository.getJSON(url: Util.Services.allLocations.shapeURL(), type: LocationModelDTO.self)
     }
     
+    //MARK: - Firebase
+    func getAllFavourites(completionBlock: @escaping (Result<[RowDetail], Error>) -> Void) {
+        return repository.getAllCharacters(completionBlock: completionBlock)
+    }
+    
+    func createFavourite(infoFavourite: Detail, completionBlock: @escaping (Result<Detail, Error>) -> Void) {
+        return repository.createNewFavourite(character: infoFavourite, completionBlock: completionBlock)
+    }
+    
 }
