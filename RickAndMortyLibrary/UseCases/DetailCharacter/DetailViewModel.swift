@@ -49,6 +49,18 @@ final class DetailViewModel: ObservableObject {
         }
     }
     
+    func saveFavourite(infoFavourite: Detail) {
+        interactor.createFavourite(infoFavourite: infoFavourite) { [weak self] result in
+            guard let wSelf = self else { return }
+            switch result {
+                case .success(let fir):
+                    print("EXITO")
+                case .failure(let err):
+                    print("Error en save \(err)")
+            }
+        }
+    }
+    
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     func loadData() async throws {
         do {
