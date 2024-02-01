@@ -42,19 +42,19 @@ struct FavouritesView: View {
     
     @ViewBuilder
     private var FavouriteContent: some View {
-        switch viewModel.ischaracter {
+        switch viewModel.typeList {
             case .characters:
-                ForEach(viewModel.characters ,id: \.id) { info in
-                    CharacterFavouriteView(model: info)
+                ForEach(viewModel.characters ,id: \.id) { character in
+                    CharacterFavouriteView(model: character)
                 }
             case .locations:
-                ForEach(viewModel.locations, id: \.id) { info in
-                    EpisodeLocationFavourite(model: info)
+                ForEach(viewModel.locations, id: \.id) { location in
+                    EpisodeLocationFavourite(model: location)
                     
                 }
             case .episodes:
-                ForEach(viewModel.episodes ,id: \.id) { info in
-                    EpisodeLocationFavourite(model: info)
+                ForEach(viewModel.episodes ,id: \.id) { episode in
+                    EpisodeLocationFavourite(model: episode)
                 }
                 
         }
