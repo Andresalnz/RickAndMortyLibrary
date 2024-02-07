@@ -32,30 +32,31 @@ final class ListHomeViewModel: ObservableObject {
         self.locations = locations
     }
     
+    //MARK: - Search
     
-    //MARK: - Variable computada que devuelve el un arrray de personajes segun lo que se busque
-//    var filterCharactersbyName: [CharactersResultsBO] {
-//        guard !searchText.isEmpty else { return characters }
-//        return characters.filter { character in
-//            character.name!.lowercased().contains(searchText.lowercased())
-//        }
-//    }
-//    
-//    //MARK: - Variable computada que devuelve el un arrray de eppisodios segun lo que se busque
-//    var filterEpisodes: [EpisodeResultsBO] {
-//        guard !searchText.isEmpty else { return episodes }
-//        return episodes.filter { episode in
-//            episode.name!.lowercased().contains(searchText.lowercased())
-//        }
-//    }
-//    
-//    //MARK: - Variable computada que devuelve el un arrray de localizaciones segun lo que se busque
-//    var filterLocations: [LocationResultsBO] {
-//        guard !searchText.isEmpty else { return locations }
-//        return locations.filter { location in
-//            location.name!.lowercased().contains(searchText.lowercased())
-//        }
-//    }
+    // Variable que devuelve un array de personajes segun lo que se busque
+    var searchCharacters: [CharactersResultsBO] {
+        guard !searchText.isEmpty else { return characters }
+        return characters.filter { character in
+            character.name!.lowercased().contains(searchText.lowercased())
+        }
+    }
+    
+    // Variable que devuelve un array de episodios segun lo que se busque
+    var searchEpisodes: [EpisodeResultsBO] {
+        guard !searchText.isEmpty else { return episodes }
+        return episodes.filter { episode in
+            episode.name!.lowercased().contains(searchText.lowercased())
+        }
+    }
+    
+    //Variable que devuelve  un array de localizaciones segun lo que se busque
+    var searchLocations: [LocationResultsBO] {
+        guard !searchText.isEmpty else { return locations }
+        return locations.filter { location in
+            location.name!.lowercased().contains(searchText.lowercased())
+        }
+    }
     
     
     
@@ -64,19 +65,6 @@ final class ListHomeViewModel: ObservableObject {
     
     //Propiedad que almacena el texto que se esta buscando
     @Published var searchText: String = ""
-    
-  
-//    //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar mas personajes al llegar al final de la lista
-//    @MainActor
-//    func loadMoreIfNeeded(characterInfo: CharactersResultsBO) async throws {
-//        if characters.last == characterInfo {
-//            currentPage += 1
-//            var moreCharacters: [CharactersResultsBO] = []
-//            moreCharacters = try await interactorRickAndMorty.allCharacters()
-//            characters.append(contentsOf: moreCharacters)
-//        }
-//    }
-    
     
 
     //MARK: - Método para uso en la vista, para pintar todo lo necesario

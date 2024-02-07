@@ -47,7 +47,7 @@ struct ListHomeView: View {
     private var HomeContentView: some View {
         switch type {
             case .characters:
-                ForEach(viewModel.characters, id: \.id) { character in
+                ForEach(viewModel.searchCharacters, id: \.id) { character in
                     if let episodes = character.episode {
                         NavigationLink(destination: DetailView(model: character.rowDetail, type: .characters, viewModel: DetailViewModel(allEpisodeCharacter: episodes, type: .characters))) {
                             CharacterRowView(type: character.rowListMain)
@@ -56,7 +56,7 @@ struct ListHomeView: View {
                 }
                 .modifier(StyleList())
             case .episodes:
-                ForEach(viewModel.episodes, id: \.id) { episode in
+                ForEach(viewModel.searchEpisodes, id: \.id) { episode in
                     NavigationLink(destination: DetailView(model: episode.rowDetail, type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: episode.characters!, type: .episodes))) {
                         TitleRowView(type: episode.rowListMain)
                     }
@@ -64,7 +64,7 @@ struct ListHomeView: View {
                 }
                 .modifier(StyleList())
             case .locations:
-                ForEach(viewModel.locations, id: \.id) { location in
+                ForEach(viewModel.searchLocations, id: \.id) { location in
                     NavigationLink(destination: DetailView(model: location.rowDetail, type: .locations, viewModel: DetailViewModel(allEpisodeCharacter: location.residents!, type: .locations))) {
                         TitleRowView(type: location.rowListMain)
                     }
