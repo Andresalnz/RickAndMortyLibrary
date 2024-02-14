@@ -24,24 +24,13 @@ struct Repository {
         }
     }
     
-    func getAllCharacters(completionBlock: @escaping (Result<[RowDetail], Error>) -> Void) {
-        
-        database.collection(collection)
-            .addSnapshotListener { query, error in
-                if let error = error {
-                    print ("Error Firebase \(error.localizedDescription)")
-                    completionBlock(.failure(error))
-                    return
-                }
-                
-                guard let documents = query?.documents  else {
-                    completionBlock(.success([]))
-                    return
-                }
-                
-                let character = documents.compactMap {try? $0.data(as: RowDetail.self)}
-                completionBlock(.success(character))
-            }
+    func getFav() async throws -> [RowDetail] {
+        do {
+            let querySnapchot = try await database.collection(collection).getDocuments()
+            return querySnapchot.documents.compactMap { try? $0.data(as: RowDetail.self)}
+        } catch let err {
+            throw ErrorHandler.invalidUrl
+        }
     }
 
     func createNewFavourite(character: Detail, completionBlock: @escaping (Result<Detail, Error>) -> Void ) {

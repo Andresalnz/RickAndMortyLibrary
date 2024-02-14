@@ -29,7 +29,7 @@ final class FavouritesViewModel: ObservableObject {
     //MARK: - loadUI
     func loadUI() {
         Task {
-            loadData()
+         try  await loadData()
         }
     }
     
@@ -51,14 +51,10 @@ final class FavouritesViewModel: ObservableObject {
     }
     
     //MARK: - loadData
-    func loadData()  {
-        interactor.getAllFavourites { result in
-            switch result {
-                case .success(let info):
-                    self.info = info
-                case .failure(let err):
-                    print("Error en getAllCharacters \(err)")
-            }
+    func loadData() async throws {
+        let infoFavourites = try await  interactor.getAllFavourites()
+        await MainActor.run {
+            self.info = infoFavourites
         }
     }
 }

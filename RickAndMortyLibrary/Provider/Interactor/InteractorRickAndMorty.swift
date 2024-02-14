@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 protocol RickAndMortyInteractor {
     func getAllCharacters() async throws -> CharacterModelDTO
@@ -56,8 +57,9 @@ struct Interactor: RickAndMortyInteractor {
     }
     
     //MARK: - Firebase
-    func getAllFavourites(completionBlock: @escaping (Result<[RowDetail], Error>) -> Void) {
-        return repository.getAllCharacters(completionBlock: completionBlock)
+    
+    func getAllFavourites() async throws -> [RowDetail] {
+        return try await repository.getFav()
     }
     
     func createFavourite(infoFavourite: Detail, completionBlock: @escaping (Result<Detail, Error>) -> Void) {
