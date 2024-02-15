@@ -30,4 +30,9 @@ struct Constants {
     
     //Constants UI
     static let sizeCornerRadius: CGFloat = 8
+    
+    //FirebaseFirestore
+    static let collectionCharacter: String = "charactersFavs"
+    static let collectionEpisodes: String = "episodesFavs"
+    static let collectionLocations: String = "locationsFavs"
 }

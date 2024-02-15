@@ -28,7 +28,7 @@ struct TabBarView: View {
                     Image(systemName: "globe")
                     Text(Constants.titleLocations)
                 }
-            FavouritesView(viewModel: FavouritesViewModel(), type: .characters)
+            FavouritesView(viewModel: FavouritesViewModel(typeList: .locations))
                 .tabItem {
                     Image(systemName: "heart")
                     Text(Constants.titleFavourite)

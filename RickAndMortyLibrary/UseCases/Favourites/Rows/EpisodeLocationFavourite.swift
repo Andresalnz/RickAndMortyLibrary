@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EpisodeLocationFavourite: View {
     
-    let model: RowDetail
+    let model: FirebaseFirestoreEpisodeLocationModel
     
     var body: some View {
         HStack(spacing: 50) {
@@ -23,7 +23,7 @@ struct EpisodeLocationFavourite: View {
                 }
             }
             if let dimension = model.dimension {
-                Text(model.dimension ?? "")
+                Text(dimension)
             }
             if let episode = model.episode {
                 Text(episode)
@@ -33,5 +33,5 @@ struct EpisodeLocationFavourite: View {
 }
 
 #Preview {
-    EpisodeLocationFavourite(model: RowDetail(dimension: "Dimension C-137", type: "Planet", name: "Earth"))
+    EpisodeLocationFavourite(model: FirebaseFirestoreEpisodeLocationModel())
 }

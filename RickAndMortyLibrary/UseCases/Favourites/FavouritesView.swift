@@ -9,21 +9,23 @@ import SwiftUI
 
 struct FavouritesView: View {
     @StateObject var viewModel: FavouritesViewModel
-    let type: TypeViewList
     
     var body: some View {
         VStack {
             HStack(alignment: .center, spacing: 50) {
                 ButtonFilterView(title: "Locations") {
-                    viewModel.filterEpisodes()
+                    viewModel.typeList = .locations
+                    viewModel.loadUI()
                 }
                 
                 ButtonFilterView(title: "Characters") {
-                    viewModel.filterCharacters()
+                    viewModel.typeList = .characters
+                    viewModel.loadUI()
                 }
                 
                 ButtonFilterView(title: "Episodes") {
-                    viewModel.filterLocation()
+                    viewModel.typeList = .episodes
+                    viewModel.loadUI()
                 }
             }
             .frame(maxWidth: .infinity)
@@ -56,11 +58,10 @@ struct FavouritesView: View {
                 ForEach(viewModel.episodes ,id: \.id) { episode in
                     EpisodeLocationFavourite(model: episode)
                 }
-                
         }
     }
 }
 
 #Preview {
-    FavouritesView(viewModel: FavouritesViewModel(), type: .characters)
+    FavouritesView(viewModel: FavouritesViewModel(typeList: .characters))
 }
