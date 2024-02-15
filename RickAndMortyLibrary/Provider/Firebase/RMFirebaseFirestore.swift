@@ -10,9 +10,8 @@ import FirebaseFirestore
 
 struct RMFirebaseFirestore {
     private let database = Firestore.firestore()
-
-    //MARK: - Crear colecciones
     
+    //MARK: - Crear colecciones
     //Personajes
     func createFavsCharacters(model: Detail, collection: String) async throws {
         do {
@@ -27,7 +26,7 @@ struct RMFirebaseFirestore {
                 "image": model.image?.description ?? ""
             ]
             
-           try await database.collection(collection).addDocument(data: character)
+            try await database.collection(collection).addDocument(data: character)
         } catch {
             throw ErrorHandler.FirestoreNotSaveDocument
         }
