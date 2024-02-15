@@ -19,9 +19,10 @@ protocol RickAndMortyInteractor {
 struct Interactor: RickAndMortyInteractor {
     
     var repository: Repository
-    var firebaseFirestore: RMFirebaseFirestore
+    var firebaseFirestoreSaveDocuments: RMFirebaseFirestoreSaveDocuments
+    var firebaseFirestoreGetDocument: RMFirebaseFirestoreGetDocuments
     
-    static let shared: Interactor = Interactor(repository: Repository(), firebaseFirestore: RMFirebaseFirestore())
+    static let shared: Interactor = Interactor(repository: Repository(), firebaseFirestoreSaveDocuments: RMFirebaseFirestoreSaveDocuments(), firebaseFirestoreGetDocument: RMFirebaseFirestoreGetDocuments())
     
     //MARK: - Characters
     
@@ -60,11 +61,11 @@ struct Interactor: RickAndMortyInteractor {
     //MARK: - Firebase
     //Obtener documentos de favoritod de personajes
     func getAllDocumentsFavouritesCharacters(collection: String) async throws -> [FirebaseFirestoreCharacterModel] {
-        return try await firebaseFirestore.getDocuments(collection: collection, type: FirebaseFirestoreCharacterModel.self)
+        return try await firebaseFirestoreGetDocument.getDocuments(collection: collection, type: FirebaseFirestoreCharacterModel.self)
     }
     //Obtener documentos de favoritos de localizaciones y episodios
     func getAllDocumentsFavouritesEpisodes(collection: String) async throws -> [FirebaseFirestoreEpisodeLocationModel] {
-        return try await firebaseFirestore.getDocuments(collection: collection, type: FirebaseFirestoreEpisodeLocationModel.self)
+        return try await firebaseFirestoreGetDocument.getDocuments(collection: collection, type: FirebaseFirestoreEpisodeLocationModel.self)
     }
     
     
@@ -72,15 +73,15 @@ struct Interactor: RickAndMortyInteractor {
     
     //Guardar documento como favorito
     func createFavouriteCharacter(model: Detail) async throws {
-        try await firebaseFirestore.createFavsCharacters(model: model, collection: Constants.collectionCharacter)
+        try await firebaseFirestoreSaveDocuments.createFavsCharacters(model: model, collection: Constants.collectionCharacter)
     }
     
     func createFavouriteEpisode(model: Detail) async throws {
-        try await firebaseFirestore.createFavsEpisodes(model: model, collection: Constants.collectionEpisodes)
+        try await firebaseFirestoreSaveDocuments.createFavsEpisodes(model: model, collection: Constants.collectionEpisodes)
     }
     
     func createFavouriteLocation(model: Detail) async throws {
-        try await firebaseFirestore.createFavsLocations(model: model, collection: Constants.collectionLocations)
+        try await firebaseFirestoreSaveDocuments.createFavsLocations(model: model, collection: Constants.collectionLocations)
     }
     
 }
