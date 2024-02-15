@@ -20,7 +20,7 @@ struct DetailView<T>: View  where T: Detail {
         .navigationTitle(model.name ?? Constants.noText)
         .toolbar(content: {
             Button("Favorito") {
-                viewModel.saveFavourite(infoFavourite: model)
+                viewModel.loadSave(infoFavourite: model)
             }
         })
         .alert(viewModel.errorMsg, isPresented: $viewModel.showAlert) {

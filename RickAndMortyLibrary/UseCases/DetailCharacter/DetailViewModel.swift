@@ -49,15 +49,20 @@ final class DetailViewModel: ObservableObject {
         }
     }
     
-    func saveFavourite(infoFavourite: Detail) {
-        interactor.createFavourite(infoFavourite: infoFavourite) { [weak self] result in
-            guard let wSelf = self else { return }
-            switch result {
-                case .success(let fir):
-                    print("EXITO")
-                case .failure(let err):
-                    print("Error en save \(err)")
-            }
+    func loadSave(infoFavourite: Detail) {
+        Task {
+            try await saveFavourite(infoFavourite: infoFavourite)
+        }
+    }
+    
+    func saveFavourite(infoFavourite: Detail) async throws {
+        switch type {
+            case .characters:
+                try await interactor.createFavouriteCharacter(model: infoFavourite)
+            case .locations:
+                try await interactor.createFavouriteLocation(model: infoFavourite)
+            case .episodes:
+                try await interactor.createFavouriteEpisode(model: infoFavourite)
         }
     }
     
