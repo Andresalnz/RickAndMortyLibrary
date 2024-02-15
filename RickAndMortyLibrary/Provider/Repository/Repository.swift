@@ -8,8 +8,6 @@
 import Foundation
 
 struct Repository {
-    private let database = Firestore.firestore()
-    private let collection = "characters"
     
     func getJSON<T>(url: URL?, type: T.Type) async throws -> T where T: Codable {
         guard let url = url else { throw ErrorHandler.invalidUrl }
