@@ -19,8 +19,9 @@ protocol RickAndMortyInteractor {
 struct Interactor: RickAndMortyInteractor {
     
     var repository: Repository
+    var firebaseFirestore: RMFirebaseFirestore
     
-    static let shared: Interactor = Interactor(repository: Repository())
+    static let shared: Interactor = Interactor(repository: Repository(), firebaseFirestore: RMFirebaseFirestore())
     
     //MARK: - Characters
     
@@ -58,12 +59,20 @@ struct Interactor: RickAndMortyInteractor {
     
     //MARK: - Firebase
     
-    func getAllFavourites() async throws -> [RowDetail] {
-        return try await repository.getFav()
+//    func getAllFavourites() async throws -> [RowDetail] {
+//        return try await repository.getFav()
+//    }
+    
+    func createFavouriteCharacter(model: Detail) async throws {
+        try await firebaseFirestore.createFavsCharacters(model: model, collection: Constants.collectionCharacter)
     }
     
-    func createFavourite(infoFavourite: Detail, completionBlock: @escaping (Result<Detail, Error>) -> Void) {
-        return repository.createNewFavourite(character: infoFavourite, completionBlock: completionBlock)
+    func createFavouriteEpisode(model: Detail) async throws {
+        try await firebaseFirestore.createFavsEpisodes(model: model, collection: Constants.collectionEpisodes)
+    }
+    
+    func createFavouriteLocation(model: Detail) async throws {
+        try await firebaseFirestore.createFavsLocations(model: model, collection: Constants.collectionLocations)
     }
     
 }
