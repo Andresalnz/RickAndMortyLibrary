@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
-struct RMFirebaseFirestore {
+struct RMFirebaseFirestoreSaveDocuments {
     private let database = Firestore.firestore()
     
     //MARK: - Crear colecciones
@@ -60,16 +60,6 @@ struct RMFirebaseFirestore {
             try await database.collection(collection).addDocument(data: location)
         } catch {
             throw ErrorHandler.FirestoreNotSaveDocument
-        }
-    }
-    
-    //MARK: - Obtener colecciones
-    func getDocuments<T>(collection: String, type: T.Type) async throws -> [T] where T: Codable {
-        do {
-            let querySnapchot = try await database.collection(collection).getDocuments()
-            return querySnapchot.documents.compactMap { try? $0.data(as: type) }
-        } catch {
-            throw ErrorHandler.FirestoreNotGetDocuments
         }
     }
 }
