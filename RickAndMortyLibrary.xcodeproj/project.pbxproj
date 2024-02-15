@@ -61,6 +61,8 @@
 		9FD128B62B6BF9AA00A9B8D6 /* EpisodeLocationFavourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD128B52B6BF9AA00A9B8D6 /* EpisodeLocationFavourite.swift */; };
 		9FD128B92B6C026700A9B8D6 /* ButtonFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD128B82B6C026700A9B8D6 /* ButtonFilterView.swift */; };
 		9FF9F9082AF18EAB00411BCC /* InfoDetailCharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */; };
+		9FFE6A3A2B7E81F8004CEEA9 /* FirebaseFirestoreCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A392B7E81F8004CEEA9 /* FirebaseFirestoreCharacterModel.swift */; };
+		9FFE6A3C2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A3B2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,8 @@
 		9FD128B52B6BF9AA00A9B8D6 /* EpisodeLocationFavourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeLocationFavourite.swift; sourceTree = "<group>"; };
 		9FD128B82B6C026700A9B8D6 /* ButtonFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFilterView.swift; sourceTree = "<group>"; };
 		9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailCharacterRowView.swift; sourceTree = "<group>"; };
+		9FFE6A392B7E81F8004CEEA9 /* FirebaseFirestoreCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreCharacterModel.swift; sourceTree = "<group>"; };
+		9FFE6A3B2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreEpisodeLocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,7 @@
 		9F0DEA272AE1440E009376F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FFE6A342B7E81B7004CEEA9 /* Firebase */,
 				9F0DEA282AE1497E009376F1 /* Character */,
 				9F8814832AE26EE100448501 /* Episode */,
 				9FAAFBBC2B0B87D000D65E6F /* Locations */,
@@ -480,6 +485,39 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		9FFE6A342B7E81B7004CEEA9 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE6A352B7E81BF004CEEA9 /* Firestore */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		9FFE6A352B7E81BF004CEEA9 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE6A372B7E81D1004CEEA9 /* Episode */,
+				9FFE6A362B7E81C8004CEEA9 /* Character */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		9FFE6A362B7E81C8004CEEA9 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE6A392B7E81F8004CEEA9 /* FirebaseFirestoreCharacterModel.swift */,
+			);
+			path = Character;
+			sourceTree = "<group>";
+		};
+		9FFE6A372B7E81D1004CEEA9 /* Episode */ = {
+			isa = PBXGroup;
+			children = (
+				9FFE6A3B2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift */,
+			);
+			path = Episode;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -567,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0DEA452AE18C8C009376F1 /* CharacterRowView.swift in Sources */,
+				9FFE6A3C2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift in Sources */,
 				9FAAFBBB2B0B83CC00D65E6F /* HomeModelVO.swift in Sources */,
 				9FAAFBC12B0B880100D65E6F /* LocationModelDTO.swift in Sources */,
 				9F798BCB2B18FFA7008BEC6E /* ListWithSeparation.swift in Sources */,
@@ -606,6 +645,7 @@
 				9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */,
 				9FAAFBCE2B0CD53800D65E6F /* DetailViewProtocols.swift in Sources */,
 				9FD128B62B6BF9AA00A9B8D6 /* EpisodeLocationFavourite.swift in Sources */,
+				9FFE6A3A2B7E81F8004CEEA9 /* FirebaseFirestoreCharacterModel.swift in Sources */,
 				9F0DEA402AE18559009376F1 /* AppImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
