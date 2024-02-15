@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CharacterFavouriteView: View {
     
-    let model: RowDetail
+    let model: FirebaseFirestoreCharacterModel
     
     var body: some View {
         HStack(spacing: 30) {
@@ -21,14 +21,14 @@ struct CharacterFavouriteView: View {
             }
             VStack(alignment: .leading, spacing: 15) {
                 Text(model.name ?? "")
-                Text(model.species?.rawValue ?? "")
-                Text(model.status?.rawValue ?? "")
-                Text(model.location?.name ?? "")
+                Text(model.species ?? "")
+                Text(model.status ?? "")
+                Text(model.name ?? "")
             }
         }
     }
 }
 
 #Preview {
-    CharacterFavouriteView(model: RowDetail())
+    CharacterFavouriteView(model: FirebaseFirestoreCharacterModel())
 }
