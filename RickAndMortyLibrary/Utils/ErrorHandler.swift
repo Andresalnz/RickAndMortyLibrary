@@ -15,6 +15,7 @@ enum ErrorHandler: String, Error {
     
     //Firebase
     case FirestoreNotSaveDocument
+    case FirestoreNotGetDocuments
     
     public var errorDescription: String? {
         switch self {
@@ -26,6 +27,8 @@ enum ErrorHandler: String, Error {
                 return NSLocalizedString("Petición invalidada", comment: "Petición invalidada")
             case .FirestoreNotSaveDocument:
                 return NSLocalizedString("No se pudo guardar el documento", comment: "No se pudo guardar el documento")
+            case .FirestoreNotGetDocuments:
+                return NSLocalizedString("No se pudo obtener los documentos", comment: "No se pudo obtener los documentos")
         }
     }
 }
