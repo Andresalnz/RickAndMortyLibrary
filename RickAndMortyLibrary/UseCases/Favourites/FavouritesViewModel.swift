@@ -12,18 +12,18 @@ final class FavouritesViewModel: ObservableObject {
     //MARK: - Variables
     
     //@Publised
-    @Published var info: [RowDetail] = []
-    @Published var characters: [RowDetail] = []
-    @Published var episodes: [RowDetail] = []
-    @Published var locations: [RowDetail] = []
-    @Published var typeList: TypeViewList = .characters
+    @Published var characters: [FirebaseFirestoreCharacterModel] = []
+    @Published var episodes: [FirebaseFirestoreEpisodeLocationModel] = []
+    @Published var locations: [FirebaseFirestoreEpisodeLocationModel] = []
+    @Published var typeList: TypeViewList
     
     //interactor
     private let interactor: Interactor
     
     //MARK: - Init
-    init(interactor: Interactor = Interactor.shared) {
+    init(interactor: Interactor = Interactor.shared, typeList: TypeViewList) {
         self.interactor = interactor
+        self.typeList = typeList
     }
     
     //MARK: - loadUI
@@ -33,28 +33,24 @@ final class FavouritesViewModel: ObservableObject {
         }
     }
     
-    //MARK: - Metodos Filter
-    func filterCharacters()  {
-        characters = info.filter { $0.gender?.rawValue != nil }
-        typeList = .characters
-    }
-    
-    func filterEpisodes()  {
-        episodes = info.filter { $0.airDate != nil }
-        typeList = .episodes
-    }
-    
-    func filterLocation()  {
-        locations = info.filter { $0.dimension != nil }
-        typeList = .locations
-        
-    }
-    
     //MARK: - loadData
     func loadData() async throws {
-        let infoFavourites = try await  interactor.getAllFavourites()
-        await MainActor.run {
-            self.info = infoFavourites
+        switch typeList {
+            case .characters:
+                let getFavouritesCharacters = try await interactor.getAllDocumentsFavouritesCharacters(collection: Constants.collectionCharacter)
+                await MainActor.run {
+                    self.characters = getFavouritesCharacters
+                }
+            case .locations:
+                let getFavouritesLocations = try await interactor.getAllDocumentsFavouritesEpisodes(collection: Constants.collectionLocations)
+                await MainActor.run {
+                    self.locations = getFavouritesLocations
+                }
+            case .episodes:
+                let getFavouritesEpisodes = try await interactor.getAllDocumentsFavouritesEpisodes(collection: Constants.collectionEpisodes)
+                await MainActor.run {
+                    self.episodes = getFavouritesEpisodes
+                }
         }
     }
 }
