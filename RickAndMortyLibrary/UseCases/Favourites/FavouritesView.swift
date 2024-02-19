@@ -48,6 +48,7 @@ struct FavouritesView: View {
             case .characters:
                 ForEach(viewModel.characters ,id: \.id) { character in
                     CharacterFavouriteView(model: character)
+                        .modifier(SwipeActionsViewModifier(action: {viewModel.loadDelete(id: character.id)}, label:  Label("Delete", systemImage: "trash")))
                 }
                 .modifier(SwipeActionsViewModifier(action: {print("PUUM")}, label:  Label("Delete", systemImage: "trash")))
             case .locations:
