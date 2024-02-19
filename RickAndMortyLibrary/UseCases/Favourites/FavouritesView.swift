@@ -48,17 +48,18 @@ struct FavouritesView: View {
             case .characters:
                 ForEach(viewModel.characters ,id: \.id) { character in
                     CharacterFavouriteView(model: character)
-                        .modifier(SwipeActionsViewModifier(action: {viewModel.loadDelete(id: character.id)}, label:  Label("Delete", systemImage: "trash")))
+                        .modifier(SwipeActionsViewModifier(action: {viewModel.loadDelete(collection: Constants.collectionCharacter, id: character.id)}, label:  Label("Delete", systemImage: "trash")))
                 }
-                .modifier(SwipeActionsViewModifier(action: {print("PUUM")}, label:  Label("Delete", systemImage: "trash")))
+               
             case .locations:
                 ForEach(viewModel.locations, id: \.id) { location in
                     EpisodeLocationFavourite(model: location)
-                    
+                        .modifier(SwipeActionsViewModifier(action: {viewModel.loadDelete(collection: Constants.collectionLocations, id: location.id)}, label:  Label("Delete", systemImage: "trash")))
                 }
             case .episodes:
                 ForEach(viewModel.episodes ,id: \.id) { episode in
                     EpisodeLocationFavourite(model: episode)
+                        .modifier(SwipeActionsViewModifier(action: {viewModel.loadDelete(collection: Constants.collectionEpisodes, id: episode.id)}, label:  Label("Delete", systemImage: "trash")))
                 }
         }
     }

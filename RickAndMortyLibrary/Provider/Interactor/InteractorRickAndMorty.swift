@@ -69,8 +69,8 @@ struct Interactor: RickAndMortyInteractor {
         return try await firebaseFirestoreGetDocument.getDocuments(collection: collection, type: FirebaseFirestoreEpisodeLocationModel.self)
     }
     
-    func delete( id: String) async throws {
-        try await firebaseFirestoreDeleteDocument.delete(collection: Constants.collectionCharacter, id: id)
+    func delete(collection: String, id: String) async throws {
+        try await firebaseFirestoreDeleteDocument.delete(collection: collection, id: id)
     }
     
     
