@@ -68,7 +68,9 @@ struct Interactor: RickAndMortyInteractor {
         return try await firebaseFirestoreGetDocument.getDocuments(collection: collection, type: FirebaseFirestoreEpisodeLocationModel.self)
     }
     
-    
+    func delete( id: String) async throws {
+        try await firebaseFirestoreGetDocument.delete(collection: Constants.collectionCharacter, id: id)
+    }
     
     
     //Guardar documento como favorito
