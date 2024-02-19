@@ -33,6 +33,21 @@ final class FavouritesViewModel: ObservableObject {
         }
     }
     
+    func loadDelete(id: String?) {
+        Task {
+            if let id = id {
+                try await actionDelete(id: id)                
+            }
+        
+        }
+        loadUI()
+    }
+    func actionDelete(id: String?) async throws {
+        if let id = id {
+            try await interactor.delete(id: id)
+        }
+    }
+    
     //MARK: - loadData
     func loadData() async throws {
         switch typeList {
