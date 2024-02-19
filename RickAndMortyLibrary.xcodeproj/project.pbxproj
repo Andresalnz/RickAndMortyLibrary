@@ -65,6 +65,7 @@
 		9FFE6A3C2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A3B2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift */; };
 		9FFE6A412B7EA288004CEEA9 /* RMFirebaseFirestoreGetDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A402B7EA288004CEEA9 /* RMFirebaseFirestoreGetDocuments.swift */; };
 		9FFE6A432B7F7B9E004CEEA9 /* SwipeActionsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A422B7F7B9E004CEEA9 /* SwipeActionsViewModifier.swift */; };
+		9FFE6A452B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE6A442B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		9FFE6A3B2B7E8238004CEEA9 /* FirebaseFirestoreEpisodeLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreEpisodeLocationModel.swift; sourceTree = "<group>"; };
 		9FFE6A402B7EA288004CEEA9 /* RMFirebaseFirestoreGetDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFirebaseFirestoreGetDocuments.swift; sourceTree = "<group>"; };
 		9FFE6A422B7F7B9E004CEEA9 /* SwipeActionsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionsViewModifier.swift; sourceTree = "<group>"; };
+		9FFE6A442B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMFirebaseFirestoreDeleteDocuments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,6 +530,7 @@
 			children = (
 				9F524FB22B7E1F8400DE246A /* RMFirebaseFirestoreSaveDocuments.swift */,
 				9FFE6A402B7EA288004CEEA9 /* RMFirebaseFirestoreGetDocuments.swift */,
+				9FFE6A442B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				9F8814882AE26F4700448501 /* EpisodeModelDTO.swift in Sources */,
 				9FAAFBCC2B0BCFE700D65E6F /* HomeViewProtocols.swift in Sources */,
 				9F85AA8A2AE66BF400949BBD /* AsyncImageView.swift in Sources */,
+				9FFE6A452B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift in Sources */,
 				9FF9F9082AF18EAB00411BCC /* InfoDetailCharacterRowView.swift in Sources */,
 				9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */,
 				9FAAFBCE2B0CD53800D65E6F /* DetailViewProtocols.swift in Sources */,
