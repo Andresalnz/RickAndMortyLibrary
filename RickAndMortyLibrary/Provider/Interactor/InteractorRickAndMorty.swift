@@ -21,8 +21,9 @@ struct Interactor: RickAndMortyInteractor {
     var repository: Repository
     var firebaseFirestoreSaveDocuments: RMFirebaseFirestoreSaveDocuments
     var firebaseFirestoreGetDocument: RMFirebaseFirestoreGetDocuments
+    var firebaseFirestoreDeleteDocument: RMFirebaseFirestoreDeleteDocuments
     
-    static let shared: Interactor = Interactor(repository: Repository(), firebaseFirestoreSaveDocuments: RMFirebaseFirestoreSaveDocuments(), firebaseFirestoreGetDocument: RMFirebaseFirestoreGetDocuments())
+    static let shared: Interactor = Interactor(repository: Repository(), firebaseFirestoreSaveDocuments: RMFirebaseFirestoreSaveDocuments(), firebaseFirestoreGetDocument: RMFirebaseFirestoreGetDocuments(), firebaseFirestoreDeleteDocument: RMFirebaseFirestoreDeleteDocuments())
     
     //MARK: - Characters
     
@@ -69,7 +70,7 @@ struct Interactor: RickAndMortyInteractor {
     }
     
     func delete( id: String) async throws {
-        try await firebaseFirestoreGetDocument.delete(collection: Constants.collectionCharacter, id: id)
+        try await firebaseFirestoreDeleteDocument.delete(collection: Constants.collectionCharacter, id: id)
     }
     
     
