@@ -76,7 +76,10 @@ final class DetailViewModel: ObservableObject {
                         await MainActor.run {
                             self.episode = singleEpisode.toBo()
                             if let episode = episode {
-                                allEpisodes.append(episode)
+                                if allEpisodes.count < 10 {
+                                    allEpisodes.append(episode)
+                                }
+                                
                             }
                         }
                        
@@ -85,7 +88,9 @@ final class DetailViewModel: ObservableObject {
                         await MainActor.run {
                             self.character = singleCharacter.toBo()
                             if let character = character {
-                                allCharacters.append(character)
+                                if allCharacters.count < 10 {
+                                    allCharacters.append(character)
+                                }
                             }
                         }
                        
