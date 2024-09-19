@@ -40,39 +40,28 @@ struct DetailView<T>: View  where T: Detail {
     private var DetailContentView: some View {
         switch type {
             case .characters:
-                //MARK: - Seccion de la imagen
-                SectionDetailView(content: {
-                    SectionImageView(model: model)
-                }, titleSection: Constants.titleImage)
-                //MARK: - Seccion de la informacion
-                SectionDetailView(content: {
-                    SectionInformationView(model: model, type: .characters)
-                }, titleSection: Constants.titleInformation)
-                //MARK: - Seccion de los episodios
-                SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(type: .characters)
-                },titleSection: Constants.titleEpisodes)
-                .environmentObject(viewModel)
+               Section  { SectionImageView(model: model) }
+                header: { Text(Constants.titleImage) }
+                    footer: {
+                        Text(model.name ?? Constants.noText)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                Section(Constants.titleInformation) { SectionInformationView(model: model, type: .characters) }
+                Section (Constants.titleEpisodes) { SectionEpisodesAndCharactersView(type: .characters).environmentObject(viewModel) }
+        
             case .episodes:
-                SectionDetailView(content: {
-                    SectionInformationView(model: model, type: .episodes)
-                }, titleSection: Constants.titleInformation)
-                SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(type: .episodes)
-                },titleSection: Constants.titleCharacters)
-                .environmentObject(viewModel)
+                Section(Constants.titleInformation) { SectionInformationView(model: model, type: .episodes) }
+                Section(Constants.titleCharacters) {
+                    SectionEpisodesAndCharactersView(type: .episodes).environmentObject(viewModel)
+                }
+                
             case .locations:
-                SectionDetailView(content: {
-                    SectionInformationView(model: model, type: .locations)
-                }, titleSection: Constants.titleInformation)
-                SectionDetailView(content: {
-                    SectionEpisodesAndCharactersView(type: .episodes)
-                },titleSection: Constants.titleResidents)
-                .environmentObject(viewModel)
+                Section(Constants.titleInformation) { SectionInformationView(model: model, type: .locations) }
+                Section(Constants.titleResidents) { SectionEpisodesAndCharactersView(type: .locations).environmentObject(viewModel) }
         }
     }
 }
 
-//#Preview {
-//    DetailCharacterView(model: RowDetail(status: .alive, gender: .Genderless, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), episodes: [], image: URL(string: ""), name: "Rick", species: .Animal), viewModel: DetailCharacterViewModel(allEpisodeCharacter: []))
-//}
+#Preview {
+    DetailView(model: RowDetail(image: URL(string: "https://rickandmortyapi.com/api/character")), type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: [URL(string: "https://rickandmortyapi.com/api/character/8")!, URL(string: "https://rickandmortyapi.com/api/episode/2")!, URL(string: "https://rickandmortyapi.com/api/character/8")!], type: .episodes))
+}
