@@ -14,10 +14,16 @@ struct CharacterRowView<T>: View  where T: HomeRowView {
     var body: some View {
         HStack {
             if let image = type.image {
-                AsyncImageView(urlImage: image)
-                    .scaledToFit()
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 20.0), style: FillStyle())
+                AsyncImage(url: image) { image in
+                    image.resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50, alignment: .center)
+                        .clipShape(RoundedRectangle(cornerRadius: 20.0), style: FillStyle())
+                }
+                placeholder: {
+                    ProgressView()
+                }
+                    
             } else {
                 Image(systemName: "person.fill")
             }

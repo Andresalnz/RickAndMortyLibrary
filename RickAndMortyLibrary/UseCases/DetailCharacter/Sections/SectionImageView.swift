@@ -13,7 +13,8 @@ struct SectionImageView<T>: View where T: Detail {
     
     var body: some View {
         if let image = model.image {
-                AsyncImageView(urlImage: image)
+            AsyncImage(url: image) { image in
+                image.resizable()
                     .scaledToFill()
                     .listRowBackground(RoundedRectangle(cornerRadius: Constants.sizeCornerRadius)
                         .background(.clear)
@@ -21,9 +22,14 @@ struct SectionImageView<T>: View where T: Detail {
                         .padding(.vertical)
                     )
                     .shadow(radius: Constants.sizeCornerRadius)
-            } else {
-                Image(systemName: "person.fill")
             }
+            placeholder: {
+                ProgressView()
+            }
+            
+        } else {
+            Image(systemName: "person.fill")
+        }
     }
 }
 

@@ -30,7 +30,6 @@
 		9F8445F92AF1E50700460822 /* SectionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445F82AF1E50700460822 /* SectionImageView.swift */; };
 		9F8445FB2AF1E6B200460822 /* SectionInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445FA2AF1E6B200460822 /* SectionInformationView.swift */; };
 		9F8445FD2AF1E6F700460822 /* SectionEpisodesAndCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8445FC2AF1E6F700460822 /* SectionEpisodesAndCharactersView.swift */; };
-		9F85AA8A2AE66BF400949BBD /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F85AA892AE66BF400949BBD /* AsyncImageView.swift */; };
 		9F8814882AE26F4700448501 /* EpisodeModelDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8814872AE26F4700448501 /* EpisodeModelDTO.swift */; };
 		9F88148A2AE26F5300448501 /* EpisodeModelBO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8814892AE26F5300448501 /* EpisodeModelBO.swift */; };
 		9F88148C2AE26F6100448501 /* EpisodeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F88148B2AE26F6100448501 /* EpisodeMapper.swift */; };
@@ -91,7 +90,6 @@
 		9F8445F82AF1E50700460822 /* SectionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionImageView.swift; sourceTree = "<group>"; };
 		9F8445FA2AF1E6B200460822 /* SectionInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionInformationView.swift; sourceTree = "<group>"; };
 		9F8445FC2AF1E6F700460822 /* SectionEpisodesAndCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionEpisodesAndCharactersView.swift; sourceTree = "<group>"; };
-		9F85AA892AE66BF400949BBD /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		9F8814872AE26F4700448501 /* EpisodeModelDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModelDTO.swift; sourceTree = "<group>"; };
 		9F8814892AE26F5300448501 /* EpisodeModelBO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModelBO.swift; sourceTree = "<group>"; };
 		9F88148B2AE26F6100448501 /* EpisodeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeMapper.swift; sourceTree = "<group>"; };
@@ -403,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				9FF9F9072AF18EAB00411BCC /* InfoDetailCharacterRowView.swift */,
-				9F85AA892AE66BF400949BBD /* AsyncImageView.swift */,
 				9F798BCA2B18FFA7008BEC6E /* ListWithSeparation.swift */,
 			);
 			path = Views;
@@ -652,7 +649,6 @@
 				9F0DEA162AE13CC5009376F1 /* RickAndMortyLibraryApp.swift in Sources */,
 				9F8814882AE26F4700448501 /* EpisodeModelDTO.swift in Sources */,
 				9FAAFBCC2B0BCFE700D65E6F /* HomeViewProtocols.swift in Sources */,
-				9F85AA8A2AE66BF400949BBD /* AsyncImageView.swift in Sources */,
 				9FFE6A452B83792E004CEEA9 /* RMFirebaseFirestoreDeleteDocuments.swift in Sources */,
 				9FF9F9082AF18EAB00411BCC /* InfoDetailCharacterRowView.swift in Sources */,
 				9F88148E2AE2975B00448501 /* ErrorHandler.swift in Sources */,

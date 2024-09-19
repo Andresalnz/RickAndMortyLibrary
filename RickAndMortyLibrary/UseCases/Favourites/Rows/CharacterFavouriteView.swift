@@ -14,10 +14,15 @@ struct CharacterFavouriteView: View {
     var body: some View {
         HStack(spacing: 30) {
             if let image = model.image {
-                AsyncImageView(urlImage: image)
-                    .scaledToFit()
-                    .frame(width: 150, height: 150, alignment: .center)
-                    .clipShape(RoundedRectangle(cornerRadius: 20.0), style: FillStyle())
+                AsyncImage(url: image) { image in
+                    image.resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150, alignment: .center)
+                        .clipShape(RoundedRectangle(cornerRadius: 20.0), style: FillStyle())
+                }
+                placeholder: {
+                    ProgressView()
+                }
             }
             VStack(alignment: .leading, spacing: 15) {
                 Text(model.name ?? "")
