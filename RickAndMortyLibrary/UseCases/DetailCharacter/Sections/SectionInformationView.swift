@@ -15,26 +15,26 @@ struct SectionInformationView<T>: View where T: Detail {
     var body: some View {
         switch type {
             case .characters:
-                InfoDetailCharacterRowView(icon: "circle.fill", label: Text("Status"), value: Text(model.status?.rawValue ?? "").foregroundColor(model.status == .alive ? .green : .black))
-                InfoDetailCharacterRowView(icon: "person.circle", label: Text("Specie"), value: Text(model.species?.rawValue ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.circleFill.rawValue, label: Constants.status, value: Text(model.status?.rawValue ?? "").foregroundColor(model.status == .alive ? .green : .black))
+                InfoDetailCharacterRowView(icon: Constants.Icons.personCircle.rawValue, label: Constants.species, value: Text(model.species?.rawValue ?? Constants.noText))
                 if model.type != "" {
-                    InfoDetailCharacterRowView(icon: "person.circle", label: Text("Type"), value: Text(model.type ?? Constants.noText))
+                    InfoDetailCharacterRowView(icon: Constants.Icons.personCircle.rawValue, label: Constants.type, value: Text(model.type ?? Constants.noText))
                 }
-                InfoDetailCharacterRowView(icon: "person.fill", label: Text("Gender"), value: Text(model.gender?.rawValue ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "globe.asia.australia.fill", label: Text("Origin"), value: Text(model.origin?.name ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "location.fill", label: Text("Location"), value: Text(model.location?.name ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.personFill.rawValue, label: Constants.gender, value: Text(model.gender?.rawValue ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.globeAsiaAustraliaFill.rawValue, label: Constants.origin, value: Text(model.origin?.name ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.locationFill.rawValue, label: Constants.location, value: Text(model.location?.name ?? Constants.noText))
             case .locations:
-                InfoDetailCharacterRowView(icon: "person.fill", label: Text("Type"), value: Text(model.type ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "globe.asia.australia.fill", label: Text("Dimension"), value: Text(model.dimension ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.personFill.rawValue, label: Constants.type, value: Text(model.type ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.mountain2CircleFill.rawValue, label: Constants.dimension, value: Text(model.dimension ?? Constants.noText))
             case .episodes:
-                InfoDetailCharacterRowView(icon: "person.fill", label: Text("Gender"), value: Text(model.episode ?? Constants.noText))
-                InfoDetailCharacterRowView(icon: "globe.asia.australia.fill", label: Text("Origin"), value: Text(model.airDate ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.tvCircle.rawValue, label: Constants.airDate, value: Text(model.airDate ?? Constants.noText))
+                InfoDetailCharacterRowView(icon: Constants.Icons.ellipsisBubbleFill.rawValue, label: Constants.episode, value: Text(model.episode ?? Constants.noText))
         }
         
         
     }
 }
 
-//#Preview {
-//    SectionInformationView(character: CharactersInfoBO(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "Human with antens", gender: .male, origin: LocationOriginBO(name: "Earth", url: URL(string: "")), location: LocationOriginBO(name: "Earth", url: URL(string: "")), image: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"), episode: [URL(string: "https://rickandmortyapi.com/api/episode/28")!], url: URL(string: ""), created: Date()))
-//}
+#Preview {
+    SectionInformationView(model: RowDetail(), type: .characters)
+}

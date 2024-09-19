@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoDetailCharacterRowView: View {
     
     let icon: String?
-    let label: Text?
+    let label: String?
     let value: Text
     
     var body: some View {
@@ -18,7 +18,7 @@ struct InfoDetailCharacterRowView: View {
             if let icon = icon {
                 Image(systemName: icon)
             }
-            label
+            Text(label ?? Constants.noText)
             Spacer()
             value
         }
@@ -26,5 +26,5 @@ struct InfoDetailCharacterRowView: View {
 }
 
 #Preview {
-    InfoDetailCharacterRowView(icon: "circle.fill", label: Text("Species"), value: Text("Alive"))
+    InfoDetailCharacterRowView(icon: "circle.fill", label: "Species", value: Text("Alive"))
 }
