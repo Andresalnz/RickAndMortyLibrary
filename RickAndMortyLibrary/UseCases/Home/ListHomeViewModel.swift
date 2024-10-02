@@ -10,28 +10,39 @@ import Foundation
 final class ListHomeViewModel: ObservableObject {
     
     //MARK: - Variables
+    private var page: Int = 1
+    private var loadListOnce: Bool = true
     
     //Interactor
     private let interactor: Interactor
+    
+    private var (pageCh, pageEp, pageLo) = (0, 0, 0)
     
     //MARK: - Published
     //Array que almacena la informacion
     @Published var characters: [CharactersResultsBO]
     @Published var episodes: [EpisodeResultsBO]
     @Published var locations: [LocationResultsBO]
+    @Published var viewState: ViewState = .loading
+    let type: TypeViewList
     
     //Manejo de errores
     @Published var errorMsg = ""
     @Published var showAlert = false
     
     //MARK: - Init
-    init(interactor: Interactor = Interactor.shared, characters: [CharactersResultsBO] = [], episodes: [EpisodeResultsBO] = [], locations: [LocationResultsBO] = []) {
+    init(interactor: Interactor = Interactor.shared, characters: [CharactersResultsBO] = [], episodes: [EpisodeResultsBO] = [], locations: [LocationResultsBO] = [], type: TypeViewList) {
         self.interactor = interactor
         self.characters = characters
         self.episodes = episodes
         self.locations = locations
+        self.type = type
     }
     
+    var isLoading: Bool {
+           viewState == .loading
+       }
+   
     //MARK: - Search
     
     // Variable que devuelve un array de personajes segun lo que se busque
@@ -58,11 +69,6 @@ final class ListHomeViewModel: ObservableObject {
         }
     }
     
-    
-    
-    //Booleano para cuando se esta en el detalle y se vuelva atras no haga ninguna petición
-   // var negativeRequest: Bool = false
-    
     //Propiedad que almacena el texto que se esta buscando
     @Published var searchText: String = ""
     
@@ -70,29 +76,68 @@ final class ListHomeViewModel: ObservableObject {
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
     func loadUI() {
         Task {
-            try await loadData()
+            try await loadData(page)
+        }
+        loadListOnce = false
+    }
+    
+    @MainActor
+    func loadMoreIfNeeded() {
+        Task {
+            page += 1
+            viewState = .loading
+            try await Task.sleep(nanoseconds: 2_000_000_000)
+            try await loadData(page)
         }
     }
     
+    func checkTheLastIdCharacters(of: CharactersResultsBO) -> Bool {
+        return characters.last?.id == of.id
+    }
+    
+    func checkTheLastIdEpisodes(of: EpisodeResultsBO) -> Bool {
+        return episodes.last?.id == of.id
+    }
+    
+    func checkTheLastIdLocations(of: LocationResultsBO) -> Bool {
+        return locations.last?.id == of.id
+    }
+    
+    func stateLoadListOnce() -> Bool {
+        return loadListOnce
+    }
+    
     //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar los primeros personajes
-    func loadData() async throws {
+    func loadData(_ page: Int) async throws {
         do {
-            let getAllCharacters = try await interactor.getAllCharacters()
-            let getAllEpisodes = try await interactor.getAllEpisodes()
-            let getAllLocations = try await interactor.getAllLocations()
-            await MainActor.run {
-                if let infoCharacters = getAllCharacters.characters {
-                    self.characters = infoCharacters.compactMap { $0.toBo() }
-                    
-                }
-                
-                if let infoEpisodes = getAllEpisodes.episodes {
-                    self.episodes = infoEpisodes.compactMap { $0.toBo() }
-                }
-                
-                if let infoLocations = getAllLocations.locations {
-                    self.locations = infoLocations.compactMap { $0.toBo() }
-                }
+            switch type {
+                case .characters:
+                    pageCh += 1
+                    let getAllCharacters = try await interactor.getAllCharacters(pageCh)
+                    await MainActor.run {
+                        if let infoCharacters = getAllCharacters.characters {
+                            self.characters.append(contentsOf: infoCharacters.compactMap { $0.toBo() })
+                        }
+                        viewState = .finished
+                    }
+                case .episodes:
+                    pageEp += 1
+                    let getAllEpisodes = try await interactor.getAllEpisodes(pageEp)
+                    await MainActor.run {
+                        if let infoEpisodes = getAllEpisodes.episodes {
+                            self.episodes.append(contentsOf: infoEpisodes.compactMap { $0.toBo() })
+                        }
+                        viewState = .finished
+                    }
+                case .locations:
+                    pageLo += 1
+                    let getAllLocations = try await interactor.getAllLocations(pageLo)
+                    await MainActor.run {
+                        if let infoLocations = getAllLocations.locations {
+                            self.locations.append(contentsOf: infoLocations.compactMap { $0.toBo() })
+                        }
+                        viewState = .finished
+                    }
             }
         } catch {
             await MainActor.run {
@@ -101,5 +146,12 @@ final class ListHomeViewModel: ObservableObject {
                 showAlert.toggle()
             }
         }
+    }
+}
+
+extension ListHomeViewModel {
+    enum ViewState {
+        case loading
+        case finished
     }
 }

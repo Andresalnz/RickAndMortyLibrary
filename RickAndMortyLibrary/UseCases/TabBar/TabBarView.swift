@@ -9,21 +9,19 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @StateObject var viewModel: ListHomeViewModel = ListHomeViewModel()
-    
     var body: some View {
         TabView {
-            ListHomeView(type: .characters, navigationTitle: Constants.titleCharacters).environmentObject(viewModel)
+            ListHomeView(type: .characters, navigationTitle: Constants.titleCharacters).environmentObject(ListHomeViewModel(type: .characters))
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text(Constants.titleCharacters)
                 }
-            ListHomeView(type: .episodes, navigationTitle: Constants.titleEpisodes).environmentObject(viewModel)
+            ListHomeView(type: .episodes, navigationTitle: Constants.titleEpisodes).environmentObject(ListHomeViewModel(type: .episodes))
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text(Constants.titleEpisodes)
                 }
-            ListHomeView(type: .locations, navigationTitle: Constants.titleLocations).environmentObject(viewModel)
+            ListHomeView(type: .locations, navigationTitle: Constants.titleLocations).environmentObject(ListHomeViewModel(type: .locations))
                 .tabItem {
                     Image(systemName: "globe")
                     Text(Constants.titleLocations)

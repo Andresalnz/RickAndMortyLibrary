@@ -25,6 +25,13 @@ struct ListHomeView: View {
         NavigationView {
             List {
                 HomeContentView
+                VStack {
+                    if viewModel.isLoading {
+                        ProgressView()
+                    }
+                }
+                .listRowBackground(Color.clear)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
             
             .navigationTitle(navigationTitle ?? Constants.noText)
@@ -32,13 +39,15 @@ struct ListHomeView: View {
         .navigationViewStyle(.stack)
         .searchable(text: $viewModel.searchText, prompt: Constants.searchPrompt)
         .alert(viewModel.errorMsg, isPresented: $viewModel.showAlert) {
-          //
+            //
         } message: {
             Text(Constants.messageAlertError)
                 .font(.body)
         }
         .onAppear {
-            viewModel.loadUI()
+            if viewModel.stateLoadListOnce() {
+                viewModel.loadUI()
+            }
         }
     }
     
@@ -51,6 +60,11 @@ struct ListHomeView: View {
                     if let episodes = character.episode {
                         NavigationLink(destination: DetailView(model: character.rowDetail, type: .characters, viewModel: DetailViewModel(allEpisodeCharacter: episodes, type: .characters))) {
                             CharacterRowView(type: character.rowListMain)
+                                .onAppear {
+                                    if !viewModel.isLoading && viewModel.checkTheLastIdCharacters(of: character) {
+                                        viewModel.loadMoreIfNeeded()
+                                    }
+                                }
                         }
                     }
                 }
@@ -59,6 +73,11 @@ struct ListHomeView: View {
                 ForEach(viewModel.searchEpisodes, id: \.id) { episode in
                     NavigationLink(destination: DetailView(model: episode.rowDetail, type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: episode.characters!, type: .episodes))) {
                         TitleRowView(type: episode.rowListMain)
+                            .onAppear {
+                                if !viewModel.isLoading && viewModel.checkTheLastIdEpisodes(of: episode) {
+                                    viewModel.loadMoreIfNeeded()
+                                }
+                            }
                     }
                     
                 }
@@ -67,6 +86,11 @@ struct ListHomeView: View {
                 ForEach(viewModel.searchLocations, id: \.id) { location in
                     NavigationLink(destination: DetailView(model: location.rowDetail, type: .locations, viewModel: DetailViewModel(allEpisodeCharacter: location.residents!, type: .locations))) {
                         TitleRowView(type: location.rowListMain)
+                            .onAppear {
+                                if !viewModel.isLoading && viewModel.checkTheLastIdLocations(of: location) {
+                                    viewModel.loadMoreIfNeeded()
+                                }
+                            }
                     }
                 }
                 .modifier(StyleList())
@@ -75,5 +99,5 @@ struct ListHomeView: View {
 }
 
 #Preview {
-    ListHomeView(type: .characters, navigationTitle: "Characters").environmentObject(ListHomeViewModel())
+    ListHomeView(type: .characters, navigationTitle: "Characters").environmentObject(ListHomeViewModel(type: .characters))
 }

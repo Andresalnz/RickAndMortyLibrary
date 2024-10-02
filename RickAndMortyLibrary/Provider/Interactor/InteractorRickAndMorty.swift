@@ -9,9 +9,9 @@ import Foundation
 import FirebaseFirestore
 
 protocol RickAndMortyInteractor {
-    func getAllCharacters() async throws -> CharacterModelDTO
-    func getAllEpisodes() async throws -> EpisodeModelDTO
-    func getAllLocations() async throws -> LocationModelDTO
+    func getAllCharacters(_ page: Int) async throws -> CharacterModelDTO
+    func getAllEpisodes(_ page: Int) async throws -> EpisodeModelDTO
+    func getAllLocations(_ page: Int) async throws -> LocationModelDTO
     func singleCharacter(url: URL?) async throws -> CharactersResultsDTO
     func singleEpisode(url: URL?) async throws -> EpisodeResultsDTO
 }
@@ -28,8 +28,8 @@ struct Interactor: RickAndMortyInteractor {
     //MARK: - Characters
     
     //allCharacters
-    func getAllCharacters() async throws -> CharacterModelDTO {
-        return try await repository.getJSON(url: Util.Services.allCharacters.shapeURL(), type: CharacterModelDTO.self)
+    func getAllCharacters(_ page: Int) async throws -> CharacterModelDTO {
+        return try await repository.getJSON(url: Util.Services.allCharacters.shapeURL(page), type: CharacterModelDTO.self)
     }
     
     //singleCharacter
@@ -40,8 +40,8 @@ struct Interactor: RickAndMortyInteractor {
     //MARK: - Episodes
     
     //allEpisodes
-    func getAllEpisodes() async throws -> EpisodeModelDTO {
-        return try await repository.getJSON(url: Util.Services.allEpisodes.shapeURL(), type: EpisodeModelDTO.self)
+    func getAllEpisodes(_ page: Int) async throws -> EpisodeModelDTO {
+        return try await repository.getJSON(url: Util.Services.allEpisodes.shapeURL(page), type: EpisodeModelDTO.self)
     }
     
     
@@ -55,8 +55,8 @@ struct Interactor: RickAndMortyInteractor {
     //MARK: - Location
     
     //allLocations
-    func getAllLocations() async throws -> LocationModelDTO {
-        return try await repository.getJSON(url: Util.Services.allLocations.shapeURL(), type: LocationModelDTO.self)
+    func getAllLocations(_ page: Int) async throws -> LocationModelDTO {
+        return try await repository.getJSON(url: Util.Services.allLocations.shapeURL(page), type: LocationModelDTO.self)
     }
     
     //MARK: - Firebase

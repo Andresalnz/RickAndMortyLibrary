@@ -15,14 +15,14 @@ final class Util {
         case allEpisodes
         case allLocations
         
-        func shapeURL() -> URL? {
+        func shapeURL(_ page: Int) -> URL? {
             switch self {
                 case .allCharacters:
-                    return URL(string: "\(Constants.uri + Constants.characters)")
+                    return URL(string: "\(Constants.uri + Constants.characters + Constants.page + String(page))")
                 case .allEpisodes:
-                    return URL(string: "\(Constants.uri + Constants.episodes)")
+                    return URL(string: "\(Constants.uri + Constants.episodes + Constants.page + String(page))")
                 case .allLocations:
-                    return URL(string: "\(Constants.uri + Constants.locations)")
+                    return URL(string: "\(Constants.uri + Constants.locations + Constants.page + String(page))")
             }
         }
     }
