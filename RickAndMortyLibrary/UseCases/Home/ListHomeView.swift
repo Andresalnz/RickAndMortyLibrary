@@ -28,6 +28,10 @@ struct ListHomeView: View {
                 VStack {
                     if viewModel.isLoading {
                         ProgressView()
+                    } else {
+                        Text("The End")
+                            .font(.footnote)
+                            .fontWeight(.light)
                     }
                 }
                 .listRowBackground(Color.clear)
