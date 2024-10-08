@@ -49,6 +49,11 @@ final class DetailViewModel: ObservableObject {
         }
     }
     
+    func remove() {
+        self.allEpisodes.removeAll()
+        self.allEpisodes.removeAll()
+    }
+    
     func loadSave(infoFavourite: Detail) {
         Task {
             try await saveFavourite(infoFavourite: infoFavourite)

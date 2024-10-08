@@ -32,6 +32,9 @@ struct DetailView<T>: View  where T: Detail {
         .onAppear {
             viewModel.loadUI()
         }
+        .onDisappear {
+            viewModel.remove()
+        }
         .listStyle(.insetGrouped)
     }
     
