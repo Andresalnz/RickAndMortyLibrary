@@ -10,7 +10,6 @@ import Foundation
 final class ListHomeViewModel: ObservableObject {
     
     //MARK: - Variables
-    private var page: Int = 1
     private var loadListOnce: Bool = true
     
     //Interactor
@@ -76,7 +75,7 @@ final class ListHomeViewModel: ObservableObject {
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
     func loadUI() {
         Task {
-            try await loadData(page)
+            try await loadData()
         }
         loadListOnce = false
     }
@@ -84,10 +83,9 @@ final class ListHomeViewModel: ObservableObject {
     @MainActor
     func loadMoreIfNeeded() {
         Task {
-            page += 1
             viewState = .loading
             try await Task.sleep(nanoseconds: 2_000_000_000)
-            try await loadData(page)
+            try await loadData()
         }
     }
     
@@ -108,7 +106,7 @@ final class ListHomeViewModel: ObservableObject {
     }
     
     //MARK: - Método que se ejecuta en el hilo principal, para realizar petición y cargar los primeros personajes
-    func loadData(_ page: Int) async throws {
+    func loadData() async throws {
         do {
             switch type {
                 case .characters:
