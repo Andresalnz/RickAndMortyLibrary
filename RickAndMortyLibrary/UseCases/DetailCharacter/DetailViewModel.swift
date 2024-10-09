@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum NumbersRows: Int, CaseIterable {
+    case five = 5
+    case ten = 10
+    case all
+}
+
 final class DetailViewModel: ObservableObject {
     
     //MARK: - Variables
@@ -31,7 +37,7 @@ final class DetailViewModel: ObservableObject {
     //Propiedad que almacena un solo episodio
     var episode: EpisodeResultsBO?
     var character: CharactersResultsBO?
-    
+    var nextLimit: Int = 5
     //MARK: - Init
     init(interactor: Interactor = Interactor.shared, allEpisodeCharacter: [URL], type: TypeViewList, allEpisodes: [EpisodeResultsBO] = [], allCharacters: [CharactersResultsBO] = [], episode: EpisodeResultsBO? = nil, character: CharactersResultsBO? = nil) {
         self.interactor = interactor
@@ -41,6 +47,7 @@ final class DetailViewModel: ObservableObject {
         self.allCharacters = allCharacters
         self.episode = episode
         self.character = character
+       
     }
     
     //MARK: - Método para uso en la vista, para pintar todo lo necesario
@@ -53,6 +60,7 @@ final class DetailViewModel: ObservableObject {
     func remove() {
         self.allEpisodes.removeAll()
         self.allEpisodes.removeAll()
+        nextLimit = 5
         currentIndex = 0
     }
     
@@ -73,12 +81,22 @@ final class DetailViewModel: ObservableObject {
         }
     }
     
+    func rowSelected(_ rowSelected: NumbersRows) {
+        switch rowSelected {
+            case .five:
+                nextLimit = min(currentIndex + 5, allEpisodeCharacter.count)
+            case .ten:
+                nextLimit = min(currentIndex + 10, allEpisodeCharacter.count)
+            case .all:
+                nextLimit = allEpisodeCharacter.count
+        }
+        loadUI()
+    }
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     func loadData() async throws {
         do {
             switch type {
                 case .characters:
-                    let nextLimit = min(currentIndex + 5, allEpisodeCharacter.count)
                     for urlEpisodeOrCharacter in currentIndex..<allEpisodeCharacter.count  {
                         let singleEpisode = try await interactor.singleEpisode(url: allEpisodeCharacter[urlEpisodeOrCharacter])
                         await MainActor.run {
@@ -92,7 +110,6 @@ final class DetailViewModel: ObservableObject {
                         }
                     }
                 case .episodes, .locations:
-                    let nextLimit = min(currentIndex + 5, allEpisodeCharacter.count)
                     for urlEpisodeOrCharacter in currentIndex..<allEpisodeCharacter.count  {
                         let singleCharacter = try await interactor.singleCharacter(url: allEpisodeCharacter[urlEpisodeOrCharacter])
                         await MainActor.run {

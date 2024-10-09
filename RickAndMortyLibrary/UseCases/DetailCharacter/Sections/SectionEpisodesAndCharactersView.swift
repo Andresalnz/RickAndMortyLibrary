@@ -12,8 +12,16 @@ struct SectionEpisodesAndCharactersView: View {
     @EnvironmentObject var viewModel: DetailViewModel
    
     let type: TypeViewList
+    @State var rows: NumbersRows
     
     var body: some View {
+        Picker("", selection: $rows) {
+            Text("Five").tag(NumbersRows.five)
+            Text("Ten").tag(NumbersRows.ten)
+            Text("All").tag(NumbersRows.all)
+        }
+        .pickerStyle(.segmented)
+        .listRowBackground(Color.clear)
         
         switch type {
             case .characters:
@@ -31,7 +39,7 @@ struct SectionEpisodesAndCharactersView: View {
                 }
         }
         Button("+ More") {
-            viewModel.loadUI()
+            viewModel.rowSelected(rows)
         }
         .listRowBackground(Color.clear)
     }
