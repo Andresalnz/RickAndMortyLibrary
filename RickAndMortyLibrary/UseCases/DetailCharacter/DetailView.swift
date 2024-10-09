@@ -50,17 +50,17 @@ struct DetailView<T>: View  where T: Detail {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                 Section(Constants.titleInformation) { SectionInformationView(model: model, type: .characters) }
-                Section (Constants.titleEpisodes) { SectionEpisodesAndCharactersView(type: .characters, rows: .five).environmentObject(viewModel) }
+                Section (Constants.titleEpisodes) { SectionEpisodesAndCharactersView(type: .characters).environmentObject(viewModel) }
         
             case .episodes:
                 Section(Constants.titleInformation) { SectionInformationView(model: model, type: .episodes) }
                 Section(Constants.titleCharacters) {
-                    SectionEpisodesAndCharactersView(type: .episodes, rows: .five).environmentObject(viewModel)
+                    SectionEpisodesAndCharactersView(type: .episodes).environmentObject(viewModel)
                 }
                 
             case .locations:
                 Section(Constants.titleInformation) { SectionInformationView(model: model, type: .locations) }
-                Section(Constants.titleResidents) { SectionEpisodesAndCharactersView(type: .locations, rows: .five).environmentObject(viewModel) }
+                Section(Constants.titleResidents) { SectionEpisodesAndCharactersView(type: .locations).environmentObject(viewModel) }
         }
     }
 }

@@ -12,7 +12,7 @@ struct SectionEpisodesAndCharactersView: View {
     @EnvironmentObject var viewModel: DetailViewModel
    
     let type: TypeViewList
-    @State var rows: NumbersRows
+    @State var rows: NumbersRows = .five
     
     var body: some View {
         Picker("", selection: $rows) {
