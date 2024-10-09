@@ -29,6 +29,10 @@ struct SectionEpisodesAndCharactersView: View {
 
                 }
         }
+        Button("+ More") {
+            viewModel.loadUI()
+        }
+        .listRowBackground(Color.clear)
     }
 }
 

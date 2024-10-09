@@ -17,6 +17,7 @@ final class DetailViewModel: ObservableObject {
     let allEpisodeCharacter: [URL]
     let type: TypeViewList
     
+    var currentIndex = 0
     //MARK: - Published
     
     //Propidedad que almacena todos los episodios
@@ -52,6 +53,7 @@ final class DetailViewModel: ObservableObject {
     func remove() {
         self.allEpisodes.removeAll()
         self.allEpisodes.removeAll()
+        currentIndex = 0
     }
     
     func loadSave(infoFavourite: Detail) {
@@ -74,32 +76,35 @@ final class DetailViewModel: ObservableObject {
     //MARK: - Método que se ejecuta en el hilo principal, para guardar todos los datos
     func loadData() async throws {
         do {
-            for urlEpisodeOrCharacter in allEpisodeCharacter {
-                switch type {
-                    case .characters:
-                        let singleEpisode = try await interactor.singleEpisode(url: urlEpisodeOrCharacter)
+            switch type {
+                case .characters:
+                    let nextLimit = min(currentIndex + 5, allEpisodeCharacter.count)
+                    for urlEpisodeOrCharacter in currentIndex..<allEpisodeCharacter.count  {
+                        let singleEpisode = try await interactor.singleEpisode(url: allEpisodeCharacter[urlEpisodeOrCharacter])
                         await MainActor.run {
                             self.episode = singleEpisode.toBo()
                             if let episode = episode {
-                                if allEpisodes.count < 10 {
+                                if nextLimit > allEpisodes.count {
                                     allEpisodes.append(episode)
+                                    currentIndex = nextLimit
                                 }
-                                
                             }
                         }
-                       
-                    case .episodes, .locations:
-                        let singleCharacter = try await interactor.singleCharacter(url: urlEpisodeOrCharacter)
+                    }
+                case .episodes, .locations:
+                    let nextLimit = min(currentIndex + 5, allEpisodeCharacter.count)
+                    for urlEpisodeOrCharacter in currentIndex..<allEpisodeCharacter.count  {
+                        let singleCharacter = try await interactor.singleCharacter(url: allEpisodeCharacter[urlEpisodeOrCharacter])
                         await MainActor.run {
                             self.character = singleCharacter.toBo()
                             if let character = character {
-                                if allCharacters.count < 10 {
+                                if nextLimit > allCharacters.count {
                                     allCharacters.append(character)
+                                    currentIndex = nextLimit
                                 }
                             }
                         }
-                       
-                }
+                    }
             }
         } catch {
             await MainActor.run {
