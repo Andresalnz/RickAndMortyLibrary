@@ -17,16 +17,17 @@ struct SectionEpisodesAndCharactersView: View {
         
         switch type {
             case .characters:
-              
                 ForEach(viewModel.allEpisodes, id: \.id) { episode in
-                    ListWithSeparation(model: episode.rowDetail)
-
+                    NavigationLink(destination: DetailView(model: episode.rowDetail, type: .episodes, viewModel: DetailViewModel(allEpisodeCharacter: episode.characters!, type: .episodes))) {
+                        ListWithSeparation(model: episode.rowDetail)
+                    }
                 }
 
             case .locations, .episodes:
                 ForEach(viewModel.allCharacters, id: \.id) { character in
-                    ListWithSeparation(model: character.rowDetail)
-
+                    NavigationLink(destination: DetailView(model: character.rowDetail, type: .characters, viewModel: DetailViewModel(allEpisodeCharacter: character.episode!, type: .characters))) {
+                        CharacterRowView(type: character.rowListMain)
+                    }
                 }
         }
         Button("+ More") {
